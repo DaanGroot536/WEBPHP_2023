@@ -15,7 +15,7 @@
                     <p class="ml-3">User List:</p>
                     <hr>
                     @foreach($users as $user)
-                        <a class="link" href="{{route('editUser')}}">
+                        <a class="link" href="{{route('editUser', [$user->id])}}">
                         <div class="my-1 row mx-3 list-item">
                             <p class="col-3 p-3">Username: {{$user->name}}</p>
                             <p class="col-3 p-3">UserRole: {{$user->role}}</p>

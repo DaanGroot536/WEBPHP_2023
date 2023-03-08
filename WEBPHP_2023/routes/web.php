@@ -32,6 +32,7 @@ Route::controller(UserController::class)->group(function() {
     Route::get('/userlist', 'getUsers')->name('getUsers');
     Route::get('/userlistCreate', 'createUser')->name('createUser');
     Route::post('/userListSave', 'save')->name('save');
-    Route::get('/userListEdit', 'editUser')->name('editUser');
+    Route::get('/userListEdit/{id}', 'editUser')->name('editUser');
+    Route::post('/userListUpdate', 'update')->name('update');
 
 });

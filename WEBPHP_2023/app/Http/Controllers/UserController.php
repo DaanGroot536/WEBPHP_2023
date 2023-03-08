@@ -36,4 +36,29 @@ class UserController extends Controller
         $users = DB::table('users')->get();
         return view('users.userlist', ['users' => $users]);
     }
+
+    public function editUser($id) {
+        $user = DB::table('users')->where('id', $id)->first();
+        $roles = DB::table('roles')->get();
+        return view('users.edit', ['user' => $user, 'roles' => $roles]);
+    }
+
+    public function update(Request $request) {
+//        $request->validate([
+//            'name' => 'required|string|max:250',
+//            'email' => 'required|email|max:250|unique:users',
+//            'password' => 'required|min:8|confirmed',
+//        ]);
+
+        $user = User::where('id', $request->id)->update([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'role' => $request->role
+        ]);
+
+
+        $users = DB::table('users')->get();
+        return view('users.userlist', ['users' => $users]);
+    }
 }
