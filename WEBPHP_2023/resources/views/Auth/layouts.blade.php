@@ -6,12 +6,14 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Laravel 9 Custom User Registration & Login Tutorial - AllPHPTricks.com</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+        <link href="css/style.css" rel="stylesheet" type="text/css">
     </head>
     <body>
 
-        <nav class="navbar navbar-expand-lg bg-light">
+        <nav class="navbar navbar-expand-lg">
             <div class="container">
                 <a class="navbar-brand" href="{{ URL('/') }}">Trackr</a>
+
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -45,7 +47,6 @@
                 </div>
             </div>
         </nav>
-
         <div class="container">
             @yield('content')
         </div>
