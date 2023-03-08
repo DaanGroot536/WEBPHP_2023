@@ -3,17 +3,42 @@
 @section('content')
 
     <div class="row justify-content-center mt-5">
-        <div class="col-md-8">
+        <div class="">
             <div class="card">
-                <div class="card-header">Dashboard</div>
+                <div class="card-header">{{Auth::user()->role}} Dashboard</div>
                 <div class="card-body">
-                    @if ($message = Session::get('success'))
-                        <div class="alert alert-success">
-                            {{ $message }}
+
+                    @switch(Auth::user()->role)
+                        @case('customer')
+
+                        @break
+                        @case('employee')
+                        <p>Label List</p>
+                        <p>Package list</p>
+                        @break
+                        @case('deliverer')
+                        <p>Package list</p>
+                        @break
+                    @endswitch
+
+                    @if (Auth::user()->role == 'superadmin')
+                        <div class="row mx-3">
+                            <p class="col">UserList</p>
+                            <a href="{{ route('getUsers') }}" class="btn btn-secondary col-1"> ></a>
                         </div>
-                    @else
-                        <div class="alert alert-success">
-                            You are logged in!
+                    @endif
+                    @if(Auth::user()->role == 'superadmin' || Auth::user()->role == 'employee')
+                        <div class="row mx-3 mt-1">
+                            <p class="col">Packages</p>
+                            <a class="btn btn-secondary col-1"> ></a>
+                        </div>
+                        <div class="row mx-3 mt-1">
+                            <p class="col">Labels</p>
+                            <button class="btn btn-secondary col-1"> ></button>
+                        </div>
+                        <div class="row mx-3 mt-1">
+                            <p class="col">Package submissions</p>
+                            <button class="btn btn-secondary col-1"> ></button>
                         </div>
                     @endif
                 </div>
