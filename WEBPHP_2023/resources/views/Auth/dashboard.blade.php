@@ -36,9 +36,11 @@
                             <p class="col">Labels</p>
                             <button class="btn btn-secondary col-1"> ></button>
                         </div>
+                    @endif
+                    @if (Auth::user()->role == 'webshop')
                         <div class="row mx-3 mt-1">
-                            <p class="col">Package submissions</p>
-                            <button class="btn btn-secondary col-1"> ></button>
+                            <p class="col">Packages</p>
+                            <a href="{{route('getPackages')}}" class="btn btn-secondary col-1"> ></a>
                         </div>
                     @endif
                 </div>

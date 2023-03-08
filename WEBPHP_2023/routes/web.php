@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginRegisterController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\PackageController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -35,4 +37,10 @@ Route::controller(UserController::class)->group(function() {
     Route::get('/userListEdit/{id}', 'editUser')->name('editUser');
     Route::post('/userListUpdate', 'update')->name('update');
 
+});
+
+Route::controller(PackageController::class)->group(function() {
+    Route::get('/packageList', 'getPackages')->name('getPackages');
+    Route::get('/packageListCreate', 'createPackage')->name('createPackage');
+    Route::post('/packageListSave', 'savePackage')->name('savePackage');
 });
