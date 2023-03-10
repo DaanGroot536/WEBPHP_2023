@@ -43,5 +43,6 @@ Route::controller(PackageController::class)->group(function() {
     Route::get('/packageList', 'getPackages')->name('getPackages');
     Route::get('/packageListCreate', 'createPackage')->name('createPackage');
     Route::get('/import', 'importCSV')->name('importCSV');
+    Route::get('/download-csv-template', 'downloadCSVTemplate')->name('downloadCSVTemplate');
     Route::post('/packageListSave', 'savePackage')->name('savePackage');
 });

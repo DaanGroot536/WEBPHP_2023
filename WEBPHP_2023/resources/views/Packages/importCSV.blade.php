@@ -15,6 +15,7 @@
                     <br>
                     <br>
                     <button type="submit" class="btn btn-success">Import</button>
+                    <a href="{{ route('downloadCSVTemplate') }}" class="btn btn-secondary float-right">Download CSV template</a>
                 </form>
             </div>
         </div>

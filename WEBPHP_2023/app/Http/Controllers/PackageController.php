@@ -7,6 +7,7 @@ use App\Models\User;
 use DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Response;
 
 class PackageController extends Controller
 {
@@ -26,16 +27,23 @@ class PackageController extends Controller
         return view('packages.importCSV');
     }
 
+    public function downloadCSVTemplate()
+    {
+        $path = storage_path('csv\import_template.csv');
+
+        return Response::download($path);
+    }
+
     public function savePackage(Request $request)
     {
-//        $request->validate([
-//            'name' => 'required|string|max:250',
-//            'email' => 'required|email|max:250|unique:users',
-//            'password' => 'required|min:8|confirmed',
-//        ]);
+        //        $request->validate([
+        //            'name' => 'required|string|max:250',
+        //            'email' => 'required|email|max:250|unique:users',
+        //            'password' => 'required|min:8|confirmed',
+        //        ]);
         Package::create([
             'status' => 'submitted',
-            'dimensions' => $request->width.'x'.$request->length.'x'.$request->height,
+            'dimensions' => $request->width . 'x' . $request->length . 'x' . $request->height,
             'weight' => $request->weight,
             'customerStreet' => $request->customerStreet,
             'customerHousenumber' => $request->customerHousenumber,
