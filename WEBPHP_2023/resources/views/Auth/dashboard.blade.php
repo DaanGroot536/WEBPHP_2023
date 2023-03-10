@@ -24,7 +24,7 @@
                     @if (Auth::user()->role == 'superadmin')
                         <div class="row mx-3">
                             <p class="col">UserList</p>
-                            <a href="{{ route('getUsers') }}" class="btn btn-secondary col-1"> ></a>
+                            <a href="{{ route('getUserView') }}" class="btn btn-secondary col-1"> ></a>
                         </div>
                     @endif
                     @if(Auth::user()->role == 'superadmin' || Auth::user()->role == 'employee')

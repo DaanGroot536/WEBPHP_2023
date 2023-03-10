@@ -31,11 +31,11 @@ Route::controller(LoginRegisterController::class)->group(function() {
 });
 
 Route::controller(UserController::class)->group(function() {
-    Route::get('/userlist', 'getUsers')->name('getUsers');
-    Route::get('/userlistCreate', 'createUser')->name('createUser');
-    Route::post('/userListSave', 'save')->name('save');
-    Route::get('/userListEdit/{id}', 'editUser')->name('editUser');
-    Route::post('/userListUpdate', 'update')->name('update');
+    Route::get('/userlist', 'getUserView')->name('getUserView');
+    Route::get('/userlistCreate', 'getCreateUserView')->name('getCreateUserView');
+    Route::post('/userListSave', 'saveUser')->name('saveUser');
+    Route::get('/userListEdit/{id}', 'getEditUserView')->name('getEditUserView');
+    Route::post('/userListUpdate', 'updateUser')->name('updateUser');
 
 });
 
