@@ -30,7 +30,11 @@ class UserController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'role' => $request->role
+            'role' => $request->role,
+            'street' => $request->street,
+            'housenumber' => $request->housenumber,
+            'zipcode' => $request->zipcode,
+            'city' => $request->city
         ]);
 
         $users = DB::table('users')->get();
@@ -54,7 +58,11 @@ class UserController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'role' => $request->role
+            'role' => $request->role,
+            'street' => $request->street,
+            'housenumber' => $request->housenumber,
+            'zipcode' => $request->zipcode,
+            'city' => $request->city
         ]);
 
 

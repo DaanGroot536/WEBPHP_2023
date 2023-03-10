@@ -18,10 +18,17 @@ class CreatePackages extends Migration
             $table->integer('labelID')->nullable();
             $table->integer('pickupID')->nullable();
             $table->string('trackandtracecode')->nullable();
+            $table->string('webshopName');
+            $table->string('webshopStreet');
+            $table->string('webshopHousenumber');
+            $table->string('webshopZipcode');
+            $table->string('webshopCity');
+            $table->string('customerStreet');
+            $table->string('customerHousenumber');
+            $table->string('customerZipcode');
+            $table->string('customerCity');
             $table->string('status');
-            $table->integer('width');
-            $table->integer('length');
-            $table->integer('height');
+            $table->string('dimensions');
             $table->integer('weight');
 
             $table->timestamps();

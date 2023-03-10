@@ -20,20 +20,24 @@ class DatabaseSeeder extends Seeder
             'name' => 'Super Admin',
             'email' => 'admin@admin.com',
             'password' => bcrypt("password"),
-            'role' => 'superadmin'
+            'role' => 'superadmin',
+            'street' => 'yes',
+            'housenumber' => 1,
+            'zipcode' => '5555hl',
+            'city' => 'monketown'
         ]);
-        User::create([
-            'name' => 'webshop',
-            'email' => 'web@web.com',
-            'password' => bcrypt("password"),
-            'role' => 'webshop'
-        ]);
-        User::create([
-            'name' => 'employee',
-            'email' => 'emp@emp.com',
-            'password' => bcrypt("password"),
-            'role' => 'employee'
-        ]);
+//        User::create([
+//            'name' => 'webshop',
+//            'email' => 'web@web.com',
+//            'password' => bcrypt("password"),
+//            'role' => 'webshop'
+//        ]);
+//        User::create([
+//            'name' => 'employee',
+//            'email' => 'emp@emp.com',
+//            'password' => bcrypt("password"),
+//            'role' => 'employee'
+//        ]);
 
         Role::create([
            'type' => 'superadmin'

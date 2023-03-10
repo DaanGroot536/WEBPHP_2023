@@ -42,6 +42,18 @@
                                 <input type="password" class="form-control" id="password_confirmation" name="password_confirmation">
                             </div>
                         </div>
+                        <label>Street</label>
+                        <input class="form-control" type="text" name="street" placeholder="street">
+                        <br>
+                        <label>House nr.</label>
+                        <input class="form-control" type="number" name="housenumber" placeholder="housenumber">
+                        <br>
+                        <label>Zipcode</label>
+                        <input class="form-control" type="text" name="zipcode" placeholder="zipcode">
+                        <br>
+                        <label>City</label>
+                        <input class="form-control" type="text" name="city" placeholder="city">
+                        <br>
                         <div class="mb-3 row">
                             <input type="submit" class="col-md-3 offset-md-5 btn btn-primary" value="Register">
                         </div>

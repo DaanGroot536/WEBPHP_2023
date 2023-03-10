@@ -34,7 +34,11 @@ class LoginRegisterController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'role' => 'customer'
+            'role' => 'customer',
+            'street' => $request->street,
+            'housenumber' => $request->housenumber,
+            'zipcode' => $request->zipcode,
+            'city' => $request->city
         ]);
 
         $credentials = $request->only('email', 'password');
