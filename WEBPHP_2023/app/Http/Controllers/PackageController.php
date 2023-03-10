@@ -45,7 +45,10 @@ class PackageController extends Controller
 
         ]);
 
-        $packages = DB::table('packages')->get();
-        return view('packages.packagelist', ['packages' => $packages]);
+        return redirect('/packageList');
+    }
+
+    public function createLabel() {
+
     }
 }

@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginRegisterController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PackageController;
+use App\Http\Controllers\LabelController;
 
 
 /*
@@ -31,11 +32,11 @@ Route::controller(LoginRegisterController::class)->group(function() {
 });
 
 Route::controller(UserController::class)->group(function() {
-    Route::get('/userlist', 'getUsers')->name('getUsers');
-    Route::get('/userlistCreate', 'createUser')->name('createUser');
-    Route::post('/userListSave', 'save')->name('save');
-    Route::get('/userListEdit/{id}', 'editUser')->name('editUser');
-    Route::post('/userListUpdate', 'update')->name('update');
+    Route::get('/userlist', 'getUserView')->name('getUserView');
+    Route::get('/userlistCreate', 'getCreateUserView')->name('getCreateUserView');
+    Route::post('/userListSave', 'saveUser')->name('saveUser');
+    Route::get('/userListEdit/{id}', 'getEditUserView')->name('getEditUserView');
+    Route::post('/userListUpdate', 'updateUser')->name('updateUser');
 
 });
 
@@ -43,4 +44,9 @@ Route::controller(PackageController::class)->group(function() {
     Route::get('/packageList', 'getPackages')->name('getPackages');
     Route::get('/packageListCreate', 'createPackage')->name('createPackage');
     Route::post('/packageListSave', 'savePackage')->name('savePackage');
+});
+
+Route::controller(LabelController::class)->group(function() {
+    Route::get('/labelCreate/{id}', 'getCreateLabelView')->name('getCreateLabelView');
+    Route::post('/labelSave', 'saveLabel')->name('saveLabel');
 });
