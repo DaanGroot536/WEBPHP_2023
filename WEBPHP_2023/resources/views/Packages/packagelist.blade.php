@@ -12,6 +12,7 @@
                     @if (Auth::user()->role == 'webshop')
                         <a href="{{route('createPackage')}}" class="btn btn-success">Create Package +</a>
                     @endif
+
                 </div>
                 <div class="p-3 m-3 list-box">
                     <p class="ml-3">Package List:</p>
