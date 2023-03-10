@@ -52,4 +52,6 @@ Route::controller(PackageController::class)->group(function() {
 Route::controller(LabelController::class)->group(function() {
     Route::get('/labelCreate/{id}', 'getCreateLabelView')->name('getCreateLabelView');
     Route::post('/labelSave', 'saveLabel')->name('saveLabel');
+    Route::post('/labelSaveBulk', 'saveLabelBulk')->name('saveLabelBulk');
+
 });

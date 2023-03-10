@@ -12,10 +12,6 @@
                         @case('customer')
 
                         @break
-                        @case('employee')
-                        <p>Label List</p>
-                        <p>Package list</p>
-                        @break
                         @case('deliverer')
                         <p>Package list</p>
                         @break
@@ -30,7 +26,7 @@
                     @if(Auth::user()->role == 'superadmin' || Auth::user()->role == 'employee')
                         <div class="row mx-3 mt-1">
                             <p class="col">Packages</p>
-                            <a class="btn btn-secondary col-1"> ></a>
+                            <a href="{{route('getPackages')}}" class="btn btn-secondary col-1"> ></a>
                         </div>
                         <div class="row mx-3 mt-1">
                             <p class="col">Labels</p>
