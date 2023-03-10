@@ -9,7 +9,7 @@
                     Dashboard</a> -> <a class="link" href="{{route('getPackages')}}">PackageList</a> -> Create Package
             </div>
             <div class="w-75 mx-auto my-5">
-                <form action="{{route('savePackage')}}" method="post">
+                <form action="{{route('createPackage')}}" method="post">
                     @csrf
                     <label>Dimensions</label>
                     <input class="form-control mt-1" type="number" min="0" max="200" name="width" placeholder="width">

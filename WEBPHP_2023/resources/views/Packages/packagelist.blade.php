@@ -10,8 +10,8 @@
             </div>
             <div class="card-body">
                 @if (Auth::user()->role == 'webshop')
-                <a href="{{route('createPackage')}}" class="btn btn-success">Create Package +</a>
-                <a href="{{route('importCSV')}}" class="btn btn-success">Bulk Import</a>
+                <a href="{{route('getCreatePackageView')}}" class="btn btn-success">Create Package +</a>
+                <a href="{{route('getBulkImportView')}}" class="btn btn-success">Bulk Import</a>
                 @endif
             </div>
             <div class="p-3 m-3 list-box">

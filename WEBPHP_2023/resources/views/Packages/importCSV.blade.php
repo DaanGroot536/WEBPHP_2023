@@ -9,7 +9,7 @@
                     Dashboard</a> -> <a class="link" href="{{route('getPackages')}}">PackageList</a> -> Create Package
             </div>
             <div class="w-75 mx-auto my-5">
-                <form action="{{ route('importCSV') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('bulkImportCSV') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <input type="file" name="csv_file" id="csv_file">
                     <br>

@@ -41,8 +41,9 @@ Route::controller(UserController::class)->group(function() {
 
 Route::controller(PackageController::class)->group(function() {
     Route::get('/packageList', 'getPackages')->name('getPackages');
-    Route::get('/packageListCreate', 'createPackage')->name('createPackage');
-    Route::get('/import', 'importCSV')->name('importCSV');
+    Route::get('/packageListCreate', 'getCreatePackageView')->name('getCreatePackageView');
+    Route::get('/import', 'getBulkImportView')->name('getBulkImportView');
+    Route::post('/bulk-import-csv', 'bulkImportCSV')->name('bulkImportCSV');
     Route::get('/download-csv-template', 'downloadCSVTemplate')->name('downloadCSVTemplate');
-    Route::post('/packageListSave', 'savePackage')->name('savePackage');
+    Route::post('/packageListSave', 'createPackage')->name('createPackage');
 });
