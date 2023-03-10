@@ -30,10 +30,19 @@ class PackageController extends Controller
 //        ]);
         Package::create([
             'status' => 'submitted',
-            'width' => $request->width,
-            'length' => $request->length,
-            'height' => $request->height,
-            'weight' => $request->weight
+            'dimensions' => $request->width.'x'.$request->length.'x'.$request->height,
+            'weight' => $request->weight,
+            'customerStreet' => $request->customerStreet,
+            'customerHousenumber' => $request->customerHousenumber,
+            'customerZipcode' => $request->customerZipcode,
+            'customerCity' => $request->customerCity,
+            'webshopStreet' => auth()->user()->street,
+            'webshopHousenumber' => auth()->user()->housenumber,
+            'webshopZipcode' => auth()->user()->zipcode,
+            'webshopCity' => auth()->user()->city,
+            'webshopName' => auth()->user()->name,
+
+
         ]);
 
         $packages = DB::table('packages')->get();
