@@ -1,0 +1,58 @@
+Modellen/Database objecten:
+User
+- ID
+- type/rol
+- apiToken?
+
+Label
+- bezorgbedrijf nullable
+- pakketID nullable
+
+Pakket
+- ID
+- labelID nullable
+- pickupAanvraagID nullable
+- track_and_tracecode nullable
+- status
+- gewicht
+- lengte
+- breedte
+- hoogte
+
+Pickup Aanvraag
+- Datum
+- PakketID
+
+Review
+- UserID
+- PakketID
+- Review content
+- Score 1-5
+
+Status
+- Aangemeld, Uitgeprint, Afgeleverd, Sorteercentrum, onderweg, afgeleverd
+
+
+Usertypes:
+- SuperAdmin
+- Webshop
+- Bezorgbedrijf
+- Trackr medewerker
+- Pakketinpakker
+- Pakketontvanger
+
+
+Pagina's:
+- Users CRUD - SuperAdmin v
+- Aanmaken verzendingen/pakketten - Webshop
+- Aanmaken labels/pakketlijst - Trackr medewerker/Pakketinpakker
+- Pickup overzicht - Trackr medewerker
+- Status pakket updaten - Bezorgbedrijf
+- Track and trace - Pakketontvanger
+- Review pagina- Pakketontvanger
+
+
+BELANGRIJK:
+- Pakketten worden eerst bij het Trackr warenhuis afgeleverd (hier krijgen ze een label) waarna ze naar het sorteercentrum gaan. 
+Hierna gaan ze pas naar de ontvanger.
+- Pakketten zijn de eerste objecten die aangemaakt worden. Op basis hiervan kun je een label, t&tcode etc. aanmaken.

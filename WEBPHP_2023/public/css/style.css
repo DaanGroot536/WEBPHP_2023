@@ -1,12 +1,22 @@
 nav {
-    background-color: #90def4;
-}
-
-body {
-    background-color: #daf4fb;
+    background-color: lightgray;
 }
 
 .trackrLogo {
     font-size: 100px;
+}
+
+.link {
+    text-decoration: none;
+    color: black;
+}
+
+.list-item {
+    border-bottom: 1px solid lightgray;
+}
+
+.list-box {
+    border: 1px solid lightgray;
+    border-radius: 5px;
 }
 
