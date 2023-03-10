@@ -42,5 +42,6 @@ Route::controller(UserController::class)->group(function() {
 Route::controller(PackageController::class)->group(function() {
     Route::get('/packageList', 'getPackages')->name('getPackages');
     Route::get('/packageListCreate', 'createPackage')->name('createPackage');
+    Route::get('/import', 'importCSV')->name('importCSV');
     Route::post('/packageListSave', 'savePackage')->name('savePackage');
 });

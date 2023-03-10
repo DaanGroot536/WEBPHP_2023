@@ -21,6 +21,11 @@ class PackageController extends Controller
         return view('packages.create');
     }
 
+    public function importCSV()
+    {
+        return view('packages.importCSV');
+    }
+
     public function savePackage(Request $request)
     {
 //        $request->validate([
