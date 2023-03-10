@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginRegisterController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PackageController;
+use App\Http\Controllers\LabelController;
 
 
 /*
@@ -43,4 +44,9 @@ Route::controller(PackageController::class)->group(function() {
     Route::get('/packageList', 'getPackages')->name('getPackages');
     Route::get('/packageListCreate', 'createPackage')->name('createPackage');
     Route::post('/packageListSave', 'savePackage')->name('savePackage');
+});
+
+Route::controller(LabelController::class)->group(function() {
+    Route::get('/labelCreate/{id}', 'getCreateLabelView')->name('getCreateLabelView');
+    Route::post('/labelSave', 'saveLabel')->name('saveLabel');
 });
