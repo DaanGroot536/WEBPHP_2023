@@ -1,7 +1,6 @@
 @extends('auth.layouts')
 
 @section('content')
-
     <div class="row justify-content-center mt-5">
         <div class="">
             <div class="card">
@@ -10,7 +9,8 @@
                 </div>
                 <div class="card-body">
                     @if (Auth::user()->role == 'webshop')
-                        <a href="{{route('createPackage')}}" class="btn btn-success">Create Package +</a>
+                        <a href="{{route('getCreatePackageView')}}" class="btn btn-success">Create Package +</a>
+                        <a href="{{route('getBulkImportView')}}" class="btn btn-success">Bulk Import</a>
                     @endif
 
                 </div>
@@ -50,5 +50,6 @@
             </div>
         </div>
     </div>
+</div>
 
 @endsection
