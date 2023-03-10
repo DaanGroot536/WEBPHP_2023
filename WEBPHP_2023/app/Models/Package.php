@@ -15,9 +15,17 @@ class Package extends Model
         'pickupID',
         'trackandtracecode',
         'status',
-        'width',
-        'length',
-        'height',
-        'weight'
+        'dimensions',
+        'weight',
+        'webshopName',
+        'webshopStreet',
+        'webshopHousenumber',
+        'webshopZipcode',
+        'webshopCity',
+        'customerStreet',
+        'customerHousenumber',
+        'customerZipcode',
+        'customerCity',
+
     ];
 }

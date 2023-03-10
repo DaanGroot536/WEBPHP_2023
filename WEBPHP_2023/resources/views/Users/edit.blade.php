@@ -9,7 +9,7 @@
         <div class="w-50">
             <div class="card">
                 <div class="card-header"><a class="link" href="{{route('dashboard')}}">{{Auth::user()->role}}
-                        Dashboard</a> -> <a class="link" href="{{route('getUsers')}}">UserList</a> -> Create User
+                        Dashboard</a> -> <a class="link" href="{{route('getUsers')}}">UserList</a> -> Edit User
                 </div>
                 <div class="w-75 mx-auto my-5">
                     <form action="{{route('update')}}" method="post">
@@ -33,6 +33,18 @@
                                 @endif
                             @endforeach
                         </select>
+                        <hr>
+                        <label>Street</label>
+                        <input class="form-control" type="text" name="street" value="{{$user->street}}">
+                        <br>
+                        <label>House nr.</label>
+                        <input class="form-control" type="number" name="housenumber" value="{{$user->housenumber}}">
+                        <br>
+                        <label>Zipcode</label>
+                        <input class="form-control" type="text" name="zipcode" value="{{$user->zipcode}}">
+                        <br>
+                        <label>City</label>
+                        <input class="form-control" type="text" name="city" value="{{$user->city}}">
                         <br>
                         <input type="submit" value="Save" class="btn btn-success">
                     </form>

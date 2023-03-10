@@ -15,6 +15,10 @@ class AddTypeToUsers extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->string('role');
+            $table->string('street')->nullable();
+            $table->string('housenumber')->nullable();
+            $table->string('zipcode')->nullable();
+            $table->string('city')->nullable();
         });
     }
 

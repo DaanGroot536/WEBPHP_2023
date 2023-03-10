@@ -21,11 +21,8 @@
                             <div class="my-1 row mx-3 list-item">
                                 <p class="col-1 p-3">ID: {{$package->id}}</p>
                                 <p class="col-3 p-3">Status: {{$package->status}}</p>
-                                <p class="col-1 p-3">Width: {{$package->width}}</p>
-                                <p class="col-1 p-3">Length: {{$package->length}}</p>
-                                <p class="col-1 p-3">Height: {{$package->height}}</p>
-                                <p class="col-1 p-3">Weight: {{$package->weight}}</p>
-
+                                <p class="col-2 p-3">dimensions: {{$package->dimensions}}</p>
+                                <p class="col-2 p-3">Weight: {{$package->weight}}</p>
                             </div>
                         </a>
                     @endforeach
