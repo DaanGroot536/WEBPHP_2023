@@ -9,10 +9,10 @@
         <div class="w-50">
             <div class="card">
                 <div class="card-header"><a class="link" href="{{route('dashboard')}}">{{Auth::user()->role}}
-                        Dashboard</a> -> <a class="link" href="{{route('getUsers')}}">UserList</a> -> Edit User
+                        Dashboard</a> -> <a class="link" href="{{route('getUserView')}}">UserList</a> -> Edit User
                 </div>
                 <div class="w-75 mx-auto my-5">
-                    <form action="{{route('update')}}" method="post">
+                    <form action="{{route('updateUser')}}" method="post">
                         @csrf
                         <label>Name</label>
                         <input class="form-control" type="text" name="name" value="{{$user->name}}">

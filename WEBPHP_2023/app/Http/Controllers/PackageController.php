@@ -91,6 +91,11 @@ class PackageController extends Controller
 
         return view('packages.packagelist', ['packages' => $packages]);
     }
+    
+    public function createLabel() {
+
+
+    }
 
     public function createPackage(Request $request)
     {
