@@ -31,7 +31,29 @@ class LabelController extends Controller
             'labelID' => $label->id
         ]);
 
+        return redirect('/packageList');
+    }
+
+    public function saveLabelBulk(Request $request)
+    {
+//        $request->validate([
+//            'name' => 'required|string|max:250',
+//            'email' => 'required|email|max:250|unique:users',
+//            'password' => 'required|min:8|confirmed',
+//        ]);
         $packages = DB::table('packages')->get();
-        return view('packages.packagelist', ['packages' => $packages]);
+        foreach ($packages as $package) {
+            if ($request->{$package->id} != null) {
+                $label = Label::create([
+                    'packageID' => $package->id,
+                    'deliverer' => $request->delivererBulk
+                ]);
+                Package::where('id', $package->id)->update([
+                    'labelID' => $label->id
+                ]);
+            }
+        }
+
+        return redirect('/packageList');
     }
 }

@@ -13,10 +13,30 @@ nav {
 
 .list-item {
     border-bottom: 1px solid lightgray;
+    height: 100px;
 }
 
 .list-box {
     border: 1px solid lightgray;
     border-radius: 5px;
+}
+
+.packageCheck {
+    width: 25px;
+    height: 25px;
+}
+
+.checklist {
+    margin-top: 20px;
+}
+
+.checkitem {
+    padding: 25px;
+    width: 100px;
+    height: 100px;
+}
+
+.w-40 {
+    width: 40%;
 }
 
