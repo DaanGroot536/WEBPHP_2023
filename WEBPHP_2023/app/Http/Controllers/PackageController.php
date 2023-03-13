@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Package;
+use App\Models\Pickup;
 use App\Models\User;
 use DB;
 use Illuminate\Http\Request;
@@ -20,7 +21,9 @@ class PackageController extends Controller
         else {
             $packages = DB::table('packages')->get();
         }
-        return view('packages.packagelist', ['packages' => $packages]);
+
+        $pickups = Pickup::all();
+        return view('packages.packagelist', ['packages' => $packages, 'pickups' => $pickups]);
     }
 
     public function getCreatePackageView()

@@ -78,9 +78,23 @@
 
                                             </div>
                                         @else
-                                            <div class="col-2 p-2">
+                                            <div class="col-4 p-2">
                                                 <a class="btn btn-secondary">Show/Print Label</a>
-
+                                                @php
+                                                    $temp = false
+                                                @endphp
+                                                @foreach ($pickups as $pickup)
+                                                    @if($pickup->packageID == $package->id)
+                                                        @php
+                                                            $temp = true
+                                                        @endphp
+                                                        <p class="d-inline-block">Pickup planned!</p>
+                                                    @endif
+                                                @endforeach
+                                                @if(!$temp)
+                                                    <a href="{{route('getCreatePickupView', [$package->id])}}"
+                                                       class="btn btn-secondary">Plan Pickup</a>
+                                                @endif
                                             </div>
                                         @endif
                                     @endif

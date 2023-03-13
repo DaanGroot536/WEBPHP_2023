@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\LoginRegisterController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PackageController;
 use App\Http\Controllers\LabelController;
+use App\Http\Controllers\PickupController;
 
 
 /*
@@ -58,6 +59,11 @@ Route::group(['middleware' => ['auth']], function () {
         Route::post('/labelSave', 'saveLabel')->name('saveLabel');
         Route::post('/labelSaveBulk', 'saveLabelBulk')->name('saveLabelBulk');
 
+    });
+
+    Route::controller(PickupController::class)->group(function() {
+        Route::get('/pickupCreate/{id}', 'getCreatePickupView')->name('getCreatePickupView');
+        Route::post('/pickupSave', 'savePickup')->name('savePickup');
     });
 });
 
