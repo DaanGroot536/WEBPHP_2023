@@ -29,6 +29,9 @@ Route::controller(LoginRegisterController::class)->group(function() {
     Route::post('/authenticate', 'authenticate')->name('authenticate');
     Route::get('/dashboard', 'dashboard')->name('dashboard');
     Route::post('/logout', 'logout')->name('logout');
+    Route::post('/loginAdmin', 'loginAdmin')->name('loginAdmin');
+    Route::post('/loginEmployee', 'loginEmployee')->name('loginEmployee');
+    Route::post('/loginWebshop', 'loginWebshop')->name('loginWebshop');
 });
 
 Route::controller(UserController::class)->group(function() {
