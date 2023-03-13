@@ -1,7 +1,7 @@
 @extends('auth.layouts')
 
 @section('content')
-    <div class="row justify-content-center mt-5">
+<div class="row justify-content-center mt-5">
         <div class="">
 
             <div class="card">
@@ -89,6 +89,8 @@
                     </div>
                 </div>
 
+                </div>
+                @endforeach
             </div>
         </div>
     </div>
