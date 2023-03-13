@@ -34,27 +34,31 @@ Route::controller(LoginRegisterController::class)->group(function() {
     Route::post('/loginWebshop', 'loginWebshop')->name('loginWebshop');
 });
 
-Route::controller(UserController::class)->group(function() {
-    Route::get('/userlist', 'getUserView')->name('getUserView');
-    Route::get('/userlistCreate', 'getCreateUserView')->name('getCreateUserView');
-    Route::post('/userListSave', 'saveUser')->name('saveUser');
-    Route::get('/userListEdit/{id}', 'getEditUserView')->name('getEditUserView');
-    Route::post('/userListUpdate', 'updateUser')->name('updateUser');
+Route::group(['middleware' => ['auth']], function () {
+    Route::controller(UserController::class)->group(function() {
+        Route::get('/userlist', 'getUserView')->name('getUserView');
+        Route::get('/userlistCreate', 'getCreateUserView')->name('getCreateUserView');
+        Route::post('/userListSave', 'saveUser')->name('saveUser');
+        Route::get('/userListEdit/{id}', 'getEditUserView')->name('getEditUserView');
+        Route::post('/userListUpdate', 'updateUser')->name('updateUser');
 
+    });
+
+    Route::controller(PackageController::class)->group(function() {
+        Route::get('/packageList', 'getPackages')->name('getPackages');
+        Route::get('/packageListCreate', 'getCreatePackageView')->name('getCreatePackageView');
+        Route::get('/import', 'getBulkImportView')->name('getBulkImportView');
+        Route::post('/bulk-import-csv', 'bulkImportCSV')->name('bulkImportCSV');
+        Route::get('/download-csv-template', 'downloadCSVTemplate')->name('downloadCSVTemplate');
+        Route::post('/packageListSave', 'createPackage')->name('createPackage');
+    });
+
+    Route::controller(LabelController::class)->group(function() {
+        Route::get('/labelCreate/{id}', 'getCreateLabelView')->name('getCreateLabelView');
+        Route::post('/labelSave', 'saveLabel')->name('saveLabel');
+        Route::post('/labelSaveBulk', 'saveLabelBulk')->name('saveLabelBulk');
+
+    });
 });
 
-Route::controller(PackageController::class)->group(function() {
-    Route::get('/packageList', 'getPackages')->name('getPackages');
-    Route::get('/packageListCreate', 'getCreatePackageView')->name('getCreatePackageView');
-    Route::get('/import', 'getBulkImportView')->name('getBulkImportView');
-    Route::post('/bulk-import-csv', 'bulkImportCSV')->name('bulkImportCSV');
-    Route::get('/download-csv-template', 'downloadCSVTemplate')->name('downloadCSVTemplate');
-    Route::post('/packageListSave', 'createPackage')->name('createPackage');
-});
 
-Route::controller(LabelController::class)->group(function() {
-    Route::get('/labelCreate/{id}', 'getCreateLabelView')->name('getCreateLabelView');
-    Route::post('/labelSave', 'saveLabel')->name('saveLabel');
-    Route::post('/labelSaveBulk', 'saveLabelBulk')->name('saveLabelBulk');
-
-});
