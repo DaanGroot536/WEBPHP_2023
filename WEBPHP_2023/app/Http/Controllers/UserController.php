@@ -7,15 +7,24 @@ use Illuminate\Http\Request;
 use DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 class UserController extends Controller
 {
     public function getUserView() {
+        if (Auth::user()->role != 'superadmin') {
+            return redirect()->route('dashboard');
+        }
+
         $users = DB::table('users')->get();
         return view('users.userlist', ['users' => $users]);
     }
 
     public function getCreateUserView() {
+        if (Auth::user()->role != 'superadmin') {
+            return redirect()->route('dashboard');
+        }
+
         $roles = DB::table('roles')->get();
         return view('users.create', ['roles' => $roles]);
     }
@@ -34,14 +43,18 @@ class UserController extends Controller
             'street' => $request->street,
             'housenumber' => $request->housenumber,
             'zipcode' => $request->zipcode,
-            'city' => $request->city
+            'city' => $request->city,
+            'api_token' => Str::random(60),
         ]);
 
-        $users = DB::table('users')->get();
-        return view('users.userlist', ['users' => $users]);
+        return redirect()->route('getUsers');
     }
 
     public function getEditUserView($id) {
+        if (Auth::user()->role != 'superadmin') {
+            return redirect()->route('dashboard');
+        }
+
         $user = DB::table('users')->where('id', $id)->first();
         $roles = DB::table('roles')->get();
         return view('users.edit', ['user' => $user, 'roles' => $roles]);
@@ -66,7 +79,6 @@ class UserController extends Controller
         ]);
 
 
-        $users = DB::table('users')->get();
-        return view('users.userlist', ['users' => $users]);
+        return redirect()->route('getUsers');
     }
 }

@@ -6,6 +6,7 @@ use App\Models\Package;
 use App\Models\User;
 use DB;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Response;
 
@@ -13,13 +14,19 @@ class PackageController extends Controller
 {
     public function getPackages()
     {
-        $packages = DB::table('packages')->get();
+        if (Auth::user()->role == 'webshop') {
+            $packages = Package::where('webshopName', Auth::user()->name)->get();
+        }
+        else {
+            $packages = DB::table('packages')->get();
+        }
         return view('packages.packagelist', ['packages' => $packages]);
     }
 
     public function getCreatePackageView()
     {
-        return view('packages.create');
+        $user = Auth::user();
+        return view('packages.create', ['user' => $user]);
     }
 
     public function getBulkImportView()
@@ -50,7 +57,7 @@ class PackageController extends Controller
                 $data[5],
             );
         }
-    
+
         // Close the CSV file
         fclose($handle);
 
@@ -71,7 +78,6 @@ class PackageController extends Controller
         //            'email' => 'required|email|max:250|unique:users',
         //            'password' => 'required|min:8|confirmed',
         //        ]);
-
         Package::create([
             'status' => 'submitted',
             'dimensions' => $dimensions,
@@ -87,14 +93,7 @@ class PackageController extends Controller
             'webshopName' => auth()->user()->name,
         ]);
 
-        $packages = DB::table('packages')->get();
-
-        return view('packages.packagelist', ['packages' => $packages]);
-    }
-    
-    public function createLabel() {
-
-
+        return redirect()->route('getPackages');
     }
 
     public function createPackage(Request $request)
@@ -109,6 +108,6 @@ class PackageController extends Controller
             $request->weight,
         );
 
-        return redirect('/packageList');
+        return redirect()->route('getPackages');
     }
 }
