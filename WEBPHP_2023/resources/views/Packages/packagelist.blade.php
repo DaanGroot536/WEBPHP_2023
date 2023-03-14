@@ -79,7 +79,6 @@
                                             </div>
                                         @else
                                             <div class="col-4 p-2">
-                                                <a class="btn btn-secondary">Show/Print Label</a>
                                                 @php
                                                     $temp = false
                                                 @endphp
@@ -92,8 +91,7 @@
                                                     @endif
                                                 @endforeach
                                                 @if(!$temp)
-                                                    <a href="{{route('getCreatePickupView', [$package->id])}}"
-                                                       class="btn btn-secondary">Plan Pickup</a>
+                                                    <p class="mt-2">Label Created!</p>
                                                 @endif
                                             </div>
                                         @endif

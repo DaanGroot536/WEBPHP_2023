@@ -67,7 +67,7 @@ class UserController extends Controller
 //            'password' => 'required|min:8|confirmed',
 //        ]);
 
-        $user = User::where('id', $request->id)->update([
+        User::where('id', $request->id)->update([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),

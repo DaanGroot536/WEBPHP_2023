@@ -64,6 +64,9 @@ Route::group(['middleware' => ['auth']], function () {
     });
 
     Route::controller(PickupController::class)->group(function() {
+        Route::get('/pickuplist', 'getPickupView')->name('getPickupView');
+        Route::post('/pickupSaveBulk', 'savePickupBulk')->name('savePickupBulk');
+        Route::post('/pickupCreateBulk', 'getCreatePickupBulk')->name('getCreatePickupBulk');
         Route::get('/pickupCreate/{id}', 'getCreatePickupView')->name('getCreatePickupView');
         Route::post('/pickupSave', 'savePickup')->name('savePickup');
     });

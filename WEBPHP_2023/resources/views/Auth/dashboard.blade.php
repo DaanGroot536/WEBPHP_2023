@@ -35,7 +35,12 @@
                             <p class="col">Labels</p>
                             <a href="{{route('getLabels')}}" class="btn btn-secondary col-1"> ></a>
                         </div>
+                        <div class="row mx-3 mt-1">
+                            <p class="col">Plan Pickups</p>
+                            <a href="{{route('getPickupView')}}" class="btn btn-secondary col-1"> ></a>
+                        </div>
                     @endif
+
                     @if (Auth::user()->role == 'webshop')
                         <div class="row mx-3 mt-1">
                             <p class="col">Packages</p>
