@@ -30,7 +30,7 @@
                         </div>
                         <div class="row mx-3 mt-1">
                             <p class="col">Labels</p>
-                            <button class="btn btn-secondary col-1"> ></button>
+                            <a href="{{route('getLabels')}}" class="btn btn-secondary col-1"> ></a>
                         </div>
                     @endif
                     @if (Auth::user()->role == 'webshop')

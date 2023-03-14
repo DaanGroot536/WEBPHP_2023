@@ -9,9 +9,11 @@ use Illuminate\Http\Request;
 
 class LabelController extends Controller
 {
-    public function getCreateLabelView($id)
+    public function getLabels()
     {
-//        return view('labels.create', ['package' => $package]);
+        $packages = Package::all();
+        $labels = Label::all();
+        return view('labels.labellist', ['packages' => $packages, 'labels' => $labels]);
     }
 
     public function saveLabel(Request $request)
