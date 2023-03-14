@@ -47,7 +47,7 @@ class UserController extends Controller
             'api_token' => Str::random(60),
         ]);
 
-        return redirect()->route('getUsers');
+        return redirect()->route('getUserView');
     }
 
     public function getEditUserView($id) {

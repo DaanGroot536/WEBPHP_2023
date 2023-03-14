@@ -23,11 +23,14 @@
                             <a href="{{ route('getUserView') }}" class="btn btn-secondary col-1"> ></a>
                         </div>
                     @endif
-                    @if(Auth::user()->role == 'superadmin' || Auth::user()->role == 'employee')
+                    @if(Auth::user()->role == 'superadmin' || Auth::user()->role == 'employee' || Auth::user()->role == 'customer')
                         <div class="row mx-3 mt-1">
                             <p class="col">Packages</p>
                             <a href="{{route('getPackages')}}" class="btn btn-secondary col-1"> ></a>
                         </div>
+                    @endif
+                    @if(Auth::user()->role == 'superadmin' || Auth::user()->role == 'employee')
+
                         <div class="row mx-3 mt-1">
                             <p class="col">Labels</p>
                             <a href="{{route('getLabels')}}" class="btn btn-secondary col-1"> ></a>

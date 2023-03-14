@@ -40,6 +40,17 @@ class DatabaseSeeder extends Seeder
             'api_token' => Str::random(60),
         ]);
         User::create([
+            'name' => 'customer',
+            'email' => 'cust@cust.com',
+            'password' => bcrypt("password"),
+            'role' => 'customer',
+            'street' => 'yes',
+            'housenumber' => 1,
+            'zipcode' => '5555hl',
+            'city' => 'monketown',
+            'api_token' => Str::random(60),
+        ]);
+        User::create([
             'name' => 'employee',
             'email' => 'emp@emp.com',
             'password' => bcrypt("password"),

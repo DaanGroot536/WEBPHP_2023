@@ -56,6 +56,12 @@
                             <input type="text" value="emp@emp.com" name="email" hidden>
                             <input type="text" value="password" name="password" hidden>
                         </form>
+                        <form action="{{route('loginCustomer')}}" method="post" class="col-2">
+                            @csrf
+                            <input type="submit" value="LoginCustomer" class="btn btn-secondary">
+                            <input type="text" value="cust@cust.com" name="email" hidden>
+                            <input type="text" value="password" name="password" hidden>
+                        </form>
                     </div>
 
                 </div>

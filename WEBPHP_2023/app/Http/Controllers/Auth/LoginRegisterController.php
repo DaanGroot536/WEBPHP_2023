@@ -136,4 +136,17 @@ class LoginRegisterController extends Controller
         }
     }
 
+    public function loginCustomer(Request $request) {
+        $credentials = $request->validate([
+            'email' => 'required|email',
+            'password' => 'required'
+        ]);
+
+        if(Auth::attempt($credentials)) {
+            $request->session()->regenerate();
+            return redirect()->route('dashboard')
+                ->withSuccess('You have successfully logged in!');
+        }
+    }
+
 }

@@ -33,6 +33,7 @@ Route::controller(LoginRegisterController::class)->group(function() {
     Route::post('/loginAdmin', 'loginAdmin')->name('loginAdmin');
     Route::post('/loginEmployee', 'loginEmployee')->name('loginEmployee');
     Route::post('/loginWebshop', 'loginWebshop')->name('loginWebshop');
+    Route::post('/loginCustomer', 'loginCustomer')->name('loginCustomer');
 });
 
 Route::group(['middleware' => ['auth']], function () {
