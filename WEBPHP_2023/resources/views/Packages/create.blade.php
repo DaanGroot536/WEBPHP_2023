@@ -32,7 +32,7 @@
                     <input class="form-control" type="text" name="customerCity" placeholder="customerCity">
                     <br>
                     <br>
-                    <input value="{{$user}}" hidden>
+                    <input type="text" name="api_token" value="{{Auth::user()->api_token}}" hidden>
                     <input type="submit" value="Save" class="btn btn-success">
                 </form>
             </div>

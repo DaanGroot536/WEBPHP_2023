@@ -37,36 +37,6 @@ class PackageController extends Controller
         return view('packages.importCSV');
     }
 
-    public function bulkImportCSV()
-    {
-        // Get the uploaded CSV file
-        $csvFile = request()->file('csv_file');
-
-        // Open the CSV file for reading
-        $handle = fopen($csvFile->getRealPath(), "r");
-
-        // Read and discard the first line (header)
-        fgetcsv($handle, 1000, ",");
-
-        while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
-
-            // Create a new package object
-            $this->savePackage(
-                $data[0],
-                $data[1],
-                $data[2],
-                $data[3],
-                $data[4],
-                $data[5],
-            );
-        }
-
-        // Close the CSV file
-        fclose($handle);
-
-        return redirect()->route('getPackages');
-    }
-
     public function downloadCSVTemplate()
     {
         $path = storage_path('csv\import_template.csv');
@@ -74,43 +44,5 @@ class PackageController extends Controller
         return Response::download($path);
     }
 
-    public function savePackage($customerCity, $customerStreet, $customerZipcode, $customerHousenumber, $dimensions, $weight)
-    {
-        //        $request->validate([
-        //            'name' => 'required|string|max:250',
-        //            'email' => 'required|email|max:250|unique:users',
-        //            'password' => 'required|min:8|confirmed',
-        //        ]);
-        Package::create([
-            'status' => 'submitted',
-            'dimensions' => $dimensions,
-            'weight' => $weight,
-            'customerStreet' => $customerStreet,
-            'customerHousenumber' => $customerHousenumber,
-            'customerZipcode' => $customerZipcode,
-            'customerCity' => $customerCity,
-            'webshopStreet' => auth()->user()->street,
-            'webshopHousenumber' => auth()->user()->housenumber,
-            'webshopZipcode' => auth()->user()->zipcode,
-            'webshopCity' => auth()->user()->city,
-            'webshopName' => auth()->user()->name,
-        ]);
 
-        return redirect()->route('getPackages');
-    }
-
-    public function createPackage(Request $request)
-    {
-        $dimensions = $request-> length . 'x' . $request->width . 'x' . $request->height;
-        $this->savePackage(
-            $request->customerCity,
-            $request->customerStreet,
-            $request->customerHousenumber,
-            $request->customerZipcode,
-            $dimensions,
-            $request->weight,
-        );
-
-        return redirect()->route('getPackages');
-    }
 }

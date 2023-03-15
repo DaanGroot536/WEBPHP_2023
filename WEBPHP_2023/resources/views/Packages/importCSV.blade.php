@@ -16,6 +16,7 @@
                     <br>
                     <button type="submit" class="btn btn-success">Import</button>
                     <a href="{{ route('downloadCSVTemplate') }}" class="btn btn-secondary float-right">Download CSV template</a>
+                    <input type="text" name="api_token" value="{{Auth::user()->api_token}}" hidden>
                 </form>
             </div>
         </div>
