@@ -2,10 +2,12 @@
 
 namespace Database\Seeders;
 
+use App\Models\Status;
 use App\Models\User;
 use App\Models\Role;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 class DatabaseSeeder extends Seeder
 {
@@ -24,7 +26,8 @@ class DatabaseSeeder extends Seeder
             'street' => 'yes',
             'housenumber' => 1,
             'zipcode' => '5555hl',
-            'city' => 'monketown'
+            'city' => 'monketown',
+            'api_token' => Str::random(60),
         ]);
         User::create([
             'name' => 'webshop',
@@ -34,13 +37,38 @@ class DatabaseSeeder extends Seeder
             'street' => 'yes',
             'housenumber' => 1,
             'zipcode' => '5555hl',
-            'city' => 'monketown'
+            'city' => 'monketown',
+            'api_token' => Str::random(60),
+        ]);
+        User::create([
+            'name' => 'customer',
+            'email' => 'cust@cust.com',
+            'password' => bcrypt("password"),
+            'role' => 'customer',
+            'street' => 'yes',
+            'housenumber' => 1,
+            'zipcode' => '5555hl',
+            'city' => 'monketown',
+            'api_token' => Str::random(60),
+        ]);
+        User::create([
+            'name' => 'deliverer',
+            'email' => 'del@del.com',
+            'password' => bcrypt("password"),
+            'role' => 'deliverer',
+            'street' => 'yes',
+            'housenumber' => 1,
+            'zipcode' => '5555hl',
+            'city' => 'monketown',
+            'api_token' => Str::random(60),
+            'company' => 'DHL',
         ]);
         User::create([
             'name' => 'employee',
             'email' => 'emp@emp.com',
             'password' => bcrypt("password"),
-            'role' => 'employee'
+            'role' => 'employee',
+            'api_token' => Str::random(60),
         ]);
 
         Role::create([
@@ -60,6 +88,25 @@ class DatabaseSeeder extends Seeder
         ]);
         Role::create([
             'type' => 'packer'
+        ]);
+
+        Status::create([
+           'description' => 'Submitted'
+        ]);
+        Status::create([
+            'description' => 'Label printed'
+        ]);
+        Status::create([
+            'description' => 'Delivered to warehouse'
+        ]);
+        Status::create([
+            'description' => 'In sorting centre'
+        ]);
+        Status::create([
+            'description' => 'On its way'
+        ]);
+        Status::create([
+            'description' => 'Delivered to customer'
         ]);
     }
 }

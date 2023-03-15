@@ -56,3 +56,7 @@ BELANGRIJK:
 - Pakketten worden eerst bij het Trackr warenhuis afgeleverd (hier krijgen ze een label) waarna ze naar het sorteercentrum gaan. 
 Hierna gaan ze pas naar de ontvanger.
 - Pakketten zijn de eerste objecten die aangemaakt worden. Op basis hiervan kun je een label, t&tcode etc. aanmaken.
+- Pakketten aanmelden via API kan als volgt:
+Je toont de aanmaak pagina via de normale route (je stopt de user info in hidden inputs)
+Daarna route je de action naar de apicontroller
+De apicontroller route je direct na het updaten of invoeren van data weer terug naar de normale controller

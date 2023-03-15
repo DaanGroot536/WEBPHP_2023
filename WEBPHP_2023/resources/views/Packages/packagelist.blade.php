@@ -1,7 +1,7 @@
 @extends('auth.layouts')
 
 @section('content')
-<div class="row justify-content-center mt-5">
+    <div class="row justify-content-center mt-5">
         <div class="">
 
             <div class="card">
@@ -19,78 +19,89 @@
                         </div>
                     @endif
                     <p></p>
-                </div>
-                <div class="row mx-4">
-                    @if (Auth::user()->role == 'employee')
-                    <div class="col-2 p-0">
-                        <form action="{{route('saveLabelBulk')}}" method="post" class="mt-2">
-                            @csrf
-                            <select class="form-control d-inline-block w-40" name="delivererBulk">
-                                <option value="DHL">DHL</option>
-                                <option value="PostNL">PostNL</option>
-                                <option value="DPD">DPD</option>
-                                <option value="UPS">UPS</option>
-                            </select>
-                            <input type="submit" class="btn btn-secondary mb-1 w-50"
-                                   value="Create Bulk">
+                    <div class="row mx-4">
+                        @if (Auth::user()->role == 'employee')
+                            <div class="col-2 p-0">
+                                <form action="{{route('saveLabelBulk')}}" method="post" class="mt-2">
+                                    @csrf
+                                    <select class="form-control d-inline-block w-40" name="delivererBulk">
+                                        <option value="DHL">DHL</option>
+                                        <option value="PostNL">PostNL</option>
+                                        <option value="DPD">DPD</option>
+                                        <option value="UPS">UPS</option>
+                                    </select>
+                                    <input type="submit" class="btn btn-secondary mb-1 w-50"
+                                           value="Create Bulk">
 
-                            <div class="checklist">
-                            @foreach($packages as $package)
-                                <div class="row">
-                                    <div class="col"></div>
-                                    <div class="checkitem col">
-                                        @if($package->labelID == null)
-                                            <input type="checkbox" class="packageCheck" name="{{$package->id}}"
-                                                   value="true">
-                                        @endif
+                                    <div class="checklist">
+                                        @foreach($packages as $package)
+                                            <div class="row">
+                                                <div class="col"></div>
+                                                <div class="checkitem col">
+                                                    @if($package->labelID == null)
+                                                        <input type="checkbox" class="packageCheck"
+                                                               name="{{$package->id}}"
+                                                               value="true">
+                                                    @endif
+                                                </div>
+                                            </div>
+                                        @endforeach
                                     </div>
+                                </form>
+                            </div>
+                        @endif
+                        <div class="p-3 list-box col-10 mb-3">
+                            <p class="ml-3">Package List:</p>
+                            <hr>
+                            @foreach($packages as $package)
+                                <div class="row mx-3 list-item">
+                                    <p class="col-1 p-3">ID: {{$package->id}}</p>
+                                    <p class="col-2 p-3">Status: {{$package->status}}</p>
+                                    <p class="col-2 p-3">dimensions: {{$package->dimensions}}</p>
+                                    <p class="col-2 p-3">Weight: {{$package->weight}}</p>
+                                    @if (Auth::user()->role == 'employee')
+                                        @if($package->labelID == null)
+                                            <div class="col-4 p-2">
+                                                <form action="{{route('saveLabel')}}" method="post">
+                                                    @csrf
+                                                    <select class="form-control d-inline-block w-25" name="deliverer">
+                                                        <option value="DHL">DHL</option>
+                                                        <option value="PostNL">PostNL</option>
+                                                        <option value="DPD">DPD</option>
+                                                        <option value="UPS">UPS</option>
+                                                    </select>
+                                                    <input type="number" value="{{$package->id}}" name="packageID"
+                                                           hidden>
+                                                    <input type="submit" class="btn btn-secondary mb-1"
+                                                           value="Create Label">
+                                                </form>
+
+                                            </div>
+                                        @else
+                                            <div class="col-4 p-2">
+                                                @php
+                                                    $temp = false
+                                                @endphp
+                                                @foreach ($pickups as $pickup)
+                                                    @if($pickup->packageID == $package->id)
+                                                        @php
+                                                            $temp = true
+                                                        @endphp
+                                                        <p class="d-inline-block">Pickup planned!</p>
+                                                    @endif
+                                                @endforeach
+                                                @if(!$temp)
+                                                    <p class="mt-2">Label Created!</p>
+                                                @endif
+                                            </div>
+                                        @endif
+                                    @endif
+
                                 </div>
                             @endforeach
-                            </div>
-                        </form>
-                    </div>
-                    @endif
-                    <div class="p-3 list-box col-10 mb-3">
-                        <p class="ml-3">Package List:</p>
-                        <hr>
-                        @foreach($packages as $package)
-                            <div class="row mx-3 list-item">
-                                <p class="col-1 p-3">ID: {{$package->id}}</p>
-                                <p class="col-2 p-3">Status: {{$package->status}}</p>
-                                <p class="col-2 p-3">dimensions: {{$package->dimensions}}</p>
-                                <p class="col-2 p-3">Weight: {{$package->weight}}</p>
-                                @if (Auth::user()->role == 'employee')
-                                    @if($package->labelID == null)
-                                        <div class="col-4 p-2">
-                                            <form action="{{route('saveLabel')}}" method="post">
-                                                @csrf
-                                                <select class="form-control d-inline-block w-25" name="deliverer">
-                                                    <option value="DHL">DHL</option>
-                                                    <option value="PostNL">PostNL</option>
-                                                    <option value="DPD">DPD</option>
-                                                    <option value="UPS">UPS</option>
-                                                </select>
-                                                <input type="number" value="{{$package->id}}" name="packageID" hidden>
-                                                <input type="submit" class="btn btn-secondary mb-1"
-                                                       value="Create Label">
-                                            </form>
-
-                                        </div>
-                                    @else
-                                        <div class="col-2 p-2">
-                                            <a class="btn btn-secondary">Show/Print Label</a>
-
-                                        </div>
-                                    @endif
-                                @endif
-
-                            </div>
-                        @endforeach
+                        </div>
                     </div>
                 </div>
-
-                </div>
-                @endforeach
             </div>
         </div>
     </div>

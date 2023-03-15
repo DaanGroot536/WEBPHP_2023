@@ -8,35 +8,40 @@
                 <div class="card-header">{{Auth::user()->role}} Dashboard</div>
                 <div class="card-body">
 
-                    @switch(Auth::user()->role)
-                        @case('customer')
-
-                        @break
-                        @case('deliverer')
-                        <p>Package list</p>
-                        @break
-                    @endswitch
-
                     @if (Auth::user()->role == 'superadmin')
                         <div class="row mx-3">
                             <p class="col">UserList</p>
                             <a href="{{ route('getUserView') }}" class="btn btn-secondary col-1"> ></a>
                         </div>
                     @endif
-                    @if(Auth::user()->role == 'superadmin' || Auth::user()->role == 'employee')
+                    @if(Auth::user()->role == 'superadmin' || Auth::user()->role == 'employee' || Auth::user()->role == 'customer')
                         <div class="row mx-3 mt-1">
                             <p class="col">Packages</p>
                             <a href="{{route('getPackages')}}" class="btn btn-secondary col-1"> ></a>
                         </div>
+                    @endif
+                    @if(Auth::user()->role == 'superadmin' || Auth::user()->role == 'employee')
+
                         <div class="row mx-3 mt-1">
                             <p class="col">Labels</p>
-                            <button class="btn btn-secondary col-1"> ></button>
+                            <a href="{{route('getLabels')}}" class="btn btn-secondary col-1"> ></a>
+                        </div>
+                        <div class="row mx-3 mt-1">
+                            <p class="col">Plan Pickups</p>
+                            <a href="{{route('getPickupView')}}" class="btn btn-secondary col-1"> ></a>
                         </div>
                     @endif
+
                     @if (Auth::user()->role == 'webshop')
                         <div class="row mx-3 mt-1">
                             <p class="col">Packages</p>
                             <a href="{{route('getPackages')}}" class="btn btn-secondary col-1"> ></a>
+                        </div>
+                    @endif
+                    @if (Auth::user()->role == 'deliverer')
+                        <div class="row mx-3 mt-1">
+                            <p class="col">Status list</p>
+                            <a href="{{route('getStatusView')}}" class="btn btn-secondary col-1"> ></a>
                         </div>
                     @endif
                 </div>
