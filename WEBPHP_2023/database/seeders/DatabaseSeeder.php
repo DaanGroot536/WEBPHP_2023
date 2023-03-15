@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Status;
 use App\Models\User;
 use App\Models\Role;
 use Illuminate\Database\Seeder;
@@ -75,6 +76,25 @@ class DatabaseSeeder extends Seeder
         ]);
         Role::create([
             'type' => 'packer'
+        ]);
+
+        Status::create([
+           'description' => 'Submitted'
+        ]);
+        Status::create([
+            'description' => 'label printed'
+        ]);
+        Status::create([
+            'description' => 'Delivered to warehouse'
+        ]);
+        Status::create([
+            'description' => 'In sorting centre'
+        ]);
+        Status::create([
+            'description' => 'On its way'
+        ]);
+        Status::create([
+            'description' => 'Delivered'
         ]);
     }
 }

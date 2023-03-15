@@ -88,4 +88,7 @@ class PackageApiController extends Controller
         return redirect()->route('getPackages');
     }
 
+    public function updateStatus(Request $request) {
+        
+    }
 }
