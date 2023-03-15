@@ -6,6 +6,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\PackageController;
 use App\Http\Controllers\LabelController;
 use App\Http\Controllers\PickupController;
+use App\Http\Controllers\StatusController;
 
 
 /*
@@ -30,10 +31,6 @@ Route::controller(LoginRegisterController::class)->group(function() {
     Route::post('/authenticate', 'authenticate')->name('authenticate');
     Route::get('/dashboard', 'dashboard')->name('dashboard');
     Route::post('/logout', 'logout')->name('logout');
-    Route::post('/loginAdmin', 'loginAdmin')->name('loginAdmin');
-    Route::post('/loginEmployee', 'loginEmployee')->name('loginEmployee');
-    Route::post('/loginWebshop', 'loginWebshop')->name('loginWebshop');
-    Route::post('/loginCustomer', 'loginCustomer')->name('loginCustomer');
 });
 
 Route::group(['middleware' => ['auth']], function () {
@@ -69,6 +66,10 @@ Route::group(['middleware' => ['auth']], function () {
         Route::post('/pickupCreateBulk', 'getCreatePickupBulk')->name('getCreatePickupBulk');
         Route::get('/pickupCreate/{id}', 'getCreatePickupView')->name('getCreatePickupView');
         Route::post('/pickupSave', 'savePickup')->name('savePickup');
+    });
+
+    Route::controller(StatusController::class)->group(function() {
+        Route::get('/statuslist', 'getStatusView')->name('getStatusView');
     });
 });
 

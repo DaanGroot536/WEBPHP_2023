@@ -52,6 +52,18 @@ class DatabaseSeeder extends Seeder
             'api_token' => Str::random(60),
         ]);
         User::create([
+            'name' => 'deliverer',
+            'email' => 'del@del.com',
+            'password' => bcrypt("password"),
+            'role' => 'deliverer',
+            'street' => 'yes',
+            'housenumber' => 1,
+            'zipcode' => '5555hl',
+            'city' => 'monketown',
+            'api_token' => Str::random(60),
+            'company' => 'DHL',
+        ]);
+        User::create([
             'name' => 'employee',
             'email' => 'emp@emp.com',
             'password' => bcrypt("password"),
@@ -82,7 +94,7 @@ class DatabaseSeeder extends Seeder
            'description' => 'Submitted'
         ]);
         Status::create([
-            'description' => 'label printed'
+            'description' => 'Label printed'
         ]);
         Status::create([
             'description' => 'Delivered to warehouse'
@@ -94,7 +106,7 @@ class DatabaseSeeder extends Seeder
             'description' => 'On its way'
         ]);
         Status::create([
-            'description' => 'Delivered'
+            'description' => 'Delivered to customer'
         ]);
     }
 }

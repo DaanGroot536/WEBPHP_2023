@@ -89,6 +89,6 @@ class PackageApiController extends Controller
     }
 
     public function updateStatus(Request $request) {
-        
+
     }
 }
