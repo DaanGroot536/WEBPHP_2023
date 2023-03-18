@@ -53,7 +53,7 @@ Route::group(['middleware' => ['auth']], function () {
     });
 
     Route::controller(LabelController::class)->group(function() {
-        Route::get('labellist', 'getLabels')->name('getLabels');
+        Route::get('/getLabelView', 'getLabels')->name('getLabels');
         Route::get('/labelCreate/{id}', 'getCreateLabelView')->name('getCreateLabelView');
         Route::post('/labelSave', 'saveLabel')->name('saveLabel');
         Route::post('/labelSaveBulk', 'saveLabelBulk')->name('saveLabelBulk');
