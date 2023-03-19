@@ -15,15 +15,16 @@ class PackageController extends Controller
 {
     public function getPackages()
     {
+        $sortField = request()->get('sort_field', 'id');
         if (Auth::user()->role == 'webshop') {
-            $packages = Package::where('webshopName', Auth::user()->name)->get();
+            $packages = Package::where('webshopName', Auth::user()->name)->orderBy($sortField)->get();
         }
         else {
-            $packages = DB::table('packages')->get();
+            $packages = DB::orderBy($sortField)->get();
         }
 
         $pickups = Pickup::all();
-        return view('packages.packagelist', ['packages' => $packages, 'pickups' => $pickups]);
+        return view('packages.packagelist', ['packages' => $packages, 'pickups' => $pickups, 'sortField' => $sortField]);
     }
 
     public function getCreatePackageView()

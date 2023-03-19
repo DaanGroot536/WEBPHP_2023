@@ -52,6 +52,19 @@
                         @endif
                         <div class="p-3 list-box col-12 mb-3">
                             <p class="ml-3">Package List:</p>
+                            <form action="{{ route('getPackages') }}" method="GET">
+                                <div class="form-group">
+                                    <label for="sort_field">Sort by:</label>
+                                    <select name="sort_field" id="sort_field" class="form-control" onchange="this.form.submit()">
+                                        <option value="id" {{ $sortField == 'id' ? 'selected' : '' }}>ID</option>
+                                        <option value="status" {{ $sortField == 'status' ? 'selected' : '' }}>Status</option>
+                                        <option value="weight" {{ $sortField == 'weight' ? 'selected' : '' }}>Weight</option>
+                                        <option value="customerCity" {{ $sortField == 'customerCity' ? 'selected' : '' }}>City</option>
+                                        <option value="customerStreet" {{ $sortField == 'customerStreet' ? 'selected' : '' }}>Street</option>
+                                        <option value="customerZipcode" {{ $sortField == 'customerZipcode' ? 'selected' : '' }}>Zipcode</option>
+                                    </select>
+                                </div>
+                            </form>
                             <hr>
                             @foreach($packages as $package)
                                 <div class="row mx-3 list-item">
