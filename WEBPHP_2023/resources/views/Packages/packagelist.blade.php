@@ -55,11 +55,11 @@
                             <hr>
                             @foreach($packages as $package)
                                 <div class="row mx-3 list-item">
-                                    <p class="col-1 p-3">ID: {{$package->id}}</p>
-                                    <p class="col-2 p-3">Status: {{$package->status}}</p>
-                                    <p class="col-2 p-3">dimensions: {{$package->dimensions}}</p>
-                                    <p class="col-2 p-3">Weight: {{$package->weight}}</p>
-                                    <p class="col-5 p-3">Delivery Address: {{$package->full_customer_address}}</p>
+                                    <p class="col-1 p-2"><strong>ID:</strong> {{$package->id}}</p>
+                                    <p class="col-2 p-2"><strong>Status:</strong> {{$package->status}}</p>
+                                    <p class="col-2 p-2"><strong>dimensions:</strong> {{$package->dimensions}}</p>
+                                    <p class="col-2 p-2"><strong>Weight:</strong> {{$package->weight}}</p>
+                                    <p class="col-5 p-2"><strong>Delivery Address:</strong> {{$package->full_customer_address}}</p>
                                     @if (Auth::user()->role == 'employee')
                                         @if($package->labelID == null)
                                             <div class="col-4 p-2">
