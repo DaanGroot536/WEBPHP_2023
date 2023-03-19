@@ -23,7 +23,7 @@ class UserSeeder extends Seeder
             'api_token' => Str::random(60),
         ]);
         User::create([
-            'name' => 'webshop',
+            'name' => 'Sport World',
             'email' => 'sport@world.com',
             'password' => bcrypt("password"),
             'role' => 'webshop',
@@ -34,7 +34,7 @@ class UserSeeder extends Seeder
             'api_token' => Str::random(60),
         ]);
         User::create([
-            'name' => 'webshop',
+            'name' => 'Books Galore',
             'email' => 'books@galore.com',
             'password' => bcrypt("password"),
             'role' => 'webshop',
@@ -44,8 +44,8 @@ class UserSeeder extends Seeder
             'city' => 'Groningen',
             'api_token' => Str::random(60),
         ]);
-        User::create([//3
-            'name' => 'webshop',
+        User::create([
+            'name' => 'Electroshop',
             'email' => 'electro@shop.com',
             'password' => bcrypt("password"),
             'role' => 'webshop',
