@@ -50,7 +50,7 @@
                                 </form>
                             </div>
                         @endif
-                        <div class="p-3 list-box col-10 mb-3">
+                        <div class="p-3 list-box col-12 mb-3">
                             <p class="ml-3">Package List:</p>
                             <hr>
                             @foreach($packages as $package)
@@ -59,6 +59,7 @@
                                     <p class="col-2 p-3">Status: {{$package->status}}</p>
                                     <p class="col-2 p-3">dimensions: {{$package->dimensions}}</p>
                                     <p class="col-2 p-3">Weight: {{$package->weight}}</p>
+                                    <p class="col-5 p-3">Delivery Address: {{$package->full_customer_address}}</p>
                                     @if (Auth::user()->role == 'employee')
                                         @if($package->labelID == null)
                                             <div class="col-4 p-2">
