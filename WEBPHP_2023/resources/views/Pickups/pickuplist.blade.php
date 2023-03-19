@@ -26,18 +26,18 @@
 
                                     <div class="checklist">
                                         @foreach($packages as $package)
-                                            <div class="row">
-                                                <div class="col"></div>
-                                                <div class="checkitem col">
-                                                    @if($package->labelID != null)
-                                                        @if($package->pickupID == null)
+                                            @if($package->pickupID == null)
+                                                <div class="row id{{$package->id}}">
+                                                    <div class="col"></div>
+                                                    <div class="checkitem col">
+                                                        @if($package->labelID != null)
                                                             <input type="checkbox" class="packageCheck"
                                                                    name="{{$package->id}}"
                                                                    value="true">
                                                         @endif
-                                                    @endif
+                                                    </div>
                                                 </div>
-                                            </div>
+                                            @endif
                                         @endforeach
                                     </div>
                                 </form>
