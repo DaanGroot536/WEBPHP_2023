@@ -24,13 +24,35 @@ class UserSeeder extends Seeder
         ]);
         User::create([
             'name' => 'webshop',
-            'email' => 'web@web.com',
+            'email' => 'sport@world.com',
             'password' => bcrypt("password"),
             'role' => 'webshop',
-            'street' => 'yes',
-            'housenumber' => 1,
-            'zipcode' => '5555hl',
-            'city' => 'monketown',
+            'street' => 'Marie Heinekenplein',
+            'housenumber' => 5,
+            'zipcode' => '4551VK',
+            'city' => 'Rotterdam',
+            'api_token' => Str::random(60),
+        ]);
+        User::create([
+            'name' => 'webshop',
+            'email' => 'books@galore.com',
+            'password' => bcrypt("password"),
+            'role' => 'webshop',
+            'street' => 'Lange Poten',
+            'housenumber' => 11,
+            'zipcode' => '7994CS',
+            'city' => 'Groningen',
+            'api_token' => Str::random(60),
+        ]);
+        User::create([//3
+            'name' => 'webshop',
+            'email' => 'electro@shop.com',
+            'password' => bcrypt("password"),
+            'role' => 'webshop',
+            'street' => 'Keizersgracht',
+            'housenumber' => 10,
+            'zipcode' => '3842LM',
+            'city' => 'Amsterdam',
             'api_token' => Str::random(60),
         ]);
         User::create([

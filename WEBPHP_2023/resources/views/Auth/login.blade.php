@@ -47,7 +47,7 @@
                         <form action="{{route('authenticate')}}" method="post" class="col-2">
                             @csrf
                             <input type="submit" value="LoginWebshop" class="btn btn-secondary">
-                            <input type="text" value="web@web.com" name="email" hidden>
+                            <input type="text" value="sport@world.com" name="email" hidden>
                             <input type="text" value="password" name="password" hidden>
                         </form>
                         <form action="{{route('authenticate')}}" method="post" class="col-2">
