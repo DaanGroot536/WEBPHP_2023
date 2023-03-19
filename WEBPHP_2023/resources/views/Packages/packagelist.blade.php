@@ -53,8 +53,7 @@
                             <form class="col-2" action="{{ route('getPackages') }}" method="GET">
                                 <div class="form-group">
                                     <label for="sort_field">Sort by:</label>
-                                    <select name="sort_field" id="sort_field" class="form-control"
-                                        onchange="this.form.submit()">
+                                    <select name="sort_field" id="sort_field" class="form-control">
                                         <option value="id" {{ $sortField == 'id' ? 'selected' : '' }}>ID</option>
                                         <option value="status" {{ $sortField == 'status' ? 'selected' : '' }}>Status</option>
                                         <option value="weight" {{ $sortField == 'weight' ? 'selected' : '' }}>Weight</option>
@@ -63,6 +62,27 @@
                                         <option value="customerZipcode"{{ $sortField == 'customerZipcode' ? 'selected' : '' }}>Zipcode</option>
                                     </select>
                                 </div>
+                                <button type="submit">Sort</button>
+                            </form>
+                            <form method="GET" action="{{ route('getPackages') }}">
+                                <label for="status">Status:</label>
+                                <select name="status" id="status">
+                                    <option value="">-- Select status --</option>
+                                    @foreach($statuses as $id => $description)
+                                        <option value="{{ $description }}">{{ strtolower($description) }}</option>
+                                    @endforeach
+                                </select>                                
+                            
+                                <label for="city">City:</label>
+                                <select name="city" id="city">
+                                    <option value="">-- Select city --</option>
+                                    @foreach($cities as $city)
+                                        <option value="{{ $city }}">{{ $city }}</option>
+                                    @endforeach
+                                </select>
+                                
+                            
+                                <button type="submit">Filter</button>
                             </form>
                             <p class="ml-3">Package List:</p>
                             <hr>
