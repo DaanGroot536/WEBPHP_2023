@@ -47,9 +47,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/packageList', 'getPackages')->name('getPackages');
         Route::get('/packageListCreate', 'getCreatePackageView')->name('getCreatePackageView');
         Route::get('/import', 'getBulkImportView')->name('getBulkImportView');
-//        Route::post('/bulk-import-csv', 'bulkImportCSV')->name('bulkImportCSV');
         Route::get('/download-csv-template', 'downloadCSVTemplate')->name('downloadCSVTemplate');
-//        Route::post('/packageListSave', 'createPackage')->name('createPackage');
     });
 
     Route::controller(LabelController::class)->group(function() {
