@@ -14,26 +14,31 @@ class PackageController extends Controller
 {
     public function getPackages(Request $request)
     {
-        // get all statuses
-        $statuses = Status::pluck('description', 'id');
-
         // get sorting order
         $sortField = request()->get('sort_field', 'id');
+
+        // get packages
         if (Auth::user()->role == 'webshop') {
-            $packages = Package::where('webshopName', Auth::user()->name)->orderBy($sortField)->get();
+            $packages = Package::where('webshopName', Auth::user()->name)->orderBy($sortField);
         } else {
-            $packages = Package::orderBy($sortField)->get();
+            $packages = Package::orderBy($sortField);
         }
 
-        $cities = $packages->unique('customerCity')->pluck('customerCity');
+        // get all status filter options
+        $statuses = Status::pluck('description', 'id');
+
+        // get all city filter options
+        $cities = $packages->distinct('customerCity')->pluck('customerCity');
 
         // apply filters
-        if ($request->has('status') && $request->status !== '' && !empty($request->status)) {
+        if ($request->has('status') && $request->status !== '' && $request->status !== null) {
             $packages = $packages->where('status', strtolower($request->status));
         }
-        if ($request->has('city') && $request->city !== '' && !empty($request->city)) {
+        if ($request->has('city') && $request->city !== '' && $request->city !== null) {
             $packages = $packages->where('customerCity', $request->city);
-        }        
+        }
+
+        $packages = $packages->simplePaginate(10); // 10 items per page
 
         $pickups = Pickup::all();
         return view('packages.packagelist', [
