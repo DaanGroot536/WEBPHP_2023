@@ -81,4 +81,9 @@ class UserController extends Controller
 
         return redirect()->route('getUsers');
     }
+
+    public function getCustomerView() {
+        $users = User::where('role', 'customer')->get();
+        return view('customers.customerlist', ['users' => $users]);
+    }
 }

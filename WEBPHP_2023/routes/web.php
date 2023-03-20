@@ -40,7 +40,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::post('/userListSave', 'saveUser')->name('saveUser');
         Route::get('/userListEdit/{id}', 'getEditUserView')->name('getEditUserView');
         Route::post('/userListUpdate', 'updateUser')->name('updateUser');
-
+        Route::get('/customerList', 'getCustomerView')->name('getCustomerView');
     });
 
     Route::controller(PackageController::class)->group(function() {

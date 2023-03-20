@@ -30,6 +30,10 @@
                             <p class="col">Plan Pickups</p>
                             <a href="{{route('getPickupView')}}" class="btn btn-secondary col-1"> ></a>
                         </div>
+                        <div class="row mx-3 mt-1">
+                            <p class="col">Customer List</p>
+                            <a href="{{route('getCustomerView')}}" class="btn btn-secondary col-1"> ></a>
+                        </div>
                     @endif
 
                     @if (Auth::user()->role == 'webshop')

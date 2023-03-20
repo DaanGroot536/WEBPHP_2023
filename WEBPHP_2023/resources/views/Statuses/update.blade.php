@@ -17,7 +17,8 @@
                             <div class="row mx-3 list-item">
                                 <p class="col-1 p-3">ID: {{$package->id}}</p>
                                 <p class="col-2 p-3">Status: {{$package->status}}</p>
-                                <p class="col-2 p-3">dimensions: {{$package->dimensions}}</p>
+                                <p class="col-3 p-3">Destination: {{$package->customerStreet}} {{$package->customerHousenumber}} {{$package->customerCity}}</p>
+                                <p class="col-2 p-3">Dimensions: {{$package->dimensions}}</p>
                                 <p class="col-2 p-3">Weight: {{$package->weight}}</p>
                             </div>
                             @foreach($statuses as $status)
@@ -28,6 +29,7 @@
                                             <input type="text" value="{{$status->description}}" name="status" hidden>
                                             <input class="w-100 mt-3 btn btn-secondary" type="submit" value="{{$status->description}}">
                                             <input type="number" value="{{$package->id}}" name="packageID" hidden>
+                                            <input type="text" value="{{Auth::user()->api_token}}" name="api_token" hidden>
                                         </form>
                                     </div>
                                 @endif
