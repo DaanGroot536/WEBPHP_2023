@@ -68,6 +68,7 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::controller(StatusController::class)->group(function() {
         Route::get('/statuslist', 'getStatusView')->name('getStatusView');
+        Route::get('/updateStatus/{id}', 'getUpdateStatusView')->name('getUpdateStatusView');
     });
 });
 
