@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Package;
 use App\Models\User;
 use Illuminate\Http\Request;
 use DB;
@@ -83,7 +84,7 @@ class UserController extends Controller
     }
 
     public function getCustomerView() {
-        $users = User::where('role', 'customer')->get();
-        return view('customers.customerlist', ['users' => $users]);
+        $packages = Package::all()->groupBy('customerName');
+        return view('customers.customerlist', ['packages' => $packages]);
     }
 }

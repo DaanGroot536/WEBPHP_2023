@@ -23,6 +23,8 @@ class CreatePackages extends Migration
             $table->string('webshopHousenumber');
             $table->string('webshopZipcode');
             $table->string('webshopCity');
+            $table->string('customerEmail');
+            $table->string('customerName');
             $table->string('customerStreet');
             $table->string('customerHousenumber');
             $table->string('customerZipcode');
