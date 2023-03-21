@@ -64,6 +64,8 @@ Route::group(['middleware' => ['auth']], function () {
         Route::post('/pickupCreateBulk', 'getCreatePickupBulk')->name('getCreatePickupBulk');
         Route::get('/pickupCreate/{id}', 'getCreatePickupView')->name('getCreatePickupView');
         Route::post('/pickupSave', 'savePickup')->name('savePickup');
+        Route::get('/pickupCalendar', 'getCalendarView')->name('getCalendarView');
+        Route::post('/pickupCalendarNewWeek', 'changeCalendarWeek')->name('changeCalendarWeek');
     });
 
     Route::controller(StatusController::class)->group(function() {
