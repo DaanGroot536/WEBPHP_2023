@@ -155,7 +155,6 @@ class PickupController extends Controller
             $day = new Day();
             $day->date = date('Y-m-d', strtotime($currentDay."+" . $tempi . " days"));
             $day->dayofweek = date('l', strtotime($currentDay."+" . $tempi . " days"));
-//            dd($day, $tempi);
             $day->highlight = $highlight;
             $daysforcalendar[$i] = $day;
         }
