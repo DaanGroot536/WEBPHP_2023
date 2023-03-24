@@ -15,12 +15,15 @@ class PackageController extends Controller
     public function getPackages(Request $request)
     {
         // get sorting field
-        $sortField = $request->get('sort_field', session('sort_field', 'id'));
+        $originalSortField = $request->get('sort_field', session('sort_field', 'id'));
+        $sortField = $originalSortField;
         $sortOrder = 'asc'; // default sort order
 
-        // if sorting field is the same as before, reverse the order
-        if ($sortField == session('sort_field')) {
-            $sortOrder = session('sort_order', 'asc') == 'asc' ? 'desc' : 'asc';
+        // if sorting field is reversed, set sortOrder to desc
+        if (strpos($sortField, 'reversed') !== false) {
+            $sortOrder = 'desc';
+            // remove the 'reversed' suffix from the sortField name
+            $sortField = str_replace('reversed', '', $sortField);
         }
 
         // get all packages
@@ -63,7 +66,7 @@ class PackageController extends Controller
         return view('packages.packagelist', [
             'packages' => $packages,
             'pickups' => $pickups,
-            'sortField' => $sortField,
+            'sortField' => $originalSortField,
             'sortOrder' => $sortOrder,
             'statuses' => $statuses,
             'cities' => $cities
