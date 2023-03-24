@@ -26,22 +26,13 @@
                                     <div class="col-6">
                                         <select class="form-control" name="sort_field" id="sort_field">
                                             <option value="id" {{ $sortField == 'id' ? 'selected' : '' }}>ID</option>
-                                            <option value="status" {{ $sortField == 'status' ? 'selected' : '' }}>Status
-                                            </option>
-                                            <option value="weight" {{ $sortField == 'weight' ? 'selected' : '' }}>Weight
-                                            </option>
-                                            <option
-                                                value="customerCity" {{ $sortField == 'customerCity' ? 'selected' : '' }}>
-                                                City
-                                            </option>
-                                            <option
-                                                value="customerStreet"{{ $sortField == 'customerStreet' ? 'selected' : '' }}>
-                                                Street
-                                            </option>
-                                            <option
-                                                value="customerZipcode"{{ $sortField == 'customerZipcode' ? 'selected' : '' }}>
-                                                Zipcode
-                                            </option>
+                                            <option value="idreversed" {{ $sortField == 'idreversed' ? 'selected' : '' }}>ID - Reversed</option>
+                                            <option value="status" {{ $sortField == 'status' ? 'selected' : '' }}>Status</option>
+                                            <option value="statusreversed" {{ $sortField == 'statusreversed' ? 'selected' : '' }}>Status - Reversed</option>
+                                            <option value="weight" {{ $sortField == 'weight' ? 'selected' : '' }}>Weight</option>
+                                            <option value="weightreversed" {{ $sortField == 'weightreversed' ? 'selected' : '' }}>Weight - Reversed</option>
+                                            <option value="customerCity" {{ $sortField == 'customerCity' ? 'selected' : '' }}>City</option>
+                                            <option value="customerCityreversed" {{ $sortField == 'customerCityreversed' ? 'selected' : '' }}>City - Reversed</option>
                                         </select>
                                     </div>
                                     <div class="col-2">
