@@ -22,7 +22,7 @@
                                     @csrf
                                     <div class=" d-inline-block w-40"></div>
                                     <input type="submit" class="btn btn-secondary mb-1 w-50"
-                                           value="Create Bulk">
+                                           value="Plan">
 
                                     <div class="checklist">
                                         @foreach($packages as $package)
@@ -54,25 +54,7 @@
                                         <p class="col-2 p-3">dimensions: {{$package->dimensions}}</p>
                                         <p class="col-2 p-3">Weight: {{$package->weight}}</p>
                                         @if (Auth::user()->role == 'employee')
-                                            @if($package->labelID != null)
-                                                <div class="col-4 p-2">
-                                                    @php
-                                                        $temp = false
-                                                    @endphp
-                                                    @foreach ($pickups as $pickup)
-                                                        @if($pickup->packageID == $package->id)
-                                                            @php
-                                                                $temp = true
-                                                            @endphp
-                                                            <p class="d-inline-block">Pickup planned!</p>
-                                                        @endif
-                                                    @endforeach
-                                                    @if(!$temp)
-                                                        <a href="{{route('getCreatePickupView', [$package->id])}}"
-                                                           class="btn btn-secondary">Plan Pickup</a>
-                                                    @endif
-                                                </div>
-                                            @else
+                                            @if($package->labelID == null)
                                                 <p class="col-2 mt-3">Create a label first!</p>
                                             @endif
                                         @endif

@@ -29,36 +29,20 @@
                         @endforeach
                     @endif
                     <br>
-                    @if($packages != null)
-                        <form action="{{route('savePickupBulk')}}" method="post" class="w-50">
-                            @csrf
-                            <input type="number" name="packageID" value="{{$package->id}}" hidden>
-                            <label>Date</label>
-                            <input class="form-control" type="date" name="date" min="{{$mindate}}">
-                            <label>Time</label>
-                            <input class="form-control mt-1" type="time" name="time" min="00:00" max="15:00"
-                                   value="00:00"
-                                   step="900">
-                            <input type="submit" class="btn btn-success mt-1" value="Plan Pickup">
-                            @foreach($packages as $package)
-                                <input type="number" name="{{$package->id}}" value="{{$package->id}}" hidden>
-                            @endforeach
-                        </form>
-                    @else
-                        <form action="{{route('savePickup')}}" method="post" class="w-50">
-                            @csrf
-                            <input type="number" name="packageID" value="{{$package->id}}" hidden>
-                            <label>Date</label>
-                            <input class="form-control" type="date" name="date" min="{{$mindate}}">
-                            <label>Time</label>
-                            <input class="form-control mt-1" type="time" name="time" min="00:00" max="15:00"
-                                   value="00:00"
-                                   step="900">
-                            <input type="submit" class="btn btn-success mt-1" value="Plan Pickup">
-
-                        </form>
-                    @endif
-
+                    <form action="{{route('savePickupBulk')}}" method="post" class="w-50">
+                        @csrf
+                        <input type="number" name="packageID" value="{{$package->id}}" hidden>
+                        <label>Date</label>
+                        <input class="form-control" type="date" name="date" min="{{$mindate}}">
+                        <label>Time</label>
+                        <input class="form-control mt-1" type="time" name="time" min="00:00" max="15:00"
+                               value="00:00"
+                               step="900">
+                        <input type="submit" class="btn btn-success mt-1" value="Plan Pickup">
+                        @foreach($packages as $package)
+                            <input type="number" name="{{$package->id}}" value="{{$package->id}}" hidden>
+                        @endforeach
+                    </form>
                 </div>
             </div>
         </div>
