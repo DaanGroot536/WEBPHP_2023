@@ -6,12 +6,14 @@ use App\Models\Package;
 use App\Models\Label;
 use DB;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LabelController extends Controller
 {
     public function getLabels()
     {
-        $packages = Package::all();
+        $packages = Package::where('webshopName', Auth::user()->company)->get();
+        dd($packages);
         $labels = Label::all();
         return view('labels.labellist', ['packages' => $packages, 'labels' => $labels]);
     }
