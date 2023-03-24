@@ -18,7 +18,78 @@
                             <p>Select packages for bulk labels. Next press the button to submit</p>
                         </div>
                     @endif
-                    <p></p>
+                    <div class="row mx-3">
+                        <div class="col-4">
+                            <form class="" action="{{ route('getPackages') }}" method="GET">
+                                <label for="sort_field">Sort by:</label>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <select class="form-control" name="sort_field" id="sort_field">
+                                            <option value="id" {{ $sortField == 'id' ? 'selected' : '' }}>ID</option>
+                                            <option value="status" {{ $sortField == 'status' ? 'selected' : '' }}>Status
+                                            </option>
+                                            <option value="weight" {{ $sortField == 'weight' ? 'selected' : '' }}>Weight
+                                            </option>
+                                            <option
+                                                value="customerCity" {{ $sortField == 'customerCity' ? 'selected' : '' }}>
+                                                City
+                                            </option>
+                                            <option
+                                                value="customerStreet"{{ $sortField == 'customerStreet' ? 'selected' : '' }}>
+                                                Street
+                                            </option>
+                                            <option
+                                                value="customerZipcode"{{ $sortField == 'customerZipcode' ? 'selected' : '' }}>
+                                                Zipcode
+                                            </option>
+                                        </select>
+                                    </div>
+                                    <div class="col-2">
+                                        <button class="btn btn-primary" type="submit">Sort</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                        <div class="col">
+                            <form class="" method="GET" action="{{ route('getPackages') }}">
+                                <div class="row">
+                                    <div class="col-4">
+                                        <label for="status">Status:</label>
+                                        <select name="status" id="status" class="form-control">
+                                            <option value="">-- Select status --</option>
+                                            @foreach ($statuses as $id => $description)
+                                                <option value="{{ $description }}"
+                                                        @if (strtolower($description) === strtolower(request('status'))) selected @endif> {{ strtolower($description) }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="col-4">
+                                        <label for="city">City:</label>
+                                        <select name="city" id="city" class="form-control">
+                                            <option value="">-- Select city --</option>
+                                            @foreach ($cities as $city)
+                                                <option value="{{ $city }}"
+                                                        @if ($city === request('city')) selected @endif>{{ $city }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="col-2">
+                                        <button class="btn btn-primary mt-4" type="submit">Filter</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        
+                        <div class="col-1">
+                            <form class="" action="{{ route('resetFilters') }}" method="GET">
+                                <input type="hidden" name="reset" value="1">
+                                <button class="btn btn-primary mt-4" type="submit">Reset</button>
+                            </form>
+                        </div>
+                    </div>
+                    <hr>
+
                     <div class="row mx-4">
                         @if (Auth::user()->role == 'employee')
                             <div class="col-2 p-0">
@@ -39,7 +110,7 @@
                                                 <div class="checkitem col">
                                                     @if ($package->labelID == null)
                                                         <input type="checkbox" class="packageCheck"
-                                                            name="{{ $package->id }}" value="true">
+                                                               name="{{ $package->id }}" value="true">
                                                     @endif
                                                 </div>
                                             </div>
@@ -48,56 +119,8 @@
                                 </form>
                             </div>
                         @endif
-                        <div class="p-3 list-box col-12 mb-3">
+                        <div class="p-3 list-box col-10 mb-3">
 
-                            <form class="row" action="{{ route('getPackages') }}" method="GET">
-                                <div class="form-group">
-                                    <label for="sort_field">Sort by:</label>
-                                    <select class="form-control w-25 col-2" name="sort_field" id="sort_field">
-                                        <option value="id" {{ $sortField == 'id' ? 'selected' : '' }}>ID</option>
-                                        <option value="status" {{ $sortField == 'status' ? 'selected' : '' }}>Status
-                                        </option>
-                                        <option value="weight" {{ $sortField == 'weight' ? 'selected' : '' }}>Weight
-                                        </option>
-                                        <option value="customerCity" {{ $sortField == 'customerCity' ? 'selected' : '' }}>
-                                            City</option>
-                                        <option
-                                            value="customerStreet"{{ $sortField == 'customerStreet' ? 'selected' : '' }}>
-                                            Street</option>
-                                        <option
-                                            value="customerZipcode"{{ $sortField == 'customerZipcode' ? 'selected' : '' }}>
-                                            Zipcode</option>
-                                    </select>
-                                </div>
-                                <button class="btn btn-primary col-1" type="submit">Sort</button>
-                            </form>
-                            <form class="col-2" method="GET" action="{{ route('getPackages') }}">
-                                <label for="status">Status:</label>
-                                <select name="status" id="status" class="form-control">
-                                    <option value="">-- Select status --</option>
-                                    @foreach ($statuses as $id => $description)
-                                        <option value="{{ $description }}"
-                                            @if (strtolower($description) === strtolower(request('status'))) selected @endif> {{ strtolower($description) }}</option>
-                                    @endforeach
-                                </select>
-
-                                <label for="city">City:</label>
-                                <select name="city" id="city" class="form-control">
-                                    <option value="">-- Select city --</option>
-                                    @foreach ($cities as $city)
-                                        <option value="{{ $city }}"
-                                            @if ($city === request('city')) selected @endif>{{ $city }}</option>
-                                    @endforeach
-                                </select>
-
-
-                                <button class="btn btn-primary mt-1" type="submit">Filter</button>
-                            </form>
-
-                            <form class="col-2" action="{{ route('resetFilters') }}" method="GET">
-                                <input type="hidden" name="reset" value="1">
-                                <button class="btn btn-primary mt-1" type="submit">Reset filters</button>
-                            </form>
 
                             <p class="ml-3">Package List:</p>
                             <hr>
@@ -121,9 +144,9 @@
                                                         <option value="UPS">UPS</option>
                                                     </select>
                                                     <input type="number" value="{{ $package->id }}" name="packageID"
-                                                        hidden>
+                                                           hidden>
                                                     <input type="submit" class="btn btn-secondary mb-1"
-                                                        value="Create Label">
+                                                           value="Create Label">
                                                 </form>
 
                                             </div>
