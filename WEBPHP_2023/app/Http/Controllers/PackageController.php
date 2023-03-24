@@ -19,18 +19,24 @@ class PackageController extends Controller
         $sortField = $originalSortField;
         $sortOrder = 'asc'; // default sort order
 
-        // if sorting field is reversed, set sortOrder to desc
-        if (strpos($sortField, 'reversed') !== false) {
-            $sortOrder = 'desc';
-            // remove the 'reversed' suffix from the sortField name
-            $sortField = str_replace('reversed', '', $sortField);
+        if ($request->formused == 'true') {
+            // if sorting field is reversed, set sortOrder to desc
+            if (strpos($sortField, 'reversed') !== false) {
+                $sortOrder = 'desc';
+                // remove the 'reversed' suffix from the sortField name
+                $sortField = str_replace('reversed', '', $sortField);
+            }
         }
+        else {
+            $sortOrder = session()->get('sort_order');
+        }
+
 
         // get all packages
         if (Auth::user()->role == 'webshop') {
             $packages = Package::where('webshopName', Auth::user()->name)->orderBy($sortField, $sortOrder);
         } else {
-            $packages = Package::orderBy($sortField, $sortOrder);
+            $packages = Package::where('webshopName', Auth::user()->company)->orderBy($sortField, $sortOrder);
         }
 
         // get all status filter options
@@ -53,8 +59,7 @@ class PackageController extends Controller
         } elseif (session()->has('city')) {
             $packages = $packages->where('customerCity', session('city'));
         }
-
-        $packages = $packages->simplePaginate(10); // 10 items per page
+        $packages = $packages->simplePaginate(3); // 10 items per page
 
         // store old values in session variables
         session([

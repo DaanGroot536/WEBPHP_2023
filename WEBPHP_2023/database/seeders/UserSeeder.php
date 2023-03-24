@@ -84,6 +84,7 @@ class UserSeeder extends Seeder
             'password' => bcrypt("password"),
             'role' => 'employee',
             'api_token' => Str::random(60),
+            'company' => 'Sport World',
         ]);
     }
 }

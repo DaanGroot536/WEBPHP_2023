@@ -6,7 +6,7 @@
 
             <div class="card">
                 <div class="card-header"><a class="link" href="{{ route('dashboard') }}">{{ Auth::user()->role }}
-                        Dashboard</a> -> PackageList
+                        Dashboard</a> -> PackageList {{session()->get('sort_order')}}
                 </div>
                 <div class="card-body">
                     @if (Auth::user()->role == 'webshop')
@@ -19,33 +19,53 @@
                         </div>
                     @endif
                     <div class="row mx-3">
-                        <div class="col-4">
+                        <div class="col-3">
                             <form class="" action="{{ route('getPackages') }}" method="GET">
                                 <label for="sort_field">Sort by:</label>
                                 <div class="row">
-                                    <div class="col-6">
+                                    <div class="col-8">
                                         <select class="form-control" name="sort_field" id="sort_field">
                                             <option value="id" {{ $sortField == 'id' ? 'selected' : '' }}>ID</option>
-                                            <option value="idreversed" {{ $sortField == 'idreversed' ? 'selected' : '' }}>ID - Reversed</option>
-                                            <option value="status" {{ $sortField == 'status' ? 'selected' : '' }}>Status</option>
-                                            <option value="statusreversed" {{ $sortField == 'statusreversed' ? 'selected' : '' }}>Status - Reversed</option>
-                                            <option value="weight" {{ $sortField == 'weight' ? 'selected' : '' }}>Weight</option>
-                                            <option value="weightreversed" {{ $sortField == 'weightreversed' ? 'selected' : '' }}>Weight - Reversed</option>
-                                            <option value="customerCity" {{ $sortField == 'customerCity' ? 'selected' : '' }}>City</option>
-                                            <option value="customerCityreversed" {{ $sortField == 'customerCityreversed' ? 'selected' : '' }}>City - Reversed</option>
+                                            <option
+                                                value="idreversed" {{ $sortField == 'idreversed' ? 'selected' : '' }}>ID
+                                                - Reversed
+                                            </option>
+                                            <option value="status" {{ $sortField == 'status' ? 'selected' : '' }}>
+                                                Status
+                                            </option>
+                                            <option
+                                                value="statusreversed" {{ $sortField == 'statusreversed' ? 'selected' : '' }}>
+                                                Status - Reversed
+                                            </option>
+                                            <option value="weight" {{ $sortField == 'weight' ? 'selected' : '' }}>
+                                                Weight
+                                            </option>
+                                            <option
+                                                value="weightreversed" {{ $sortField == 'weightreversed' ? 'selected' : '' }}>
+                                                Weight - Reversed
+                                            </option>
+                                            <option
+                                                value="customerCity" {{ $sortField == 'customerCity' ? 'selected' : '' }}>
+                                                City
+                                            </option>
+                                            <option
+                                                value="customerCityreversed" {{ $sortField == 'customerCityreversed' ? 'selected' : '' }}>
+                                                City - Reversed
+                                            </option>
                                         </select>
+                                        <input type="text" name="formused" value="true" hidden>
                                     </div>
-                                    <div class="col-2">
+                                    <div class="col-3">
                                         <button class="btn btn-primary" type="submit">Sort</button>
                                     </div>
                                 </div>
                             </form>
                         </div>
 
-                        <div class="col">
+                        <div class="col-5">
                             <form class="" method="GET" action="{{ route('getPackages') }}">
                                 <div class="row">
-                                    <div class="col-4">
+                                    <div class="col-5">
                                         <label for="status">Status:</label>
                                         <select name="status" id="status" class="form-control">
                                             <option value="">-- Select status --</option>
@@ -55,7 +75,7 @@
                                             @endforeach
                                         </select>
                                     </div>
-                                    <div class="col-4">
+                                    <div class="col-5">
                                         <label for="city">City:</label>
                                         <select name="city" id="city" class="form-control">
                                             <option value="">-- Select city --</option>
@@ -67,6 +87,22 @@
                                     </div>
                                     <div class="col-2">
                                         <button class="btn btn-primary mt-4" type="submit">Filter</button>
+                                    </div>
+                                </div>
+                                <input type="text" name="formused" value="true" hidden>
+                            </form>
+                        </div>
+
+                        <div class="col-3">
+                            <form>
+                                <label>FullText Search:</label>
+
+                                <div class="row">
+                                    <div class="col-8">
+                                        <input class="form-control" type="text" placeholder="FullText Search">
+                                    </div>
+                                    <div class="col-2">
+                                        <input class="btn btn-primary" type="submit" value="Search">
                                     </div>
                                 </div>
                             </form>
