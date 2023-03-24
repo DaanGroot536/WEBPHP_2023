@@ -19,7 +19,7 @@ class PackageController extends Controller
             $packages = Package::where('webshopName', Auth::user()->name)->get();
         }
         else {
-            $packages = DB::table('packages')->get();
+            $packages = Package::where('webshopName', Auth::user()->company)->get();
         }
 
         $pickups = Pickup::all();
