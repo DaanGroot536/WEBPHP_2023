@@ -80,7 +80,7 @@
                                 </div>
                             </form>
                         </div>
-                        
+
                         <div class="col-1">
                             <form class="" action="{{ route('resetFilters') }}" method="GET">
                                 <input type="hidden" name="reset" value="1">
@@ -121,16 +121,21 @@
                         @endif
                         <div class="p-3 list-box col-10 mb-3">
 
-
-                            <p class="ml-3">Package List:</p>
+                            <div class="row mx-3">
+                                <strong class="col-1"><strong>ID:</strong></strong>
+                                <strong class="col-2"><strong>Status:</strong></strong>
+                                <strong class="col-2"><strong>dimensions:</strong></strong>
+                                <strong class="col-2"><strong>Weight:</strong></strong>
+                                <strong class="col-5">Delivery Address:</strong>
+                            </div>
                             <hr>
                             @foreach ($packages as $package)
                                 <div class="row mx-3 list-item">
-                                    <p class="col-1 p-2"><strong>ID:</strong> {{ $package->id }}</p>
-                                    <p class="col-2 p-2"><strong>Status:</strong> {{ $package->status }}</p>
-                                    <p class="col-2 p-2"><strong>dimensions:</strong> {{ $package->dimensions }}</p>
-                                    <p class="col-2 p-2"><strong>Weight:</strong> {{ $package->weight }}</p>
-                                    <p class="col-5 p-2"><strong>Delivery Address:</strong>
+                                    <p class="col-1 py-2">{{ $package->id }}</p>
+                                    <p class="col-2 py-2">{{ $package->status }}</p>
+                                    <p class="col-2 py-2">{{ $package->dimensions }}</p>
+                                    <p class="col-2 py-2">{{ $package->weight }}</p>
+                                    <p class="col-5 py-2">
                                         {{ $package->full_customer_address }}</p>
                                     @if (Auth::user()->role == 'employee')
                                         @if ($package->labelID == null)

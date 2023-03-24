@@ -13,7 +13,7 @@ nav {
 
 .list-item {
     border-bottom: 1px solid lightgray;
-    height: 100px;
+    height: 110px;
 }
 
 .list-box {
@@ -33,7 +33,7 @@ nav {
 .checkitem {
     padding: 25px;
     width: 100px;
-    height: 100px;
+    height: 110px;
 }
 
 .w-40 {
