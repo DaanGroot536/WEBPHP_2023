@@ -50,10 +50,10 @@
                         @endif
                         <div class="p-3 list-box col-12 mb-3">
 
-                            <form class="col-2" action="{{ route('getPackages') }}" method="GET">
+                            <form class="row" action="{{ route('getPackages') }}" method="GET">
                                 <div class="form-group">
                                     <label for="sort_field">Sort by:</label>
-                                    <select name="sort_field" id="sort_field" class="form-control">
+                                    <select class="form-control w-25 col-2" name="sort_field" id="sort_field">
                                         <option value="id" {{ $sortField == 'id' ? 'selected' : '' }}>ID</option>
                                         <option value="status" {{ $sortField == 'status' ? 'selected' : '' }}>Status
                                         </option>
@@ -69,28 +69,36 @@
                                             Zipcode</option>
                                     </select>
                                 </div>
-                                <button type="submit">Sort</button>
+                                <button class="btn btn-primary col-1" type="submit">Sort</button>
                             </form>
-                            <form method="GET" action="{{ route('getPackages') }}">
+                            <form class="col-2" method="GET" action="{{ route('getPackages') }}">
                                 <label for="status">Status:</label>
-                                <select name="status" id="status">
+                                <select name="status" id="status" class="form-control">
                                     <option value="">-- Select status --</option>
                                     @foreach ($statuses as $id => $description)
-                                        <option value="{{ $description }}">{{ strtolower($description) }}</option>
+                                        <option value="{{ $description }}"
+                                            @if (strtolower($description) === strtolower(request('status'))) selected @endif> {{ strtolower($description) }}</option>
                                     @endforeach
                                 </select>
 
                                 <label for="city">City:</label>
-                                <select name="city" id="city">
+                                <select name="city" id="city" class="form-control">
                                     <option value="">-- Select city --</option>
                                     @foreach ($cities as $city)
-                                        <option value="{{ $city }}">{{ $city }}</option>
+                                        <option value="{{ $city }}"
+                                            @if ($city === request('city')) selected @endif>{{ $city }}</option>
                                     @endforeach
                                 </select>
 
 
-                                <button type="submit">Filter</button>
+                                <button class="btn btn-primary mt-1" type="submit">Filter</button>
                             </form>
+
+                            <form class="col-2" action="{{ route('resetFilters') }}" method="GET">
+                                <input type="hidden" name="reset" value="1">
+                                <button class="btn btn-primary mt-1" type="submit">Reset filters</button>
+                            </form>
+
                             <p class="ml-3">Package List:</p>
                             <hr>
                             @foreach ($packages as $package)
@@ -144,7 +152,7 @@
                             <hr>
                             <div class="pagination">
                                 {{ $packages->links() }}
-                            </div>                            
+                            </div>
                         </div>
                     </div>
                 </div>
