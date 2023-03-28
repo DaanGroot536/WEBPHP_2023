@@ -84,7 +84,9 @@ class UserController extends Controller
     }
 
     public function getCustomerView() {
-        $packages = Package::all()->groupBy('customerName');
+        $packages = Package::where('webshopName', Auth::user()->company)->get()->groupBy('customerName');
+//        dd($packages);
+
         return view('customers.customerlist', ['packages' => $packages]);
     }
 }
