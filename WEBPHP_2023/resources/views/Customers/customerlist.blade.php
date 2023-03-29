@@ -23,24 +23,12 @@
                             <div class="row">
                                 <div class="col-8">
                                     <select class="form-control" name="sort_field" id="sort_field">
-                                        <option value="id" {{ $sortField == 'id' ? 'selected' : '' }}>ID</option>
-                                        <option
-                                            value="idreversed" {{ $sortField == 'idreversed' ? 'selected' : '' }}>ID
-                                            - Reversed
-                                        </option>
-                                        <option value="status" {{ $sortField == 'status' ? 'selected' : '' }}>
-                                            Status
+                                        <option value="customerName" {{ $sortField == 'name' ? 'selected' : '' }}>
+                                            Name
                                         </option>
                                         <option
-                                            value="statusreversed" {{ $sortField == 'statusreversed' ? 'selected' : '' }}>
-                                            Status - Reversed
-                                        </option>
-                                        <option value="weight" {{ $sortField == 'weight' ? 'selected' : '' }}>
-                                            Weight
-                                        </option>
-                                        <option
-                                            value="weightreversed" {{ $sortField == 'weightreversed' ? 'selected' : '' }}>
-                                            Weight - Reversed
+                                            value="customerNamereversed" {{ $sortField == 'namereversed' ? 'selected' : '' }}>
+                                            Name - Reversed
                                         </option>
                                         <option
                                             value="customerCity" {{ $sortField == 'customerCity' ? 'selected' : '' }}>
@@ -63,16 +51,6 @@
                     <div class="col-5">
                         <form class="" method="GET" action="{{ route('getCustomerView') }}">
                             <div class="row">
-                                <div class="col-5">
-                                    <label for="status">Status:</label>
-                                    <select name="status" id="status" class="form-control">
-                                        <option value="">-- Select status --</option>
-                                        @foreach ($statuses as $id => $description)
-                                            <option value="{{ $description }}"
-                                                    @if (strtolower($description) === strtolower(request('status'))) selected @endif> {{ strtolower($description) }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
                                 <div class="col-5">
                                     <label for="city">City:</label>
                                     <select name="city" id="city" class="form-control">

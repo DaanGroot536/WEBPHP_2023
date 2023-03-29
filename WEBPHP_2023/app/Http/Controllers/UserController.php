@@ -150,6 +150,7 @@ class UserController extends Controller
             $packages = Package::where('webshopName', Auth::user()->name)->groupBy('customerName')->orderBy($sortField, $sortOrder);
         } else {
             $packages = Package::where('webshopName', Auth::user()->company)->groupBy('customerName')->orderBy($sortField, $sortOrder);
+//            dd($packages, $sortField, $sortOrder);
         }
 
         // get all status filter options
