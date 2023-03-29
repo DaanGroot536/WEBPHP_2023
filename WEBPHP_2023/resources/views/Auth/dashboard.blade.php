@@ -24,6 +24,12 @@
                             <a href="{{route('getPackages')}}" class="btn btn-secondary col-1"> ></a>
                         </div>
                     @endif
+                    @if (Auth::user()->role == 'customer')
+                        <div class="row mx-3 mt-1">
+                            <p class="col">Reviews</p>
+                            <a href="{{route('getReviewView')}}" class="btn btn-secondary col-1"> ></a>
+                        </div>
+                    @endif
                     @if(Auth::user()->role == 'employee')
 
                         <div class="row mx-3 mt-1">

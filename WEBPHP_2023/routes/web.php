@@ -7,6 +7,7 @@ use App\Http\Controllers\PackageController;
 use App\Http\Controllers\LabelController;
 use App\Http\Controllers\PickupController;
 use App\Http\Controllers\StatusController;
+use App\Http\Controllers\ReviewController;
 
 
 /*
@@ -75,6 +76,11 @@ Route::group(['middleware' => ['auth']], function () {
     Route::controller(StatusController::class)->group(function () {
         Route::get('/statuslist', 'getStatusView')->name('getStatusView');
         Route::get('/updateStatus/{id}', 'getUpdateStatusView')->name('getUpdateStatusView');
+    });
+
+    Route::controller(ReviewController::class)->group(function () {
+        Route::get('/reviewlist', 'getReviewView')->name('getReviewView');
+        Route::get('/writeReview', 'getCreateReviewView')->name('getCreateReviewView');
     });
 });
 
