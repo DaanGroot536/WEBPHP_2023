@@ -5,9 +5,16 @@
         <div class="">
 
             <div class="card">
-                <div class="card-header"><a class="link" href="{{route('dashboard')}}">{{Auth::user()->role}}
-                        Dashboard</a> -> Plan Pickups
-                </div>
+                @if (Auth::user()->role == 'employee')
+                    <div class="card-header"><a class="link" href="{{route('dashboard')}}">{{Auth::user()->company}}
+                            Dashboard</a> -> Plan pickups
+                    </div>
+                @else
+                    <div class="card-header"><a class="link"
+                                                href="{{route('dashboard')}}">{{Auth::user()->name}}
+                            Dashboard</a> -> Plan pickups
+                    </div>
+                @endif
                 <div class="card-body">
                     @if (Auth::user()->role == 'employee')
                         <div class="row">

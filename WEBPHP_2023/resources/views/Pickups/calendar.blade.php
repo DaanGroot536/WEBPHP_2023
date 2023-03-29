@@ -2,9 +2,16 @@
 
 @section('content')
     <div class="card mt-3">
-        <div class="card-header"><a class="link" href="{{route('dashboard')}}">{{Auth::user()->role}}
-                Dashboard</a> -> Pickup Calendar
-        </div>
+        @if (Auth::user()->role == 'employee')
+            <div class="card-header"><a class="link" href="{{route('dashboard')}}">{{Auth::user()->company}}
+                    Dashboard</a> -> Pickup calendar
+            </div>
+        @else
+            <div class="card-header"><a class="link"
+                                        href="{{route('dashboard')}}">{{Auth::user()->name}}
+                    Dashboard</a> -> Pickup calendar
+            </div>
+        @endif
         <div class="card-body vh-100 p-4">
             <div class="row mb-3">
                 <form action="{{route('changeCalendarWeek')}}" method="post"  class="col-1">

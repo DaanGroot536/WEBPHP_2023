@@ -17,12 +17,10 @@ class PackageController extends Controller
     {
         if (Auth::user()->role == 'webshop') {
             $packages = Package::where('webshopName', Auth::user()->name)->get();
-        }
-        else {
+        } else {
             if (Auth::user()->role == 'customer') {
                 $packages = Package::where('customerEmail', Auth::user()->email)->get();
-            }
-            else {
+            } else {
                 $packages = Package::where('webshopName', Auth::user()->company)->get();
             }
         }
@@ -47,6 +45,18 @@ class PackageController extends Controller
         $path = storage_path('csv\import_template.csv');
 
         return Response::download($path);
+    }
+
+    public function getDeliveredPackagesView()
+    {
+        if (Auth::user()->role == 'webshop') {
+            $packages = Package::where('webshopName', Auth::user()->name)->get();
+        } else {
+
+            $packages = Package::where('webshopName', Auth::user()->company)->get();
+        }
+
+        return view('packages.delivered', ['packages' => $packages]);
     }
 
 

@@ -2,25 +2,35 @@
 
 @section('content')
 
-<div class="row justify-content-center mt-5">
-    <div class="w-50">
-        <div class="card">
-            <div class="card-header"><a class="link" href="{{route('dashboard')}}">{{Auth::user()->role}}
-                    Dashboard</a> -> <a class="link" href="{{route('getPackages')}}">PackageList</a> -> Create Package
-            </div>
-            <div class="w-75 mx-auto my-5">
-                <form action="{{ route('bulkImportCSV') }}" method="POST" enctype="multipart/form-data">
-                    @csrf
-                    <input type="file" name="csv_file" id="csv_file">
-                    <br>
-                    <br>
-                    <button type="submit" class="btn btn-success">Import</button>
-                    <a href="{{ route('downloadCSVTemplate') }}" class="btn btn-secondary float-right">Download CSV template</a>
-                    <input type="text" name="api_token" value="{{Auth::user()->api_token}}" hidden>
-                </form>
+    <div class="row justify-content-center mt-5">
+        <div class="w-50">
+            <div class="card">
+                @if (Auth::user()->role == 'employee')
+                    <div class="card-header"><a class="link" href="{{route('dashboard')}}">{{Auth::user()->company}}
+                            Dashboard</a> -> <a class="link" href="{{route('getPackages')}}">PackageList</a> -> Create
+                        Package
+                    </div>
+                @else
+                    <div class="card-header"><a class="link"
+                                                href="{{route('dashboard')}}">{{Auth::user()->name}}
+                            Dashboard</a> -> <a class="link" href="{{route('getPackages')}}">PackageList</a> -> Create
+                        Package
+                    </div>
+                @endif
+                <div class="w-75 mx-auto my-5">
+                    <form action="{{ route('bulkImportCSV') }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        <input type="file" name="csv_file" id="csv_file">
+                        <br>
+                        <br>
+                        <button type="submit" class="btn btn-success">Import</button>
+                        <a href="{{ route('downloadCSVTemplate') }}" class="btn btn-secondary float-right">Download CSV
+                            template</a>
+                        <input type="text" name="api_token" value="{{Auth::user()->api_token}}" hidden>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
 @endsection

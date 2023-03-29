@@ -48,6 +48,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/packageListCreate', 'getCreatePackageView')->name('getCreatePackageView');
         Route::get('/import', 'getBulkImportView')->name('getBulkImportView');
         Route::get('/download-csv-template', 'downloadCSVTemplate')->name('downloadCSVTemplate');
+        Route::get('/deliveredPackages', 'getDeliveredPackagesView')->name('getDeliveredPackagesView');
     });
 
     Route::controller(LabelController::class)->group(function() {

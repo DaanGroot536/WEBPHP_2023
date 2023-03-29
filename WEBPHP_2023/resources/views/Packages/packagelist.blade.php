@@ -5,9 +5,16 @@
         <div class="">
 
             <div class="card">
-                <div class="card-header"><a class="link" href="{{route('dashboard')}}">{{Auth::user()->role}}
-                        Dashboard</a> -> PackageList
-                </div>
+                @if (Auth::user()->role == 'employee')
+                    <div class="card-header"><a class="link" href="{{route('dashboard')}}">{{Auth::user()->company}}
+                            Dashboard</a> -> Package list
+                    </div>
+                @else
+                    <div class="card-header"><a class="link"
+                                                href="{{route('dashboard')}}">{{Auth::user()->name}}
+                            Dashboard</a> -> Package list
+                    </div>
+                @endif
                 <div class="card-body">
                     @if (Auth::user()->role == 'webshop')
                         <a href="{{route('getCreatePackageView')}}" class="btn btn-success">Create Package +</a>

@@ -42,6 +42,10 @@
                             <p class="col">Pickup Calendar</p>
                             <a href="{{route('getCalendarView')}}" class="btn btn-secondary col-1"> ></a>
                         </div>
+                        <div class="row mx-3 mt-1">
+                            <p class="col">Delivered Packages</p>
+                            <a href="{{route('getDeliveredPackagesView')}}" class="btn btn-secondary col-1"> ></a>
+                        </div>
                     @endif
 
                     @if (Auth::user()->role == 'webshop')
@@ -52,6 +56,10 @@
                         <div class="row mx-3 mt-1">
                             <p class="col">Customer List</p>
                             <a href="{{route('getCustomerView')}}" class="btn btn-secondary col-1"> ></a>
+                        </div>
+                        <div class="row mx-3 mt-1">
+                            <p class="col">Delivered Packages</p>
+                            <a href="{{route('getDeliveredPackagesView')}}" class="btn btn-secondary col-1"> ></a>
                         </div>
                     @endif
                     @if (Auth::user()->role == 'deliverer')

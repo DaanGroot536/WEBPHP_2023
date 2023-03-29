@@ -5,9 +5,16 @@
     <div class="row justify-content-center mt-5">
         <div class="">
             <div class="card">
-                <div class="card-header"><a class="link" href="{{route('dashboard')}}">{{Auth::user()->role}}
-                        Dashboard</a> -> Customer List
-                </div>
+                @if (Auth::user()->role == 'employee')
+                    <div class="card-header"><a class="link" href="{{route('dashboard')}}">{{Auth::user()->company}}
+                            Dashboard</a> -> Customer List
+                    </div>
+                @else
+                    <div class="card-header"><a class="link"
+                                                href="{{route('dashboard')}}">{{Auth::user()->name}}
+                            Dashboard</a> -> Customer List
+                    </div>
+                @endif
                 <div class="p-3 m-3 list-box">
                     @if(Auth::user()->role == 'webshop')
                         <p class="ml-3">{{Auth::user()->name}} Customer List:</p>
