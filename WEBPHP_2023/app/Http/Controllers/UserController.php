@@ -147,10 +147,9 @@ class UserController extends Controller
 
         // get all packages
         if (Auth::user()->role == 'webshop') {
-            $packages = Package::where('webshopName', Auth::user()->name)->orderBy($sortField, $sortOrder)->simplePaginate(3)->groupBy('customerName');
+            $packages = Package::where('webshopName', Auth::user()->name)->groupBy('customerName')->orderBy($sortField, $sortOrder);
         } else {
-            $packages = Package::where('webshopName', Auth::user()->company)->orderBy($sortField, $sortOrder)->simplePaginate(3)->groupBy('customerName');
-            dd($packages);
+            $packages = Package::where('webshopName', Auth::user()->company)->groupBy('customerName')->orderBy($sortField, $sortOrder);
         }
 
         // get all status filter options
@@ -173,7 +172,7 @@ class UserController extends Controller
         } elseif (session()->has('city')) {
             $packages = $packages->where('customerCity', session('city'));
         }
-//        $packages = $packages->simplePaginate(3); // 10 items per page
+        $packages = $packages->simplePaginate(10); // 10 items per page
 
         // store old values in session variables
         session([

@@ -15,6 +15,7 @@
                             Dashboard</a> -> Customer List
                     </div>
                 @endif
+                <br>
                 <div class="row mx-3">
                     <div class="col-3">
                         <form class="" action="{{ route('getCustomerView') }}" method="GET">
@@ -90,21 +91,6 @@
                         </form>
                     </div>
 
-                    <div class="col-3">
-                        <form>
-                            <label>FullText Search:</label>
-
-                            <div class="row">
-                                <div class="col-8">
-                                    <input class="form-control" type="text" placeholder="FullText Search">
-                                </div>
-                                <div class="col-2">
-                                    <input class="btn btn-primary" type="submit" value="Search">
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-
                     <div class="col-1">
                         <form class="" action="{{ route('resetCustomerFilters') }}" method="GET">
                             <input type="hidden" name="reset" value="1">
@@ -126,15 +112,13 @@
                         <p class="col-3 p-3">Address:</p>
                     </div>
                     @foreach($packages as $package)
-                        @foreach($package as $package2)
                             <a class="link" href="">
                                 <div class="my-1 row mx-3 list-item">
-                                    <p class="col-3 p-3">{{$package2->customerName}}</p>
-                                    <p class="col-3 p-3">{{$package2->customerEmail}}</p>
-                                    <p class="col-3 p-3">{{$package2->customerStreet}} {{$package2->customerHousenumber}} {{$package2->customerCity}}</p>
+                                    <p class="col-3 p-3">{{$package->customerName}}</p>
+                                    <p class="col-3 p-3">{{$package->customerEmail}}</p>
+                                    <p class="col-3 p-3">{{$package->customerStreet}} {{$package->customerHousenumber}} {{$package->customerCity}}</p>
                                 </div>
                             </a>
-                        @endforeach
                     @endforeach
                 </div>
                 <div class="pagination">
