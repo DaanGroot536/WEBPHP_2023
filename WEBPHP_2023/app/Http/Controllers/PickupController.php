@@ -14,7 +14,15 @@ class PickupController extends Controller
 {
     public function getPickupView()
     {
-        $packages = Package::all();
+        if (Auth::user()->role == 'webshop') {
+            $packages = Package::where('webshopName', Auth::user()->name)->get();
+        } else {
+            if (Auth::user()->role == 'customer') {
+                $packages = Package::where('customerEmail', Auth::user()->email)->get();
+            } else {
+                $packages = Package::where('webshopName', Auth::user()->company)->get();
+            }
+        }
         $pickups = Pickup::all();
         return view('pickups.pickuplist', ['packages' => $packages, 'pickups' => $pickups]);
     }
