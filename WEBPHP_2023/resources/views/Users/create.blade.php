@@ -5,9 +5,16 @@
     <div class="row justify-content-center mt-5">
         <div class="w-50">
             <div class="card">
-                <div class="card-header"><a class="link" href="{{route('dashboard')}}">{{Auth::user()->role}}
-                        Dashboard</a> -> <a class="link" href="{{route('getUserView')}}">UserList</a> -> Create User
-                </div>
+                @if (Auth::user()->role == 'employee')
+                    <div class="card-header"><a class="link" href="{{route('dashboard')}}">{{Auth::user()->company}}
+                            Dashboard</a> -> <a class="link" href="{{route('getUserView')}}">UserList</a> -> Create User
+                    </div>
+                @else
+                    <div class="card-header"><a class="link"
+                                                href="{{route('dashboard')}}">{{Auth::user()->name}}
+                            Dashboard</a> -> <a class="link" href="{{route('getUserView')}}">UserList</a> -> Create User
+                    </div>
+                @endif
                 <div class="w-75 mx-auto my-5">
                     <form action="{{route('saveUser')}}" method="post">
                         @csrf
@@ -23,7 +30,13 @@
                         <label>User Role*</label>
                         <select class="form-control" name="role">
                             @foreach($roles as $role)
-                                <option value="{{$role->type}}">{{$role->type}}</option>
+                                @if (Auth::user()->role == 'webshop')
+                                    @if ($role->type == 'employee' || $role->type == 'packer')
+                                        <option value="{{$role->type}}">{{$role->type}}</option>
+                                    @endif
+                                @else
+                                    <option value="{{$role->type}}">{{$role->type}}</option>
+                                @endif
                             @endforeach
                         </select>
                         <hr>

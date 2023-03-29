@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Label;
 use App\Models\Package;
+use App\Models\Status;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -31,7 +32,9 @@ class StatusController extends Controller
         }
     }
 
-    public function updateStatus(Request $request) {
-
+    public function getUpdateStatusView($id) {
+        $package = Package::find($id);
+        $statuses = Status::all();
+        return view('statuses.update', ['package' => $package, 'statuses' => $statuses]);
     }
 }

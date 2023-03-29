@@ -60,3 +60,10 @@ Hierna gaan ze pas naar de ontvanger.
 Je toont de aanmaak pagina via de normale route (je stopt de user info in hidden inputs)
 Daarna route je de action naar de apicontroller
 De apicontroller route je direct na het updaten of invoeren van data weer terug naar de normale controller
+
+
+Attributen voor filters per categorie:
+
+Klanten:
+-sorteren - Naam Adres ID
+-filteren - Naam Adres

@@ -7,6 +7,7 @@ use App\Http\Controllers\PackageController;
 use App\Http\Controllers\LabelController;
 use App\Http\Controllers\PickupController;
 use App\Http\Controllers\StatusController;
+use App\Http\Controllers\ReviewController;
 
 
 /*
@@ -24,7 +25,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::controller(LoginRegisterController::class)->group(function() {
+Route::controller(LoginRegisterController::class)->group(function () {
     Route::get('/register', 'register')->name('register');
     Route::post('/store', 'store')->name('store');
     Route::get('/login', 'login')->name('login');
@@ -34,23 +35,27 @@ Route::controller(LoginRegisterController::class)->group(function() {
 });
 
 Route::group(['middleware' => ['auth']], function () {
-    Route::controller(UserController::class)->group(function() {
+    Route::controller(UserController::class)->group(function () {
         Route::get('/userlist', 'getUserView')->name('getUserView');
         Route::get('/userlistCreate', 'getCreateUserView')->name('getCreateUserView');
         Route::post('/userListSave', 'saveUser')->name('saveUser');
         Route::get('/userListEdit/{id}', 'getEditUserView')->name('getEditUserView');
         Route::post('/userListUpdate', 'updateUser')->name('updateUser');
-
+        Route::get('/customerList', 'getCustomerView')->name('getCustomerView');
+        Route::get('/customerlist/resetCustomerFilters', 'resetCustomerFilters')->name('resetCustomerFilters');
     });
 
-    Route::controller(PackageController::class)->group(function() {
+    Route::controller(PackageController::class)->group(function () {
         Route::get('/packageList', 'getPackages')->name('getPackages');
         Route::get('/packageListCreate', 'getCreatePackageView')->name('getCreatePackageView');
         Route::get('/import', 'getBulkImportView')->name('getBulkImportView');
         Route::get('/download-csv-template', 'downloadCSVTemplate')->name('downloadCSVTemplate');
+        Route::get('/deliveredPackages', 'getDeliveredPackagesView')->name('getDeliveredPackagesView');
+        Route::get('/customerlist/resetDeliveredPackagesFilters', 'resetDeliveredPackagesFilters')->name('resetDeliveredPackagesFilters');
+
     });
 
-    Route::controller(LabelController::class)->group(function() {
+    Route::controller(LabelController::class)->group(function () {
         Route::get('/getLabelView', 'getLabels')->name('getLabels');
         Route::get('/labelCreate/{id}', 'getCreateLabelView')->name('getCreateLabelView');
         Route::post('/labelSave', 'saveLabel')->name('saveLabel');
@@ -58,16 +63,24 @@ Route::group(['middleware' => ['auth']], function () {
 
     });
 
-    Route::controller(PickupController::class)->group(function() {
+    Route::controller(PickupController::class)->group(function () {
         Route::get('/pickuplist', 'getPickupView')->name('getPickupView');
         Route::post('/pickupSaveBulk', 'savePickupBulk')->name('savePickupBulk');
         Route::post('/pickupCreateBulk', 'getCreatePickupBulk')->name('getCreatePickupBulk');
         Route::get('/pickupCreate/{id}', 'getCreatePickupView')->name('getCreatePickupView');
         Route::post('/pickupSave', 'savePickup')->name('savePickup');
+        Route::get('/pickupCalendar', 'getCalendarView')->name('getCalendarView');
+        Route::post('/pickupCalendarNewWeek', 'changeCalendarWeek')->name('changeCalendarWeek');
     });
 
-    Route::controller(StatusController::class)->group(function() {
+    Route::controller(StatusController::class)->group(function () {
         Route::get('/statuslist', 'getStatusView')->name('getStatusView');
+        Route::get('/updateStatus/{id}', 'getUpdateStatusView')->name('getUpdateStatusView');
+    });
+
+    Route::controller(ReviewController::class)->group(function () {
+        Route::get('/reviewlist', 'getReviewView')->name('getReviewView');
+        Route::get('/writeReview', 'getCreateReviewView')->name('getCreateReviewView');
     });
 });
 
