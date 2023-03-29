@@ -48,10 +48,10 @@
                         </form>
                     </div>
 
-                    <div class="col-5">
+                    <div class="col-4">
                         <form class="" method="GET" action="{{ route('getCustomerView') }}">
                             <div class="row">
-                                <div class="col-5">
+                                <div class="col-8">
                                     <label for="city">City:</label>
                                     <select name="city" id="city" class="form-control">
                                         <option value="">-- Select city --</option>
