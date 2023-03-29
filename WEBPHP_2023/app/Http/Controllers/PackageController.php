@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Package;
 use App\Models\Pickup;
 use App\Models\User;
-use DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;

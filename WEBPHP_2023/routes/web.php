@@ -41,6 +41,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/userListEdit/{id}', 'getEditUserView')->name('getEditUserView');
         Route::post('/userListUpdate', 'updateUser')->name('updateUser');
         Route::get('/customerList', 'getCustomerView')->name('getCustomerView');
+        Route::get('/customerlist/resetCustomerFilters', 'resetCustomerFilters')->name('resetCustomerFilters');
     });
 
     Route::controller(PackageController::class)->group(function() {

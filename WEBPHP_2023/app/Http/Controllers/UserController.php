@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Package;
+use App\Models\Status;
 use App\Models\User;
 use Illuminate\Http\Request;
 use DB;
@@ -106,16 +107,93 @@ class UserController extends Controller
         return redirect()->route('getUsers');
     }
 
-    public function getCustomerView() {
-        if (Auth::user()->role == 'webshop') {
-            $packages = Package::where('webshopName', Auth::user()->name)->get()->groupBy('customerName');
+//    public function getCustomerView() {
+//        if (Auth::user()->role == 'webshop') {
+//            $packages = Package::where('webshopName', Auth::user()->name)->get()->groupBy('customerName');
+//
+//        }
+//        else {
+//            $packages = Package::where('webshopName', Auth::user()->company)->get()->groupBy('customerName');
+//        }
+////        dd($packages);
+//
+//        return view('customers.customerlist', ['packages' => $packages]);
+//    }
 
+    public function getCustomerView(Request $request)
+    {
+        // get sorting field
+        $originalSortField = $request->get('sort_field', session('sort_field', 'id'));
+        $sortField = $originalSortField;
+        $sortOrder = 'asc'; // default sort order
+
+        if ($request->formused == 'true') {
+            // if sorting field is reversed, set sortOrder to desc
+            if (strpos($sortField, 'reversed') !== false) {
+                $sortOrder = 'desc';
+                // remove the 'reversed' suffix from the sortField name
+                $sortField = str_replace('reversed', '', $sortField);
+            }
         }
         else {
-            $packages = Package::where('webshopName', Auth::user()->company)->get()->groupBy('customerName');
+            if (session()->get('sort_order') != null) {
+                $sortOrder = session()->get('sort_order');
+            }
+            else {
+                $sortOrder = 'asc';
+            }
         }
-//        dd($packages);
 
-        return view('customers.customerlist', ['packages' => $packages]);
+
+        // get all packages
+        if (Auth::user()->role == 'webshop') {
+            $packages = Package::where('webshopName', Auth::user()->name)->orderBy($sortField, $sortOrder)->simplePaginate(3)->groupBy('customerName');
+        } else {
+            $packages = Package::where('webshopName', Auth::user()->company)->orderBy($sortField, $sortOrder)->simplePaginate(3)->groupBy('customerName');
+            dd($packages);
+        }
+
+        // get all status filter options
+        $statuses = Status::pluck('description', 'id');
+
+        // get all city filter options
+        $cities = Package::distinct('customerCity')->pluck('customerCity');
+
+        // apply filters
+        if ($request->has('status') && $request->status !== '' && $request->status !== null) {
+            $packages = $packages->where('status', strtolower($request->status));
+            session(['status' => $request->status]);
+        } elseif (session()->has('status')) {
+            $packages = $packages->where('status', strtolower(session('status')));
+        }
+
+        if ($request->has('city') && $request->city !== '' && $request->city !== null) {
+            $packages = $packages->where('customerCity', $request->city);
+            session(['city' => $request->city]);
+        } elseif (session()->has('city')) {
+            $packages = $packages->where('customerCity', session('city'));
+        }
+//        $packages = $packages->simplePaginate(3); // 10 items per page
+
+        // store old values in session variables
+        session([
+            'sort_field' => $sortField,
+            'sort_order' => $sortOrder
+        ]);
+
+        return view('customers.customerlist', [
+            'packages' => $packages,
+            'sortField' => $originalSortField,
+            'sortOrder' => $sortOrder,
+            'statuses' => $statuses,
+            'cities' => $cities
+        ]);
+    }
+
+    public function resetCustomerFilters()
+    {
+        session()->forget(['city', 'sort_field', 'sort_order']);
+
+        return redirect()->route('getCustomerView');
     }
 }
