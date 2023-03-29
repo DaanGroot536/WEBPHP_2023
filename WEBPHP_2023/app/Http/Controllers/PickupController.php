@@ -8,6 +8,7 @@ use App\Models\Package;
 use App\Models\Pickup;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PickupController extends Controller
 {
@@ -79,7 +80,8 @@ class PickupController extends Controller
                 'pickup_datetime' => $pickupDateTime
             ]);
             Package::where('id', $package->id)->update([
-                'pickupID' => $pickup->id
+                'pickupID' => $pickup->id,
+                'status' => 'Delivered to warehouse',
             ]);
         }
 
@@ -89,7 +91,13 @@ class PickupController extends Controller
     public function getCreatePickupBulk(Request $request)
     {
         $packagesForPickup = [];
-        $packages = Package::all();
+        if (Auth::user()->role == 'webshop') {
+            $packages = Package::where('webshopName', Auth::user()->name)->get()->groupBy('customerName');
+
+        }
+        else {
+            $packages = Package::where('webshopName', Auth::user()->company)->get()->groupBy('customerName');
+        }
         $minDate = date('Y-m-d', strtotime('+3 days'));
         foreach ($packages as $package) {
             if ($request->{$package->id} != null) {

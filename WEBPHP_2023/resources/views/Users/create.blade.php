@@ -23,7 +23,13 @@
                         <label>User Role*</label>
                         <select class="form-control" name="role">
                             @foreach($roles as $role)
-                                <option value="{{$role->type}}">{{$role->type}}</option>
+                                @if (Auth::user()->role == 'webshop')
+                                    @if ($role->type == 'employee' || $role->type == 'packer')
+                                        <option value="{{$role->type}}">{{$role->type}}</option>
+                                    @endif
+                                @else
+                                    <option value="{{$role->type}}">{{$role->type}}</option>
+                                @endif
                             @endforeach
                         </select>
                         <hr>

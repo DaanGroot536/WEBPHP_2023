@@ -22,6 +22,7 @@ class Package extends Model
         'webshopHousenumber',
         'webshopZipcode',
         'webshopCity',
+        'customerEmail',
         'customerName',
         'customerStreet',
         'customerHousenumber',

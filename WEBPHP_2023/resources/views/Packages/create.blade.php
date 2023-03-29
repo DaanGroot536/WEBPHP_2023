@@ -19,6 +19,9 @@
                     <label>Weight in grams</label>
                     <input class="form-control" type="number" min="0" max="40000" name="weight" placeholder="weight">
                     <hr>
+                    <label>Customer Email</label>
+                    <input class="form-control" type="email" name="customerEmail" placeholder="customerEmail">
+                    <br>
                     <label>Customer Street</label>
                     <input class="form-control" type="text" name="customerStreet" placeholder="customerStreet">
                     <br>

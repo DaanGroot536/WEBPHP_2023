@@ -5,22 +5,26 @@
     <div class="row justify-content-center mt-5">
         <div class="">
             <div class="card">
-                <div class="card-header">{{Auth::user()->role}} Dashboard</div>
+                @if (Auth::user()->role == 'employee')
+                    <div class="card-header">{{Auth::user()->company}} Dashboard</div>
+                @else
+                    <div class="card-header">{{Auth::user()->name}} Dashboard</div>
+                @endif
                 <div class="card-body">
 
-                    @if (Auth::user()->role == 'superadmin')
+                    @if (Auth::user()->role == 'superadmin' || Auth::user()->role == 'webshop')
                         <div class="row mx-3">
                             <p class="col">UserList</p>
                             <a href="{{ route('getUserView') }}" class="btn btn-secondary col-1"> ></a>
                         </div>
                     @endif
-                    @if(Auth::user()->role == 'superadmin' || Auth::user()->role == 'employee' || Auth::user()->role == 'customer')
+                    @if(Auth::user()->role == 'employee' || Auth::user()->role == 'customer')
                         <div class="row mx-3 mt-1">
                             <p class="col">Packages</p>
                             <a href="{{route('getPackages')}}" class="btn btn-secondary col-1"> ></a>
                         </div>
                     @endif
-                    @if(Auth::user()->role == 'superadmin' || Auth::user()->role == 'employee')
+                    @if(Auth::user()->role == 'employee')
 
                         <div class="row mx-3 mt-1">
                             <p class="col">Labels</p>
@@ -44,6 +48,10 @@
                         <div class="row mx-3 mt-1">
                             <p class="col">Packages</p>
                             <a href="{{route('getPackages')}}" class="btn btn-secondary col-1"> ></a>
+                        </div>
+                        <div class="row mx-3 mt-1">
+                            <p class="col">Customer List</p>
+                            <a href="{{route('getCustomerView')}}" class="btn btn-secondary col-1"> ></a>
                         </div>
                     @endif
                     @if (Auth::user()->role == 'deliverer')

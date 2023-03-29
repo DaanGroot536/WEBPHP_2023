@@ -13,16 +13,22 @@ use Illuminate\Support\Str;
 class UserController extends Controller
 {
     public function getUserView() {
-        if (Auth::user()->role != 'superadmin') {
+        if (Auth::user()->role != 'superadmin' && Auth::user()->role != 'webshop') {
             return redirect()->route('dashboard');
         }
 
-        $users = DB::table('users')->get();
+        if (Auth::user()->role == 'superadmin') {
+            $users = User::all();
+        }
+        if (Auth::user()->role == 'webshop') {
+            $users = User::where('company', Auth::user()->name)->get();
+        }
+
         return view('users.userlist', ['users' => $users]);
     }
 
     public function getCreateUserView() {
-        if (Auth::user()->role != 'superadmin') {
+        if (Auth::user()->role != 'superadmin' && Auth::user()->role != 'webshop') {
             return redirect()->route('dashboard');
         }
 
@@ -36,23 +42,40 @@ class UserController extends Controller
 //            'email' => 'required|email|max:250|unique:users',
 //            'password' => 'required|min:8|confirmed',
 //        ]);
-        User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-            'role' => $request->role,
-            'street' => $request->street,
-            'housenumber' => $request->housenumber,
-            'zipcode' => $request->zipcode,
-            'city' => $request->city,
-            'api_token' => Str::random(60),
-        ]);
+        if (Auth::user()->role == 'webshop') {
+            User::create([
+                'name' => $request->name,
+                'email' => $request->email,
+                'password' => Hash::make($request->password),
+                'role' => $request->role,
+                'street' => $request->street,
+                'housenumber' => $request->housenumber,
+                'zipcode' => $request->zipcode,
+                'city' => $request->city,
+                'api_token' => Str::random(60),
+                'company' => Auth::user()->name,
+            ]);
+        }
+        else {
+            User::create([
+                'name' => $request->name,
+                'email' => $request->email,
+                'password' => Hash::make($request->password),
+                'role' => $request->role,
+                'street' => $request->street,
+                'housenumber' => $request->housenumber,
+                'zipcode' => $request->zipcode,
+                'city' => $request->city,
+                'api_token' => Str::random(60),
+            ]);
+        }
+
 
         return redirect()->route('getUserView');
     }
 
     public function getEditUserView($id) {
-        if (Auth::user()->role != 'superadmin') {
+        if (Auth::user()->role != 'superadmin' && Auth::user()->role != 'webshop') {
             return redirect()->route('dashboard');
         }
 
@@ -84,7 +107,13 @@ class UserController extends Controller
     }
 
     public function getCustomerView() {
-        $packages = Package::where('webshopName', Auth::user()->company)->get()->groupBy('customerName');
+        if (Auth::user()->role == 'webshop') {
+            $packages = Package::where('webshopName', Auth::user()->name)->get()->groupBy('customerName');
+
+        }
+        else {
+            $packages = Package::where('webshopName', Auth::user()->company)->get()->groupBy('customerName');
+        }
 //        dd($packages);
 
         return view('customers.customerlist', ['packages' => $packages]);

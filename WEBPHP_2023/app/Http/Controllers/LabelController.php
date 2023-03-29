@@ -13,7 +13,6 @@ class LabelController extends Controller
     public function getLabels()
     {
         $packages = Package::where('webshopName', Auth::user()->company)->get();
-        dd($packages);
         $labels = Label::all();
         return view('labels.labellist', ['packages' => $packages, 'labels' => $labels]);
     }
