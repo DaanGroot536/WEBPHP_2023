@@ -24,7 +24,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::controller(LoginRegisterController::class)->group(function() {
+Route::controller(LoginRegisterController::class)->group(function () {
     Route::get('/register', 'register')->name('register');
     Route::post('/store', 'store')->name('store');
     Route::get('/login', 'login')->name('login');
@@ -34,7 +34,7 @@ Route::controller(LoginRegisterController::class)->group(function() {
 });
 
 Route::group(['middleware' => ['auth']], function () {
-    Route::controller(UserController::class)->group(function() {
+    Route::controller(UserController::class)->group(function () {
         Route::get('/userlist', 'getUserView')->name('getUserView');
         Route::get('/userlistCreate', 'getCreateUserView')->name('getCreateUserView');
         Route::post('/userListSave', 'saveUser')->name('saveUser');
@@ -44,15 +44,17 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/customerlist/resetCustomerFilters', 'resetCustomerFilters')->name('resetCustomerFilters');
     });
 
-    Route::controller(PackageController::class)->group(function() {
+    Route::controller(PackageController::class)->group(function () {
         Route::get('/packageList', 'getPackages')->name('getPackages');
         Route::get('/packageListCreate', 'getCreatePackageView')->name('getCreatePackageView');
         Route::get('/import', 'getBulkImportView')->name('getBulkImportView');
         Route::get('/download-csv-template', 'downloadCSVTemplate')->name('downloadCSVTemplate');
         Route::get('/deliveredPackages', 'getDeliveredPackagesView')->name('getDeliveredPackagesView');
+        Route::get('/customerlist/resetDeliveredPackagesFilters', 'resetDeliveredPackagesFilters')->name('resetDeliveredPackagesFilters');
+
     });
 
-    Route::controller(LabelController::class)->group(function() {
+    Route::controller(LabelController::class)->group(function () {
         Route::get('/getLabelView', 'getLabels')->name('getLabels');
         Route::get('/labelCreate/{id}', 'getCreateLabelView')->name('getCreateLabelView');
         Route::post('/labelSave', 'saveLabel')->name('saveLabel');
@@ -60,7 +62,7 @@ Route::group(['middleware' => ['auth']], function () {
 
     });
 
-    Route::controller(PickupController::class)->group(function() {
+    Route::controller(PickupController::class)->group(function () {
         Route::get('/pickuplist', 'getPickupView')->name('getPickupView');
         Route::post('/pickupSaveBulk', 'savePickupBulk')->name('savePickupBulk');
         Route::post('/pickupCreateBulk', 'getCreatePickupBulk')->name('getCreatePickupBulk');
@@ -70,7 +72,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::post('/pickupCalendarNewWeek', 'changeCalendarWeek')->name('changeCalendarWeek');
     });
 
-    Route::controller(StatusController::class)->group(function() {
+    Route::controller(StatusController::class)->group(function () {
         Route::get('/statuslist', 'getStatusView')->name('getStatusView');
         Route::get('/updateStatus/{id}', 'getUpdateStatusView')->name('getUpdateStatusView');
     });
