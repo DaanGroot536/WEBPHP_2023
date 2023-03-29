@@ -21,7 +21,7 @@ class PackageSeeder extends Seeder
             'customerHousenumber' => 10,
             'customerZipcode' => '4867GS',
             'customerCity' => 'Amsterdam',
-            'status' => 'submitted',
+            'status' => 'Submitted',
             'dimensions' => '40x70x30',
             'weight' => '1500',
         ]);
@@ -38,7 +38,7 @@ class PackageSeeder extends Seeder
             'customerHousenumber' => 8,
             'customerZipcode' => '7655YU',
             'customerCity' => 'Haarlem',
-            'status' => 'submitted',
+            'status' => 'Submitted',
             'dimensions' => '20x90x20',
             'weight' => '1800',
         ]);
@@ -55,7 +55,7 @@ class PackageSeeder extends Seeder
             'customerHousenumber' => 14,
             'customerZipcode' => '1615CH',
             'customerCity' => 'Amsterdam',
-            'status' => 'submitted',
+            'status' => 'Submitted',
             'dimensions' => '20x10x20',
             'weight' => '300',
         ]);
@@ -72,7 +72,7 @@ class PackageSeeder extends Seeder
             'customerHousenumber' => 44,
             'customerZipcode' => '5456HK',
             'customerCity' => 'Amsterdam',
-            'status' => 'submitted',
+            'status' => 'Submitted',
             'dimensions' => '80x60x40',
             'weight' => '1200',
         ]);
@@ -89,7 +89,7 @@ class PackageSeeder extends Seeder
             'customerHousenumber' => 20,
             'customerZipcode' => '4798VB',
             'customerCity' => 'Den Haag',
-            'status' => 'submitted',
+            'status' => 'Submitted',
             'dimensions' => '30x20x60',
             'weight' => '900',
         ]);
@@ -106,7 +106,7 @@ class PackageSeeder extends Seeder
             'customerHousenumber' => 8,
             'customerZipcode' => '7890KL',
             'customerCity' => 'Amersfoort',
-            'status' => 'submitted',
+            'status' => 'Submitted',
             'dimensions' => '100x80x60',
             'weight' => '2500',
         ]);
@@ -123,7 +123,7 @@ class PackageSeeder extends Seeder
             'customerHousenumber' => 23,
             'customerZipcode' => '4567LM',
             'customerCity' => 'Hoek van Holland',
-            'status' => 'submitted',
+            'status' => 'Submitted',
             'dimensions' => '90x60x50',
             'weight' => '1800',
         ]);
@@ -140,7 +140,7 @@ class PackageSeeder extends Seeder
             'customerHousenumber' => 10,
             'customerZipcode' => '6789NO',
             'customerCity' => 'Gouda',
-            'status' => 'submitted',
+            'status' => 'Submitted',
             'dimensions' => '120x80x40',
             'weight' => '3000',
         ]);
@@ -157,7 +157,7 @@ class PackageSeeder extends Seeder
             'customerHousenumber' => 21,
             'customerZipcode' => '5678PQ',
             'customerCity' => 'Nuenen',
-            'status' => 'submitted',
+            'status' => 'Submitted',
             'dimensions' => '60x60x60',
             'weight' => '1400',
         ]);
@@ -174,7 +174,7 @@ class PackageSeeder extends Seeder
             'customerHousenumber' => 12,
             'customerZipcode' => '7890RS',
             'customerCity' => 'Kampen',
-            'status' => 'submitted',
+            'status' => 'Submitted',
             'dimensions' => '70x50x40',
             'weight' => '900',
         ]);
@@ -191,7 +191,7 @@ class PackageSeeder extends Seeder
             'customerHousenumber' => 23,
             'customerZipcode' => '5678CD',
             'customerCity' => 'Utrecht',
-            'status' => 'submitted',
+            'status' => 'Submitted',
             'dimensions' => '50x40x30',
             'weight' => '1000',
         ]);
@@ -208,7 +208,7 @@ class PackageSeeder extends Seeder
             'customerHousenumber' => 12,
             'customerZipcode' => '6789GH',
             'customerCity' => 'Den Haag',
-            'status' => 'submitted',
+            'status' => 'Submitted',
             'dimensions' => '80x60x40',
             'weight' => '1500',
         ]);
@@ -225,7 +225,7 @@ class PackageSeeder extends Seeder
             'customerHousenumber' => 8,
             'customerZipcode' => '7890KL',
             'customerCity' => 'Amersfoort',
-            'status' => 'submitted',
+            'status' => 'Submitted',
             'dimensions' => '100x80x60',
             'weight' => '2500',
         ]);
@@ -242,7 +242,7 @@ class PackageSeeder extends Seeder
             'customerHousenumber' => 5,
             'customerZipcode' => '6789HI',
             'customerCity' => 'Utrecht',
-            'status' => 'submitted',
+            'status' => 'Submitted',
             'dimensions' => '60x40x20',
             'weight' => '2000',
         ]);
@@ -259,7 +259,7 @@ class PackageSeeder extends Seeder
             'customerHousenumber' => 14,
             'customerZipcode' => '7890LM',
             'customerCity' => 'Den Haag',
-            'status' => 'submitted',
+            'status' => 'Submitted',
             'dimensions' => '70x50x30',
             'weight' => '1200',
         ]);
@@ -276,7 +276,7 @@ class PackageSeeder extends Seeder
             'customerHousenumber' => 2,
             'customerZipcode' => '8901MN',
             'customerCity' => 'Amersfoort',
-            'status' => 'submitted',
+            'status' => 'Submitted',
             'dimensions' => '90x70x50',
             'weight' => '2900',
         ]);
@@ -293,7 +293,7 @@ class PackageSeeder extends Seeder
             'customerHousenumber' => 88,
             'customerZipcode' => '5678CD',
             'customerCity' => 'Amsterdam',
-            'status' => 'submitted',
+            'status' => 'Submitted',
             'dimensions' => '50x50x50',
             'weight' => '1000',
         ]);
@@ -310,7 +310,7 @@ class PackageSeeder extends Seeder
             'customerHousenumber' => 10,
             'customerZipcode' => '6789GH',
             'customerCity' => 'Utrecht',
-            'status' => 'submitted',
+            'status' => 'Submitted',
             'dimensions' => '40x30x20',
             'weight' => '2500',
         ]);
@@ -327,7 +327,7 @@ class PackageSeeder extends Seeder
             'customerHousenumber' => 25,
             'customerZipcode' => '7890IJ',
             'customerCity' => 'Utrecht',
-            'status' => 'submitted',
+            'status' => 'Submitted',
             'dimensions' => '80x60x40',
             'weight' => '2000',
         ]);
@@ -344,7 +344,7 @@ class PackageSeeder extends Seeder
             'customerHousenumber' => 23,
             'customerZipcode' => '4512BC',
             'customerCity' => 'Amsterdam',
-            'status' => 'submitted',
+            'status' => 'Submitted',
             'dimensions' => '120x80x60',
             'weight' => '1000',
         ]);
@@ -361,7 +361,7 @@ class PackageSeeder extends Seeder
             'customerHousenumber' => 45,
             'customerZipcode' => '5678CD',
             'customerCity' => 'Utrecht',
-            'status' => 'submitted',
+            'status' => 'Submitted',
             'dimensions' => '80x60x40',
             'weight' => '1500',
         ]);
@@ -378,7 +378,7 @@ class PackageSeeder extends Seeder
             'customerHousenumber' => 30,
             'customerZipcode' => '9012EF',
             'customerCity' => 'Rotterdam',
-            'status' => 'submitted',
+            'status' => 'Submitted',
             'dimensions' => '120x100x80',
             'weight' => '2500',
         ]);
@@ -395,7 +395,7 @@ class PackageSeeder extends Seeder
             'customerHousenumber' => 60,
             'customerZipcode' => '3456GH',
             'customerCity' => 'Den Haag',
-            'status' => 'submitted',
+            'status' => 'Submitted',
             'dimensions' => '100x80x60',
             'weight' => '2000',
         ]);
@@ -412,7 +412,7 @@ class PackageSeeder extends Seeder
             'customerHousenumber' => 15,
             'customerZipcode' => '6789KL',
             'customerCity' => 'Groningen',
-            'status' => 'submitted',
+            'status' => 'Submitted',
             'dimensions' => '120x80x40',
             'weight' => '1700',
         ]);
@@ -429,7 +429,7 @@ class PackageSeeder extends Seeder
             'customerHousenumber' => 12,
             'customerZipcode' => '5678MN',
             'customerCity' => 'Den Haag',
-            'status' => 'submitted',
+            'status' => 'Submitted',
             'dimensions' => '60x80x100',
             'weight' => '1000',
         ]);
@@ -446,7 +446,7 @@ class PackageSeeder extends Seeder
             'customerHousenumber' => 25,
             'customerZipcode' => '3456RS',
             'customerCity' => 'Apeldoorn',
-            'status' => 'submitted',
+            'status' => 'Submitted',
             'dimensions' => '80x60x120',
             'weight' => '1500',
         ]);
@@ -463,7 +463,7 @@ class PackageSeeder extends Seeder
             'customerHousenumber' => 21,
             'customerZipcode' => '8910KL',
             'customerCity' => 'Groningen',
-            'status' => 'submitted',
+            'status' => 'Submitted',
             'dimensions' => '100x80x80',
             'weight' => '2000',
         ]);
@@ -480,7 +480,7 @@ class PackageSeeder extends Seeder
             'customerHousenumber' => 17,
             'customerZipcode' => '7994CS',
             'customerCity' => 'Den Haag',
-            'status' => 'submitted',
+            'status' => 'Submitted',
             'dimensions' => '80x100x60',
             'weight' => '2300',
         ]);
@@ -497,7 +497,7 @@ class PackageSeeder extends Seeder
             'customerHousenumber' => 6,
             'customerZipcode' => '4567FG',
             'customerCity' => 'Eindhoven',
-            'status' => 'submitted',
+            'status' => 'Submitted',
             'dimensions' => '100x100x100',
             'weight' => '2500',
         ]);
@@ -514,7 +514,7 @@ class PackageSeeder extends Seeder
             'customerHousenumber' => 7,
             'customerZipcode' => '2106LC',
             'customerCity' => 'Heemstede',
-            'status' => 'submitted',
+            'status' => 'Submitted',
             'dimensions' => '120x80x40',
             'weight' => '800',
         ]);
@@ -531,7 +531,7 @@ class PackageSeeder extends Seeder
             'customerHousenumber' => 141,
             'customerZipcode' => '1062EC',
             'customerCity' => 'Amsterdam',
-            'status' => 'submitted',
+            'status' => 'Submitted',
             'dimensions' => '80x60x60',
             'weight' => '1500',
         ]);
@@ -548,7 +548,7 @@ class PackageSeeder extends Seeder
             'customerHousenumber' => 157,
             'customerZipcode' => '1075HH',
             'customerCity' => 'Amsterdam',
-            'status' => 'submitted',
+            'status' => 'Submitted',
             'dimensions' => '100x60x80',
             'weight' => '1100',
         ]);
@@ -565,7 +565,7 @@ class PackageSeeder extends Seeder
             'customerHousenumber' => 4,
             'customerZipcode' => '2513AB',
             'customerCity' => 'Den Haag',
-            'status' => 'submitted',
+            'status' => 'Submitted',
             'dimensions' => '120x100x60',
             'weight' => '2200',
         ]);
@@ -582,7 +582,7 @@ class PackageSeeder extends Seeder
             'customerHousenumber' => 34,
             'customerZipcode' => '2514EG',
             'customerCity' => 'Den Haag',
-            'status' => 'submitted',
+            'status' => 'Submitted',
             'dimensions' => '80x80x80',
             'weight' => '2000',
         ]);
@@ -599,7 +599,7 @@ class PackageSeeder extends Seeder
             'customerHousenumber' => 25,
             'customerZipcode' => '3456IJ',
             'customerCity' => 'Groningen',
-            'status' => 'submitted',
+            'status' => 'Submitted',
             'dimensions' => '120x80x60',
             'weight' => '1900',
         ]);
@@ -616,7 +616,7 @@ class PackageSeeder extends Seeder
             'customerHousenumber' => 10,
             'customerZipcode' => '6822FV',
             'customerCity' => 'Amsterdam',
-            'status' => 'submitted',
+            'status' => 'Submitted',
             'dimensions' => '90x70x50',
             'weight' => '2300',
         ]);

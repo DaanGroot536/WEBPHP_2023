@@ -21,15 +21,28 @@
                         </div>
                         <hr>
                         @foreach($packages as $package)
-                            <a class="link" href="{{route('getUpdateStatusView', [$package->id])}}">
-                                <div class="row mx-3 list-item">
-                                    <p class="col-1 p-3">{{$package->id}}</p>
-                                    <p class="col-2 p-3">{{$package->status}}</p>
-                                    <p class="col-3 p-3">{{$package->customerStreet}} {{$package->customerHousenumber}} {{$package->customerCity}}</p>
-                                    <p class="col-2 p-3">{{$package->dimensions}}</p>
-                                    <p class="col-2 p-3">{{$package->weight}}</p>
-                                </div>
-                            </a>
+                            @if ($package->status != 'Submitted' && $package->status != 'Label printed')
+                                @if ($package->status == 'Delivered to customer')
+                                    <div class="row mx-3 list-item">
+                                        <p class="col-1 p-3">{{$package->id}}</p>
+                                        <p class="col-2 p-3">{{$package->status}}</p>
+                                        <p class="col-3 p-3">{{$package->customerStreet}} {{$package->customerHousenumber}} {{$package->customerCity}}</p>
+                                        <p class="col-2 p-3">{{$package->dimensions}}</p>
+                                        <p class="col-2 p-3">{{$package->weight}}</p>
+                                    </div>
+                                @else
+                                    <a class="link" href="{{route('getUpdateStatusView', [$package->id])}}">
+                                        <div class="row mx-3 list-item">
+                                            <p class="col-1 p-3">{{$package->id}}</p>
+                                            <p class="col-2 p-3">{{$package->status}}</p>
+                                            <p class="col-3 p-3">{{$package->customerStreet}} {{$package->customerHousenumber}} {{$package->customerCity}}</p>
+                                            <p class="col-2 p-3">{{$package->dimensions}}</p>
+                                            <p class="col-2 p-3">{{$package->weight}}</p>
+                                        </div>
+                                    </a>
+                                @endif
+
+                            @endif
                         @endforeach
                     </div>
                 </div>

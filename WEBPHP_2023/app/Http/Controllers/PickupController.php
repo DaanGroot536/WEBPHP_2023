@@ -92,11 +92,11 @@ class PickupController extends Controller
     {
         $packagesForPickup = [];
         if (Auth::user()->role == 'webshop') {
-            $packages = Package::where('webshopName', Auth::user()->name)->get()->groupBy('customerName');
+            $packages = Package::where('webshopName', Auth::user()->name)->get();
 
         }
         else {
-            $packages = Package::where('webshopName', Auth::user()->company)->get()->groupBy('customerName');
+            $packages = Package::where('webshopName', Auth::user()->company)->get();
         }
         $minDate = date('Y-m-d', strtotime('+3 days'));
         foreach ($packages as $package) {
