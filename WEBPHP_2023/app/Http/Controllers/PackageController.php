@@ -28,7 +28,13 @@ class PackageController extends Controller
             }
         }
         else {
-            $sortOrder = session()->get('sort_order');
+            if (session()->get('sort_order') != null) {
+                $sortOrder = session()->get('sort_order');
+
+            }
+            else {
+                $sortOrder = 'asc';
+            }
         }
 
 
