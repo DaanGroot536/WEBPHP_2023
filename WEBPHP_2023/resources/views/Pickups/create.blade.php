@@ -8,10 +8,20 @@
     <div class="row justify-content-center mt-5">
         <div class="">
             <div class="card">
-                <div class="card-header"><a class="link" href="{{route('dashboard')}}">{{Auth::user()->role}}
-                        Dashboard</a> -> <a class="link" href="{{route('getPickupView')}}">Plan Pickups</a> -> Create
-                    Pickup
-                </div>
+                @if (Auth::user()->role == 'employee')
+                    <div class="card-header"><a class="link" href="{{route('dashboard')}}">{{Auth::user()->company}}
+                            Dashboard</a> -> <a class="link" href="{{route('getPickupView')}}">Plan Pickups</a> ->
+                        Create
+                        Pickup
+                    </div>
+                @else
+                    <div class="card-header"><a class="link"
+                                                href="{{route('dashboard')}}">{{Auth::user()->name}}
+                            Dashboard</a> -> <a class="link" href="{{route('getPickupView')}}">Plan Pickups</a> ->
+                        Create
+                        Pickup
+                    </div>
+                @endif
                 <div class="w-75 mx-auto my-5">
                     @if($packages == null)
                         <p>ID: {{$package->id}}</p>
@@ -29,36 +39,20 @@
                         @endforeach
                     @endif
                     <br>
-                    @if($packages != null)
-                        <form action="{{route('savePickupBulk')}}" method="post" class="w-50">
-                            @csrf
-                            <input type="number" name="packageID" value="{{$package->id}}" hidden>
-                            <label>Date</label>
-                            <input class="form-control" type="date" name="date" min="{{$mindate}}">
-                            <label>Time</label>
-                            <input class="form-control mt-1" type="time" name="time" min="00:00" max="15:00"
-                                   value="00:00"
-                                   step="900">
-                            <input type="submit" class="btn btn-success mt-1" value="Plan Pickup">
-                            @foreach($packages as $package)
-                                <input type="number" name="{{$package->id}}" value="{{$package->id}}" hidden>
-                            @endforeach
-                        </form>
-                    @else
-                        <form action="{{route('savePickup')}}" method="post" class="w-50">
-                            @csrf
-                            <input type="number" name="packageID" value="{{$package->id}}" hidden>
-                            <label>Date</label>
-                            <input class="form-control" type="date" name="date" min="{{$mindate}}">
-                            <label>Time</label>
-                            <input class="form-control mt-1" type="time" name="time" min="00:00" max="15:00"
-                                   value="00:00"
-                                   step="900">
-                            <input type="submit" class="btn btn-success mt-1" value="Plan Pickup">
-
-                        </form>
-                    @endif
-
+                    <form action="{{route('savePickupBulk')}}" method="post" class="w-50">
+                        @csrf
+                        <input type="number" name="packageID" value="{{$package->id}}" hidden>
+                        <label>Date</label>
+                        <input class="form-control" type="date" name="date" min="{{$mindate}}">
+                        <label>Time</label>
+                        <input class="form-control mt-1" type="time" name="time" min="00:00" max="15:00"
+                               value="00:00"
+                               step="900">
+                        <input type="submit" class="btn btn-success mt-1" value="Plan Pickup">
+                        @foreach($packages as $package)
+                            <input type="number" name="{{$package->id}}" value="{{$package->id}}" hidden>
+                        @endforeach
+                    </form>
                 </div>
             </div>
         </div>

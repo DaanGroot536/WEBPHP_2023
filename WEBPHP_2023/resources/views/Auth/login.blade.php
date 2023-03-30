@@ -37,41 +37,43 @@
                         </div>
                     </form>
                     <br>
-                    <div class="row">
-                        <form action="{{route('authenticate')}}" method="post" class="col-2">
-                            @csrf
-                            <input type="submit" value="LoginAdmin" class="btn btn-secondary">
-                            <input type="text" value="admin@admin.com" name="email" hidden>
-                            <input type="text" value="password" name="password" hidden>
-                        </form>
-                        <form action="{{route('authenticate')}}" method="post" class="col-2">
-                            @csrf
-                            <input type="submit" value="LoginWebshop" class="btn btn-secondary">
-                            <input type="text" value="sport@world.com" name="email" hidden>
-                            <input type="text" value="password" name="password" hidden>
-                        </form>
-                        <form action="{{route('authenticate')}}" method="post" class="col-2">
-                            @csrf
-                            <input type="submit" value="LoginEmployee" class="btn btn-secondary">
-                            <input type="text" value="emp@emp.com" name="email" hidden>
-                            <input type="text" value="password" name="password" hidden>
-                        </form>
-                        <form action="{{route('authenticate')}}" method="post" class="col-2">
-                            @csrf
-                            <input type="submit" value="LoginCustomer" class="btn btn-secondary">
-                            <input type="text" value="cust@cust.com" name="email" hidden>
-                            <input type="text" value="password" name="password" hidden>
-                        </form>
-                        <form action="{{route('authenticate')}}" method="post" class="col-2">
-                            @csrf
-                            <input type="submit" value="loginDeliverer" class="btn btn-secondary">
-                            <input type="text" value="del@del.com" name="email" hidden>
-                            <input type="text" value="password" name="password" hidden>
-                        </form>
-                    </div>
-
                 </div>
             </div>
+        </div>
+    </div>
+
+    <div class="card card-body w-75 justify-content-center mx-auto mt-3">
+        <div class="row">
+            <form action="{{route('authenticate')}}" method="post" class="col">
+                @csrf
+                <input type="submit" value="LoginAdmin" class="btn btn-secondary">
+                <input type="text" value="admin@admin.com" name="email" hidden>
+                <input type="text" value="password" name="password" hidden>
+            </form>
+            <form action="{{route('authenticate')}}" method="post" class="col">
+                @csrf
+                <input type="submit" value="LoginWebshop" class="btn btn-secondary">
+                <input type="text" value="sport@world.com" name="email" hidden>
+                <input type="text" value="password" name="password" hidden>
+            </form>
+            <form action="{{route('authenticate')}}" method="post" class="col">
+                @csrf
+                <input type="submit" value="LoginEmployee" class="btn btn-secondary">
+                <input type="text" value="emp@emp.com" name="email" hidden>
+                <input type="text" value="password" name="password" hidden>
+            </form>
+            <form action="{{route('authenticate')}}" method="post" class="col">
+                @csrf
+                <input type="submit" value="LoginCustomer" class="btn btn-secondary">
+                <input type="text" value="cust@cust.com" name="email" hidden>
+                <input type="text" value="password" name="password" hidden>
+            </form>
+            <form action="{{route('authenticate')}}" method="post" class="col">
+                @csrf
+                <input type="submit" value="loginDeliverer" class="btn btn-secondary">
+                <input type="text" value="del@del.com" name="email" hidden>
+                <input type="text" value="password" name="password" hidden>
+            </form>
         </div>
     </div>
 

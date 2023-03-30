@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PackageApiController;
+use App\Http\Controllers\StatusApiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,3 +24,10 @@ Route::controller(PackageApiController::class)->group(function () {
     Route::post('/createPackage', 'createPackage')->name('createPackage');
     Route::post('/bulk-import-csv', 'bulkImportCSV')->name('bulkImportCSV');
 });
+
+
+Route::controller(StatusApiController::class)->group(function () {
+    Route::post('/updateStatus', 'updateStatus')->name('updateStatus');
+});
+
+

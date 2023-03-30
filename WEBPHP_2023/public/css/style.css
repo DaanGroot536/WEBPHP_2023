@@ -40,3 +40,24 @@ nav {
     width: 40%;
 }
 
+.calendar-item {
+    height: 100vh;
+}
+
+.calendar {
+    border-top: 1px solid gray;
+}
+
+.rightbtn {
+    float: right;
+}
+
+.strong {
+    font-weight: bold;
+}
+
+.calendar-pickup {
+    border: solid 1px gray;
+    margin-bottom: 3px;
+    border-radius: 5px;
+}
