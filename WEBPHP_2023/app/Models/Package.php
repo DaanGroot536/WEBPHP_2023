@@ -28,6 +28,10 @@ class Package extends Model
         'customerHousenumber',
         'customerZipcode',
         'customerCity',
-
     ];
+
+    public function getFullCustomerAddressAttribute()
+    {
+        return "{$this->customerStreet} {$this->customerHousenumber}, {$this->customerZipcode} {$this->customerCity}";
+    }
 }

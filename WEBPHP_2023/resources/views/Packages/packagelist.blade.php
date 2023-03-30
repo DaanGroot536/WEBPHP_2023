@@ -17,19 +17,117 @@
                 @endif
                 <div class="card-body">
                     @if (Auth::user()->role == 'webshop')
-                        <a href="{{route('getCreatePackageView')}}" class="btn btn-success">Create Package +</a>
-                        <a href="{{route('getBulkImportView')}}" class="btn btn-success">Bulk Import</a>
+                        <a href="{{ route('getCreatePackageView') }}" class="btn btn-success">Create Package +</a>
+                        <a href="{{ route('getBulkImportView') }}" class="btn btn-success">Bulk Import</a>
                     @endif
                     @if (Auth::user()->role == 'employee')
                         <div class="row">
                             <p>Select packages for bulk labels. Next press the button to submit</p>
                         </div>
                     @endif
-                    <p></p>
+                    <div class="row mx-3">
+                        <div class="col-3">
+                            <form class="" action="{{ route('getPackages') }}" method="GET">
+                                <label for="sort_field">Sort by:</label>
+                                <div class="row">
+                                    <div class="col-8">
+                                        <select class="form-control" name="sort_field" id="sort_field">
+                                            <option value="id" {{ $sortField == 'id' ? 'selected' : '' }}>ID</option>
+                                            <option
+                                                value="idreversed" {{ $sortField == 'idreversed' ? 'selected' : '' }}>ID
+                                                - Reversed
+                                            </option>
+                                            <option value="status" {{ $sortField == 'status' ? 'selected' : '' }}>
+                                                Status
+                                            </option>
+                                            <option
+                                                value="statusreversed" {{ $sortField == 'statusreversed' ? 'selected' : '' }}>
+                                                Status - Reversed
+                                            </option>
+                                            <option value="weight" {{ $sortField == 'weight' ? 'selected' : '' }}>
+                                                Weight
+                                            </option>
+                                            <option
+                                                value="weightreversed" {{ $sortField == 'weightreversed' ? 'selected' : '' }}>
+                                                Weight - Reversed
+                                            </option>
+                                            <option
+                                                value="customerCity" {{ $sortField == 'customerCity' ? 'selected' : '' }}>
+                                                City
+                                            </option>
+                                            <option
+                                                value="customerCityreversed" {{ $sortField == 'customerCityreversed' ? 'selected' : '' }}>
+                                                City - Reversed
+                                            </option>
+                                        </select>
+                                        <input type="text" name="formused" value="true" hidden>
+                                    </div>
+                                    <div class="col-3">
+                                        <button class="btn btn-primary" type="submit">Sort</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                        <div class="col-5">
+                            <form class="" method="GET" action="{{ route('getPackages') }}">
+                                <div class="row">
+                                    <div class="col-5">
+                                        <label for="status">Status:</label>
+                                        <select name="status" id="status" class="form-control">
+                                            <option value="">-- Select status --</option>
+                                            @foreach ($statuses as $id => $description)
+                                                <option value="{{ $description }}"
+                                                        @if (strtolower($description) === strtolower(request('status'))) selected @endif> {{ strtolower($description) }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="col-5">
+                                        <label for="city">City:</label>
+                                        <select name="city" id="city" class="form-control">
+                                            <option value="">-- Select city --</option>
+                                            @foreach ($cities as $city)
+                                                <option value="{{ $city }}"
+                                                        @if ($city === request('city')) selected @endif>{{ $city }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="col-2">
+                                        <button class="btn btn-primary mt-4" type="submit">Filter</button>
+                                    </div>
+                                </div>
+                                <input type="text" name="formused" value="true" hidden>
+                            </form>
+                        </div>
+
+                        <div class="col-3">
+                            <form>
+                                <label>FullText Search:</label>
+
+                                <div class="row">
+                                    <div class="col-8">
+                                        <input class="form-control" type="text" placeholder="FullText Search">
+                                    </div>
+                                    <div class="col-2">
+                                        <input class="btn btn-primary" type="submit" value="Search">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                        <div class="col-1">
+                            <form class="" action="{{ route('resetFilters') }}" method="GET">
+                                <input type="hidden" name="reset" value="1">
+                                <button class="btn btn-primary mt-4" type="submit">Reset</button>
+                            </form>
+                        </div>
+                    </div>
+                    <hr>
+
                     <div class="row mx-4">
                         @if (Auth::user()->role == 'employee')
                             <div class="col-2 p-0">
-                                <form action="{{route('saveLabelBulk')}}" method="post" class="mt-2">
+                                <form action="{{ route('saveLabelBulk') }}" method="post" class="mt-2">
                                     @csrf
                                     <select class="form-control d-inline-block w-40" name="delivererBulk">
                                         <option value="DHL">DHL</option>
@@ -37,18 +135,16 @@
                                         <option value="DPD">DPD</option>
                                         <option value="UPS">UPS</option>
                                     </select>
-                                    <input type="submit" class="btn btn-secondary mb-1 w-50"
-                                           value="Create Bulk">
+                                    <input type="submit" class="btn btn-secondary mb-1 w-50" value="Create Bulk">
 
                                     <div class="checklist">
-                                        @foreach($packages as $package)
+                                        @foreach ($packages as $package)
                                             <div class="row">
                                                 <div class="col"></div>
                                                 <div class="checkitem col">
-                                                    @if($package->labelID == null)
+                                                    @if ($package->labelID == null)
                                                         <input type="checkbox" class="packageCheck"
-                                                               name="{{$package->id}}"
-                                                               value="true">
+                                                               name="{{ $package->id }}" value="true">
                                                     @endif
                                                 </div>
                                             </div>
@@ -58,18 +154,27 @@
                             </div>
                         @endif
                         <div class="p-3 list-box col-10 mb-3">
-                            <p class="ml-3">Package List:</p>
+
+                            <div class="row mx-3">
+                                <strong class="col-1"><strong>ID:</strong></strong>
+                                <strong class="col-2"><strong>Status:</strong></strong>
+                                <strong class="col-2"><strong>dimensions:</strong></strong>
+                                <strong class="col-2"><strong>Weight:</strong></strong>
+                                <strong class="col-5">Delivery Address:</strong>
+                            </div>
                             <hr>
-                            @foreach($packages as $package)
+                            @foreach ($packages as $package)
                                 <div class="row mx-3 list-item">
-                                    <p class="col-1 p-3">ID: {{$package->id}}</p>
-                                    <p class="col-2 p-3">Status: {{$package->status}}</p>
-                                    <p class="col-2 p-3">dimensions: {{$package->dimensions}}</p>
-                                    <p class="col-2 p-3">Weight: {{$package->weight}}</p>
+                                    <p class="col-1 py-2">{{ $package->id }}</p>
+                                    <p class="col-2 py-2">{{ $package->status }}</p>
+                                    <p class="col-2 py-2">{{ $package->dimensions }}</p>
+                                    <p class="col-2 py-2">{{ $package->weight }}</p>
+                                    <p class="col-5 py-2">
+                                        {{ $package->full_customer_address }}</p>
                                     @if (Auth::user()->role == 'employee')
-                                        @if($package->labelID == null)
+                                        @if ($package->labelID == null)
                                             <div class="col-4 p-2">
-                                                <form action="{{route('saveLabel')}}" method="post">
+                                                <form action="{{ route('saveLabel') }}" method="post">
                                                     @csrf
                                                     <select class="form-control d-inline-block w-25" name="deliverer">
                                                         <option value="DHL">DHL</option>
@@ -77,7 +182,7 @@
                                                         <option value="DPD">DPD</option>
                                                         <option value="UPS">UPS</option>
                                                     </select>
-                                                    <input type="number" value="{{$package->id}}" name="packageID"
+                                                    <input type="number" value="{{ $package->id }}" name="packageID"
                                                            hidden>
                                                     <input type="submit" class="btn btn-secondary mb-1"
                                                            value="Create Label">
@@ -87,17 +192,17 @@
                                         @else
                                             <div class="col-4 p-2">
                                                 @php
-                                                    $temp = false
+                                                    $temp = false;
                                                 @endphp
                                                 @foreach ($pickups as $pickup)
-                                                    @if($pickup->packageID == $package->id)
+                                                    @if ($pickup->packageID == $package->id)
                                                         @php
-                                                            $temp = true
+                                                            $temp = true;
                                                         @endphp
                                                         <p class="d-inline-block">Pickup planned!</p>
                                                     @endif
                                                 @endforeach
-                                                @if(!$temp)
+                                                @if (!$temp)
                                                     <p class="mt-2">Label Created!</p>
                                                 @endif
                                             </div>
@@ -106,6 +211,10 @@
 
                                 </div>
                             @endforeach
+                            <hr>
+                            <div class="pagination">
+                                {{ $packages->links() }}
+                            </div>
                         </div>
                     </div>
                 </div>
