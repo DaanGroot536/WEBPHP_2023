@@ -34,4 +34,9 @@ class Package extends Model
     {
         return "{$this->customerStreet} {$this->customerHousenumber}, {$this->customerZipcode} {$this->customerCity}";
     }
+
+    public function getFullWebshopAddressAttribute()
+    {
+        return "{$this->webshopStreet} {$this->webshopHousenumber}, {$this->webshopZipcode} {$this->webshopCity}";
+    }
 }
