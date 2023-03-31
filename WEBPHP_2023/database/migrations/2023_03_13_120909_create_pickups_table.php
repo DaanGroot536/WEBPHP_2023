@@ -17,6 +17,7 @@ class CreatePickupsTable extends Migration
             $table->id();
             $table->integer('packageID');
             $table->dateTime('pickup_datetime');
+            $table->string('pickup_address');
             $table->timestamps();
         });
     }

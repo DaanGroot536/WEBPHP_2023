@@ -42,10 +42,14 @@
                         @csrf
                         <input type="number" name="packageID" value="{{ $package->id }}" hidden>
                         <label>{{ __('ui.date') }}</label>
-                        <input class="form-control" type="date" name="date" min="{{ $mindate }}">
+                        <input class="form-control" type="date" name="date" min="{{ $mindate }}" value="{{$mindate}}">
                         <label>{{ __('ui.time') }}</label>
                         <input class="form-control mt-1" type="time" name="time" min="00:00" max="15:00"
                             value="00:00" step="900">
+                        <label>Address</label>
+                        <input class="form-control mt-1" type="text" required="required" name="address" placeholder="address">
+                        <label>Postcode</label>
+                        <input class="form-control mt-1" type="text" maxlength="6" minlength="6"  required="required" name="postcode" placeholder="postcode">
                         <input type="submit" class="btn btn-success mt-1" value="{{ __('ui.plan_pickup') }}">
                         @foreach ($packages as $package)
                             <input type="number" name="{{ $package->id }}" value="{{ $package->id }}" hidden>

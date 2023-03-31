@@ -11,6 +11,7 @@ class Pickup extends Model
 
     protected $fillable = [
         'packageID',
-        'pickup_datetime'
+        'pickup_datetime',
+        'pickup_address',
     ];
 }
