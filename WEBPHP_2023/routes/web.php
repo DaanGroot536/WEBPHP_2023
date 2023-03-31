@@ -10,7 +10,6 @@ use App\Http\Controllers\StatusController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\TrackandtraceController;
 
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -24,6 +23,13 @@ use App\Http\Controllers\TrackandtraceController;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::get('language/{locale}', function ($locale) {
+    app()->setLocale($locale);
+    session()->put('locale', $locale);
+
+    return redirect()->back();
 });
 
 Route::controller(LoginRegisterController::class)->group(function () {
@@ -65,7 +71,6 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/download-csv-template', 'downloadCSVTemplate')->name('downloadCSVTemplate');
         Route::get('/deliveredPackages', 'getDeliveredPackagesView')->name('getDeliveredPackagesView');
         Route::get('/customerlist/resetDeliveredPackagesFilters', 'resetDeliveredPackagesFilters')->name('resetDeliveredPackagesFilters');
-
     });
 
     Route::controller(LabelController::class)->group(function () {
@@ -73,7 +78,6 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/labelCreate/{id}', 'getCreateLabelView')->name('getCreateLabelView');
         Route::post('/labelSave', 'saveLabel')->name('saveLabel');
         Route::post('/labelSaveBulk', 'saveLabelBulk')->name('saveLabelBulk');
-
     });
 
     Route::controller(PickupController::class)->group(function () {
@@ -91,5 +95,3 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/updateStatus/{id}', 'getUpdateStatusView')->name('getUpdateStatusView');
     });
 });
-
-

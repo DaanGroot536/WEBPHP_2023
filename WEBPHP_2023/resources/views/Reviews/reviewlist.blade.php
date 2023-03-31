@@ -6,23 +6,21 @@
 
             <div class="card">
                 @guest
-
-
                 @else
                     @if (Auth::user()->role == 'employee')
                         <div class="card-header"><a class="link" href="{{route('dashboard')}}">{{Auth::user()->company}}
-                                Dashboard</a> -> Reviews
+                                {{ __('ui.dashboard') }}</a> -> {{ __('ui.reviews') }}
                         </div>
                     @else
                         <div class="card-header"><a class="link"
                                                     href="{{route('dashboard')}}">{{Auth::user()->name}}
-                                Dashboard</a> -> Reviews
+                                {{ __('ui.dashboard') }}</a> -> {{ __('ui.reviews') }}
                         </div>
                     @endif
                 @endguest
                 <div class="card-body">
                     <div class="p-3 list-box col-10 mb-3">
-                        <p class="ml-3">Reviews</p>
+                        <p class="ml-3">{{ __('ui.reviews') }}</p>
                         @foreach($reviews as $review)
                             <div class="mx-3">
                                 <p class="">{{$review->username}}</p>
@@ -31,6 +29,7 @@
                                 <p>Delivered by: {{$review->delivery_service}}</p>
                                 <p>Order processed by: {{$review->webshopName}}</p>
                                 <p>{{$review->date_of_review}}</p>
+
                             </div>
                             <hr>
                             <br>
@@ -40,5 +39,4 @@
             </div>
         </div>
     </div>
-
 @endsection

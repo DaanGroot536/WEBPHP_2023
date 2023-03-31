@@ -18,14 +18,14 @@
             @if (Route::has('login'))
                 @auth
                     <a href="{{ url('/dashboard') }}"
-                       class="trackrLogo">TrackR</a>
+                       class="trackrLogo">{{ __('ui.shopName') }}</a>
                 @else
-                    <a href="{{ route('login') }}" class="trackrLogo">TrackR
+                    <a href="{{ route('login') }}" class="trackrLogo">{{ __('ui.shopName') }}
                     </a>
                 @endauth
             @endif
 
         </div>
-        <p class="trackrLogo">TrackR</p>
+        <p class="trackrLogo">{{ __('ui.shopName') }}</p>
     </body>
 </html>
