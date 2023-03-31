@@ -19,13 +19,16 @@
                     <a href="{{route('getCreateReviewView')}}" class="btn btn-success mb-3">Write review +</a>
 
                     <div class="p-3 list-box col-10 mb-3">
-                        <p class="ml-3">Review List:</p>
-                        <hr>
+                        <p class="ml-3">Reviews</p>
                         @foreach($reviews as $review)
-                            <div class="mx-3 list-item">
-                                <p>{{$review->username}}</p>
-                                <p>{{$review->review_text}}</p>
+                            <div class="mx-3">
+                                <p class="">{{$review->username}}</p>
+                                <strong>{{$review->amount_of_stars}} out of 5 stars</strong>
+                                <p class="w-75">{{$review->review_text}}</p>
+                                <p>Delivered by: {{$review->delivery_service}}</p>
                             </div>
+                            <hr>
+                            <br>
                         @endforeach
                     </div>
                 </div>
