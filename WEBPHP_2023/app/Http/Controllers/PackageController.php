@@ -47,7 +47,7 @@ class PackageController extends Controller
             } else {
                 $packages = Package::where('webshopName', Auth::user()->company)->orderBy($sortField, $sortOrder);
             }
-            
+
         }
 
         // get all status filter options
@@ -70,7 +70,7 @@ class PackageController extends Controller
         } elseif (session()->has('city')) {
             $packages = $packages->where('customerCity', session('city'));
         }
-        $packages = $packages->simplePaginate(3); // 10 items per page
+        $packages = $packages->simplePaginate(10); // 10 items per page
 
         // store old values in session variables
         session([

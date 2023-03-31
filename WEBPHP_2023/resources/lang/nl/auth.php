@@ -26,6 +26,7 @@ return [
     'login_employee' => 'Inloggen als werknemer',
     'login_customer' => 'Inloggen als klant',
     'login_deliverer' => 'Inloggen als bezorger',
+    'login_packer' => 'Inloggen als inpakker',
     'logout' => 'Uitloggen',
     'register' => 'Registreren',
 

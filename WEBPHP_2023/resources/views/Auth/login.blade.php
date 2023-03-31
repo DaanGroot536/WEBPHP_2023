@@ -73,6 +73,12 @@
                 <input type="text" value="del@del.com" name="email" hidden>
                 <input type="text" value="password" name="password" hidden>
             </form>
+            <form action="{{route('authenticate')}}" method="post" class="col">
+                @csrf
+                <input type="submit" value="{{ __('auth.login_packer') }}" class="btn btn-secondary">
+                <input type="text" value="emp2@emp2.com" name="email" hidden>
+                <input type="text" value="password" name="password" hidden>
+            </form>
         </div>
     </div>
 

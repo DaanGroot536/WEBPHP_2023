@@ -86,5 +86,13 @@ class UserSeeder extends Seeder
             'api_token' => Str::random(60),
             'company' => 'Sport World',
         ]);
+        User::create([
+            'name' => 'employee2',
+            'email' => 'emp2@emp2.com',
+            'password' => bcrypt("password"),
+            'role' => 'packer',
+            'api_token' => Str::random(60),
+            'company' => 'Sport World',
+        ]);
     }
 }

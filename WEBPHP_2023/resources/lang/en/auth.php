@@ -26,6 +26,7 @@ return [
     'login_employee' => 'Login as Employee',
     'login_customer' => 'Login as Customer',
     'login_deliverer' => 'Login as Deliverer',
+    'login_packer' => 'Login as Packer',
     'logout' => 'Logout',
     'register' => 'Register',
 
@@ -39,5 +40,5 @@ return [
 
     'new_password' => 'New password',
     'login_error' => 'Your provided credentials do not match in our records.',
-    
+
 ];
