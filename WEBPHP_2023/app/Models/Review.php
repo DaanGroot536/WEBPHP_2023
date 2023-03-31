@@ -16,5 +16,6 @@ class Review extends Model
         'packageID',
         'delivery_service',
         'date_of_review',
+        'webshopName',
     ];
 }

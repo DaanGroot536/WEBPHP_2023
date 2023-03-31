@@ -29,6 +29,7 @@
                                 <strong>{{$review->amount_of_stars}} out of 5 stars</strong>
                                 <p class="w-75">{{$review->review_text}}</p>
                                 <p>Delivered by: {{$review->delivery_service}}</p>
+                                <p>Order processed by: {{$review->webshopName}}</p>
                                 <p>{{$review->date_of_review}}</p>
                             </div>
                             <hr>

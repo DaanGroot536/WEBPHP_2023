@@ -30,6 +30,7 @@ class ReviewController extends Controller
             'packageID' => $package->id,
             'delivery_service' => $label->deliverer,
             'date_of_review' => date('Y-m-d'),
+            'webshopName' => $package->webshopName,
         ]);
 
         return redirect()->route('getReviewView');

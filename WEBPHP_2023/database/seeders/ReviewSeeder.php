@@ -21,6 +21,7 @@ class ReviewSeeder extends Seeder
             'packageID' => 2,
             'delivery_service' => 'DHL',
             'date_of_review' => date('Y-m-d', strtotime('-1 day')),
+            'webshopName' => 'Sport World',
         ]);
 
         Review::create([
@@ -30,6 +31,7 @@ class ReviewSeeder extends Seeder
             'packageID' => 3,
             'delivery_service' => 'PostNL',
             'date_of_review' => date('Y-m-d', strtotime('-3 days')),
+            'webshopName' => 'Sport World',
         ]);
 
         Review::create([
@@ -39,7 +41,7 @@ class ReviewSeeder extends Seeder
             'packageID' => 4,
             'delivery_service' => 'DPD',
             'date_of_review' => date('Y-m-d', strtotime('-2 days')),
-
+            'webshopName' => 'Sport World',
         ]);
 
         Review::create([
@@ -49,7 +51,7 @@ class ReviewSeeder extends Seeder
             'packageID' => 5,
             'delivery_service' => 'PostNL',
             'date_of_review' => date('Y-m-d', strtotime('-10 days')),
-
+            'webshopName' => 'Sport World',
         ]);
 
         Review::create([
@@ -59,7 +61,7 @@ class ReviewSeeder extends Seeder
             'packageID' => 6,
             'delivery_service' => 'DHL',
             'date_of_review' => date('Y-m-d', strtotime('-14 days')),
-
+            'webshopName' => 'Sport World',
         ]);
     }
 }
