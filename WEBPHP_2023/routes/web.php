@@ -78,6 +78,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/labelCreate/{id}', 'getCreateLabelView')->name('getCreateLabelView');
         Route::post('/labelSave', 'saveLabel')->name('saveLabel');
         Route::post('/labelSaveBulk', 'saveLabelBulk')->name('saveLabelBulk');
+        Route::post('/labelPrintBulk', 'printLabelBulk')->name('printLabelBulk');
     });
 
     Route::controller(PickupController::class)->group(function () {
