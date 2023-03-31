@@ -49,10 +49,10 @@ class PickupController extends Controller
                 $currentDay = date('Y-m-d');
                 break;
             case 'up':
-                $currentDay = date('Y-m-d', strtotime($request->date.'+7 days'));
+                $currentDay = date('Y-m-d', strtotime($request->date . '+7 days'));
                 break;
             case 'down':
-                $currentDay = date('Y-m-d', strtotime($request->date.'-7 days'));
+                $currentDay = date('Y-m-d', strtotime($request->date . '-7 days'));
                 break;
         }
         $pickups = Pickup::all();
@@ -85,7 +85,9 @@ class PickupController extends Controller
         foreach ($packagesForPickup as $package) {
             $pickup = Pickup::create([
                 'packageID' => $package->id,
-                'pickup_datetime' => $pickupDateTime
+                'pickup_datetime' => $pickupDateTime,
+                'pickup_address' => $request->address . ' ' . $request->postcode,
+
             ]);
             Package::where('id', $package->id)->update([
                 'pickupID' => $pickup->id,
@@ -102,8 +104,7 @@ class PickupController extends Controller
         if (Auth::user()->role == 'webshop') {
             $packages = Package::where('webshopName', Auth::user()->name)->get();
 
-        }
-        else {
+        } else {
             $packages = Package::where('webshopName', Auth::user()->company)->get();
         }
         $minDate = date('Y-m-d', strtotime('+3 days'));
@@ -169,8 +170,8 @@ class PickupController extends Controller
         for ($i = 0; $i < 7; $i++) {
             $tempi = $i - $dayamount;
             $day = new Day();
-            $day->date = date('Y-m-d', strtotime($currentDay."+" . $tempi . " days"));
-            $day->dayofweek = date('l', strtotime($currentDay."+" . $tempi . " days"));
+            $day->date = date('Y-m-d', strtotime($currentDay . "+" . $tempi . " days"));
+            $day->dayofweek = date('l', strtotime($currentDay . "+" . $tempi . " days"));
             $day->highlight = $highlight;
             $daysforcalendar[$i] = $day;
         }
