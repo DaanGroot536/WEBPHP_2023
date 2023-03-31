@@ -132,7 +132,7 @@ class LabelController extends Controller
             <p><strong>Zip: </strong>' . $package->customerZipcode . '</p>
         </div>
         <div class="divider"></div>
-        <div class="barcode">' . DNS1D::getBarcodeHTML(strval($package->id), 'C39') . ' <div>
+        <div class="barcode">' . DNS1D::getBarcodeHTML($package->trackandtracecode, 'C39') . ' <div>
         <div class="barcode-code">' . $package->id . '</div>
         <div class="divider"></div>
         <div class="track-trace">Track &amp; Trace: ' . $package->trackandtracecode . '</div>

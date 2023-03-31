@@ -25,7 +25,7 @@ class PackageSeeder extends Seeder
             'status' => 'Submitted',
             'dimensions' => '40x70x30',
             'weight' => '1500',
-            'trackandtracecode' => Str::random(20),
+            'trackandtracecode' => Str::random(10),
         ]);
 
         Package::create([
@@ -43,7 +43,7 @@ class PackageSeeder extends Seeder
             'status' => 'Submitted',
             'dimensions' => '20x90x20',
             'weight' => '1800',
-            'trackandtracecode' => Str::random(20),
+            'trackandtracecode' => Str::random(10),
         ]);
 
         Package::create([
@@ -61,7 +61,7 @@ class PackageSeeder extends Seeder
             'status' => 'Submitted',
             'dimensions' => '20x10x20',
             'weight' => '300',
-            'trackandtracecode' => Str::random(20),
+            'trackandtracecode' => Str::random(10),
         ]);
 
         Package::create([
@@ -79,7 +79,7 @@ class PackageSeeder extends Seeder
             'status' => 'Submitted',
             'dimensions' => '80x60x40',
             'weight' => '1200',
-            'trackandtracecode' => Str::random(20),
+            'trackandtracecode' => Str::random(10),
         ]);
 
         Package::create([
@@ -97,7 +97,7 @@ class PackageSeeder extends Seeder
             'status' => 'Submitted',
             'dimensions' => '30x20x60',
             'weight' => '900',
-            'trackandtracecode' => Str::random(20),
+            'trackandtracecode' => Str::random(10),
         ]);
 
         Package::create([
@@ -115,7 +115,7 @@ class PackageSeeder extends Seeder
             'status' => 'Submitted',
             'dimensions' => '100x80x60',
             'weight' => '2500',
-            'trackandtracecode' => Str::random(20),
+            'trackandtracecode' => Str::random(10),
         ]);
 
         Package::create([
@@ -133,7 +133,7 @@ class PackageSeeder extends Seeder
             'status' => 'Submitted',
             'dimensions' => '90x60x50',
             'weight' => '1800',
-            'trackandtracecode' => Str::random(20),
+            'trackandtracecode' => Str::random(10),
         ]);
 
         Package::create([
@@ -151,7 +151,7 @@ class PackageSeeder extends Seeder
             'status' => 'Submitted',
             'dimensions' => '120x80x40',
             'weight' => '3000',
-            'trackandtracecode' => Str::random(20),
+            'trackandtracecode' => Str::random(10),
         ]);
 
         Package::create([
@@ -169,7 +169,7 @@ class PackageSeeder extends Seeder
             'status' => 'Submitted',
             'dimensions' => '60x60x60',
             'weight' => '1400',
-            'trackandtracecode' => Str::random(20),
+            'trackandtracecode' => Str::random(10),
         ]);
 
         Package::create([
@@ -187,7 +187,7 @@ class PackageSeeder extends Seeder
             'status' => 'Submitted',
             'dimensions' => '70x50x40',
             'weight' => '900',
-            'trackandtracecode' => Str::random(20),
+            'trackandtracecode' => Str::random(10),
         ]);
 
         Package::create([
@@ -205,7 +205,7 @@ class PackageSeeder extends Seeder
             'status' => 'Submitted',
             'dimensions' => '50x40x30',
             'weight' => '1000',
-            'trackandtracecode' => Str::random(20),
+            'trackandtracecode' => Str::random(10),
         ]);
 
         Package::create([
@@ -223,7 +223,7 @@ class PackageSeeder extends Seeder
             'status' => 'Submitted',
             'dimensions' => '80x60x40',
             'weight' => '1500',
-            'trackandtracecode' => Str::random(20),
+            'trackandtracecode' => Str::random(10),
         ]);
 
         Package::create([
@@ -241,7 +241,7 @@ class PackageSeeder extends Seeder
             'status' => 'Submitted',
             'dimensions' => '100x80x60',
             'weight' => '2500',
-            'trackandtracecode' => Str::random(20),
+            'trackandtracecode' => Str::random(10),
         ]);
 
         Package::create([
@@ -259,7 +259,7 @@ class PackageSeeder extends Seeder
             'status' => 'Submitted',
             'dimensions' => '60x40x20',
             'weight' => '2000',
-            'trackandtracecode' => Str::random(20),
+            'trackandtracecode' => Str::random(10),
         ]);
 
         Package::create([
@@ -277,7 +277,7 @@ class PackageSeeder extends Seeder
             'status' => 'Submitted',
             'dimensions' => '70x50x30',
             'weight' => '1200',
-            'trackandtracecode' => Str::random(20),
+            'trackandtracecode' => Str::random(10),
         ]);
 
         Package::create([
@@ -295,7 +295,7 @@ class PackageSeeder extends Seeder
             'status' => 'Submitted',
             'dimensions' => '90x70x50',
             'weight' => '2900',
-            'trackandtracecode' => Str::random(20),
+            'trackandtracecode' => Str::random(10),
         ]);
 
         Package::create([
@@ -313,7 +313,7 @@ class PackageSeeder extends Seeder
             'status' => 'Submitted',
             'dimensions' => '50x50x50',
             'weight' => '1000',
-            'trackandtracecode' => Str::random(20),
+            'trackandtracecode' => Str::random(10),
         ]);
 
         Package::create([
@@ -331,7 +331,7 @@ class PackageSeeder extends Seeder
             'status' => 'Submitted',
             'dimensions' => '40x30x20',
             'weight' => '2500',
-            'trackandtracecode' => Str::random(20),
+            'trackandtracecode' => Str::random(10),
         ]);
 
         Package::create([
@@ -349,7 +349,7 @@ class PackageSeeder extends Seeder
             'status' => 'Submitted',
             'dimensions' => '80x60x40',
             'weight' => '2000',
-            'trackandtracecode' => Str::random(20),
+            'trackandtracecode' => Str::random(10),
         ]);
 
         Package::create([
@@ -367,7 +367,7 @@ class PackageSeeder extends Seeder
             'status' => 'Submitted',
             'dimensions' => '120x80x60',
             'weight' => '1000',
-            'trackandtracecode' => Str::random(20),
+            'trackandtracecode' => Str::random(10),
         ]);
 
         Package::create([
@@ -385,7 +385,7 @@ class PackageSeeder extends Seeder
             'status' => 'Submitted',
             'dimensions' => '80x60x40',
             'weight' => '1500',
-            'trackandtracecode' => Str::random(20),
+            'trackandtracecode' => Str::random(10),
         ]);
 
         Package::create([
@@ -403,7 +403,7 @@ class PackageSeeder extends Seeder
             'status' => 'Submitted',
             'dimensions' => '120x100x80',
             'weight' => '2500',
-            'trackandtracecode' => Str::random(20),
+            'trackandtracecode' => Str::random(10),
         ]);
 
         Package::create([
@@ -421,7 +421,7 @@ class PackageSeeder extends Seeder
             'status' => 'Submitted',
             'dimensions' => '100x80x60',
             'weight' => '2000',
-            'trackandtracecode' => Str::random(20),
+            'trackandtracecode' => Str::random(10),
         ]);
 
         Package::create([
@@ -439,7 +439,7 @@ class PackageSeeder extends Seeder
             'status' => 'Submitted',
             'dimensions' => '120x80x40',
             'weight' => '1700',
-            'trackandtracecode' => Str::random(20),
+            'trackandtracecode' => Str::random(10),
         ]);
 
         Package::create([
@@ -457,7 +457,7 @@ class PackageSeeder extends Seeder
             'status' => 'Submitted',
             'dimensions' => '60x80x100',
             'weight' => '1000',
-            'trackandtracecode' => Str::random(20),
+            'trackandtracecode' => Str::random(10),
         ]);
 
         Package::create([
@@ -475,7 +475,7 @@ class PackageSeeder extends Seeder
             'status' => 'Submitted',
             'dimensions' => '80x60x120',
             'weight' => '1500',
-            'trackandtracecode' => Str::random(20),
+            'trackandtracecode' => Str::random(10),
         ]);
 
         Package::create([
@@ -493,7 +493,7 @@ class PackageSeeder extends Seeder
             'status' => 'Submitted',
             'dimensions' => '100x80x80',
             'weight' => '2000',
-            'trackandtracecode' => Str::random(20),
+            'trackandtracecode' => Str::random(10),
         ]);
 
         Package::create([
@@ -511,7 +511,7 @@ class PackageSeeder extends Seeder
             'status' => 'Submitted',
             'dimensions' => '80x100x60',
             'weight' => '2300',
-            'trackandtracecode' => Str::random(20),
+            'trackandtracecode' => Str::random(10),
         ]);
 
         Package::create([
@@ -529,7 +529,7 @@ class PackageSeeder extends Seeder
             'status' => 'Submitted',
             'dimensions' => '100x100x100',
             'weight' => '2500',
-            'trackandtracecode' => Str::random(20),
+            'trackandtracecode' => Str::random(10),
         ]);
 
         Package::create([
@@ -547,7 +547,7 @@ class PackageSeeder extends Seeder
             'status' => 'Submitted',
             'dimensions' => '120x80x40',
             'weight' => '800',
-            'trackandtracecode' => Str::random(20),
+            'trackandtracecode' => Str::random(10),
         ]);
 
         Package::create([
@@ -565,7 +565,7 @@ class PackageSeeder extends Seeder
             'status' => 'Submitted',
             'dimensions' => '80x60x60',
             'weight' => '1500',
-            'trackandtracecode' => Str::random(20),
+            'trackandtracecode' => Str::random(10),
         ]);
 
         Package::create([
@@ -583,7 +583,7 @@ class PackageSeeder extends Seeder
             'status' => 'Submitted',
             'dimensions' => '100x60x80',
             'weight' => '1100',
-            'trackandtracecode' => Str::random(20),
+            'trackandtracecode' => Str::random(10),
         ]);
 
         Package::create([
@@ -601,7 +601,7 @@ class PackageSeeder extends Seeder
             'status' => 'Submitted',
             'dimensions' => '120x100x60',
             'weight' => '2200',
-            'trackandtracecode' => Str::random(20),
+            'trackandtracecode' => Str::random(10),
         ]);
 
         Package::create([
@@ -619,7 +619,7 @@ class PackageSeeder extends Seeder
             'status' => 'Submitted',
             'dimensions' => '80x80x80',
             'weight' => '2000',
-            'trackandtracecode' => Str::random(20),
+            'trackandtracecode' => Str::random(10),
         ]);
 
         Package::create([
@@ -637,7 +637,7 @@ class PackageSeeder extends Seeder
             'status' => 'Submitted',
             'dimensions' => '120x80x60',
             'weight' => '1900',
-            'trackandtracecode' => Str::random(20),
+            'trackandtracecode' => Str::random(10),
         ]);
 
         Package::create([
@@ -655,7 +655,7 @@ class PackageSeeder extends Seeder
             'status' => 'Submitted',
             'dimensions' => '90x70x50',
             'weight' => '2300',
-            'trackandtracecode' => Str::random(20),
+            'trackandtracecode' => Str::random(10),
         ]);
     }
 }
