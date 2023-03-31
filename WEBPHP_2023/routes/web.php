@@ -37,6 +37,7 @@ Route::controller(LoginRegisterController::class)->group(function () {
 
 Route::controller(TrackandtraceController::class)->group(function () {
     Route::get('/trackandtrace', 'getTrackandtraceView')->name('getTrackandtraceView');
+    Route::post('/order', 'getOrderView')->name('getOrderView');
 });
 
 Route::group(['middleware' => ['auth']], function () {
