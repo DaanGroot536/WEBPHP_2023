@@ -63,7 +63,7 @@
                     @if (Auth::user()->role == 'webshop')
                         <div class="row mx-3 mt-1">
                             <p class="col">{{ __('ui.packages') }}</p>
-                            <a href="{{route('getPackages')}}" class="btn btn-secondary col-1"> ></a>
+                            <a dusk="packagelist" href="{{route('getPackages')}}" class="btn btn-secondary col-1"> ></a>
                         </div>
                         <div class="row mx-3 mt-1">
                             <p class="col">{{ __('ui.customers') }}</p>

@@ -16,7 +16,7 @@
                 @endif
                 <div class="card-body">
                     @if (Auth::user()->role == 'webshop')
-                        <a href="{{ route('getCreatePackageView') }}" class="btn btn-success">{{ __('ui.create_package') }} +</a>
+                        <a dusk="createpackage" href="{{ route('getCreatePackageView') }}" class="btn btn-success">{{ __('ui.create_package') }} +</a>
                         <a href="{{ route('getBulkImportView') }}" class="btn btn-success">{{ __('ui.bulk_import') }}</a>
                     @endif
                     @if (Auth::user()->role == 'employee')
