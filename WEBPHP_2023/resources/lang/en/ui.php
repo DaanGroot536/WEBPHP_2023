@@ -8,6 +8,7 @@ return [
     'reviews' => 'Reviews',
     'labels' => 'Labels',
     'plan_pickups' => 'Plan pickups',
+    'plan_pickup' => 'Plan pickup',
     'customers' => 'Customers',
     'pickup_calendar' => 'Pickup calendar',
     'delivered_packages' => 'Delivered packages',

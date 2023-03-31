@@ -6,7 +6,7 @@ use App\Models\Package;
 use App\Models\Status;
 use App\Models\User;
 use Illuminate\Http\Request;
-use DB;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
@@ -38,11 +38,6 @@ class UserController extends Controller
     }
 
     public function saveUser(Request $request) {
-//        $request->validate([
-//            'name' => 'required|string|max:250',
-//            'email' => 'required|email|max:250|unique:users',
-//            'password' => 'required|min:8|confirmed',
-//        ]);
         if (Auth::user()->role == 'webshop') {
             User::create([
                 'name' => $request->name,
@@ -86,12 +81,6 @@ class UserController extends Controller
     }
 
     public function updateUser(Request $request) {
-//        $request->validate([
-//            'name' => 'required|string|max:250',
-//            'email' => 'required|email|max:250|unique:users',
-//            'password' => 'required|min:8|confirmed',
-//        ]);
-
         User::where('id', $request->id)->update([
             'name' => $request->name,
             'email' => $request->email,
@@ -104,21 +93,8 @@ class UserController extends Controller
         ]);
 
 
-        return redirect()->route('getUsers');
+        return redirect()->route('getUserView');
     }
-
-//    public function getCustomerView() {
-//        if (Auth::user()->role == 'webshop') {
-//            $packages = Package::where('webshopName', Auth::user()->name)->get()->groupBy('customerName');
-//
-//        }
-//        else {
-//            $packages = Package::where('webshopName', Auth::user()->company)->get()->groupBy('customerName');
-//        }
-////        dd($packages);
-//
-//        return view('customers.customerlist', ['packages' => $packages]);
-//    }
 
     public function getCustomerView(Request $request)
     {
@@ -150,7 +126,6 @@ class UserController extends Controller
             $packages = Package::where('webshopName', Auth::user()->name)->groupBy('customerName')->orderBy($sortField, $sortOrder);
         } else {
             $packages = Package::where('webshopName', Auth::user()->company)->groupBy('customerName')->orderBy($sortField, $sortOrder);
-//            dd($packages, $sortField, $sortOrder);
         }
 
         // get all status filter options

@@ -46,7 +46,7 @@
                         <label>{{ __('ui.time') }}</label>
                         <input class="form-control mt-1" type="time" name="time" min="00:00" max="15:00"
                             value="00:00" step="900">
-                        <input type="submit" class="btn btn-success mt-1" value="Plan Pickup">
+                        <input type="submit" class="btn btn-success mt-1" value="{{ __('ui.plan_pickup') }}">
                         @foreach ($packages as $package)
                             <input type="number" name="{{ $package->id }}" value="{{ $package->id }}" hidden>
                         @endforeach
