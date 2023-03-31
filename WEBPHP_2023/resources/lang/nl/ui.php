@@ -8,6 +8,7 @@ return [
     'reviews' => 'Beoordelingen',
     'labels' => 'Labels',
     'plan_pickups' => 'Plan ophaalmomenten',
+    'plan_pickup' => 'Plan ophaalmoment',
     'customers' => 'Klanten',
     'pickup_calendar' => 'Ophaalkalender',
     'delivered_packages' => 'Geleverde pakketten',

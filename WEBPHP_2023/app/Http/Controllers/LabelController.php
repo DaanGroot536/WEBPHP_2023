@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Package;
 use App\Models\Label;
 
-use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -34,7 +33,6 @@ class LabelController extends Controller
 
     public function saveLabelBulk(Request $request)
     {
-        //dd($request);
         $packages = Package::all();
         foreach ($packages as $package) {
             if ($request->{$package->id} != null) {

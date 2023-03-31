@@ -30,7 +30,7 @@
                                     {{ __('ui.destination') }}: {{ $package->customerStreet }}
                                     {{ $package->customerHousenumber }} {{ $package->customerCity }}</p>
                                 <p class="col-2 p-3">{{ __('ui.dimensions') }}: {{ $package->dimensions }}</p>
-                                <p class="col-2 p-3">{{ __('ui.gewicht') }}: {{ $package->weight }}</p>
+                                <p class="col-2 p-3">{{ __('ui.weight') }}: {{ $package->weight }}</p>
                             </div>
                             @foreach ($statuses as $status)
                                 @if (
@@ -43,7 +43,7 @@
                                             @csrf
                                             <input type="text" value="{{ $status->description }}" name="status" hidden>
                                             <input class="w-100 mt-3 btn btn-secondary" type="submit"
-                                                value="{{ $status->description }}">
+                                                value="{{ __('ui.status_' . strtolower($status->description)) }}">
                                             <input type="number" value="{{ $package->id }}" name="packageID" hidden>
                                             <input type="text" value="{{ Auth::user()->api_token }}" name="api_token"
                                                 hidden>
