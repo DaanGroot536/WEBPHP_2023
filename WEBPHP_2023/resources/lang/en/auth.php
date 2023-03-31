@@ -38,4 +38,6 @@ return [
     'register_customer' => 'Register as customer',
 
     'new_password' => 'New password',
+    'login_error' => 'Your provided credentials do not match in our records.',
+    
 ];

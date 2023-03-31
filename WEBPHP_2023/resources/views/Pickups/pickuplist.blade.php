@@ -26,7 +26,7 @@
                                 <form action="{{ route('getCreatePickupBulk') }}" method="post" class="mt-2">
                                     @csrf
                                     <div class=" d-inline-block w-40"></div>
-                                    <input type="submit" class="btn btn-secondary mb-1 w-50" value="Plan">
+                                    <input type="submit" class="btn btn-secondary mb-1 w-50" value="{{ __('ui.plan') }}">
 
                                     <div class="checklist">
                                         @foreach ($packages as $package)
@@ -53,7 +53,7 @@
                                 @if ($package->pickupID == null)
                                     <div class="row mx-3 list-item">
                                         <p class="col-1 p-3">{{ __('ui.id') }}: {{ $package->id }}</p>
-                                        <p class="col-2 p-3">{{ __('ui.status') }}: {{ $package->status }}</p>
+                                        <p class="col-2 p-3">{{ __('ui.status') }}: {{ __('ui.status_' . strtolower($package->status)) }}</p>
                                         <p class="col-2 p-3">{{ __('ui.dimensions') }}: {{ $package->dimensions }}</p>
                                         <p class="col-2 p-3">{{ __('ui.weight') }}: {{ $package->weight }}</p>
                                         @if (Auth::user()->role == 'employee')

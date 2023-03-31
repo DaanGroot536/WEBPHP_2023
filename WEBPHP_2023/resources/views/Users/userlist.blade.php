@@ -23,7 +23,7 @@
                         <a class="link" href="{{ route('getEditUserView', [$user->id]) }}">
                             <div class="my-1 row mx-3 list-item">
                                 <p class="col-3 p-3">{{ __('ui.user_name') }}: {{ $user->name }}</p>
-                                <p class="col-3 p-3">{{ __('ui.user_role') }}: {{ $user->role }}</p>
+                                <p class="col-3 p-3">{{ __('ui.user_role') }}: {{ __('ui.role_' . $user->role) }}</p>
                             </div>
                         </a>
                     @endforeach

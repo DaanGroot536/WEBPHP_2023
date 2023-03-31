@@ -77,6 +77,7 @@ return [
 
     'import' => 'Import',
     'bulk_import' => 'Bulk import',
+    'create_bulk' => 'Bulk create',
     'csv_template' => 'Download CSV template',
 
     'bulk_package_instructions' => 'Select packages for bulk labels. Next press the button to submit',
@@ -84,10 +85,43 @@ return [
     'label_created_msg' => 'Label Created!',
 
     'package_id' => 'Package nr.',
+    'order_id' => 'Order nr.',
     'pickup_calendar' => 'Pickup Calendar',
     'create_pickup' => 'Create pickup',
     'date' => 'Date',
     'time' => 'Time',
+    'plan' => 'Plan',
 
     'label_warning' => 'Create a label first!',
+    'track_and_trace' => 'Track & Trace',
+    'track_and_trace_code' => 'Track & Trace code',
+    'track_and_trace_instructions' => 'Enter your code here to track your package or write a review',
+    'track_and_trace_button' => 'Track',
+
+
+    'delivery_service' => 'Delivery service',
+    'no_delivery_service' => 'No delivery service assigned',
+
+    'write_review' => 'Write your review here',
+    'write_review_for' => 'Write a review for ',
+    'star_amount' => 'Stars',
+
+    'star_compare' => 'out of 5 stars',
+    'delivered_by' => 'Delivered by',
+    'order_processed_by' => 'Order processed by',
+
+    'status_submitted' => 'Submitted',
+    'status_label printed' => 'Label printed',
+    'status_delivered to warehouse' => 'Delivered to warehouse',
+    'status_in sorting centre' => 'In sorting centre',
+    'status_on its way' => 'On its way',
+    'status_delivered to customer' => 'Delivered to customer',
+
+
+    'role_superadmin' => 'Admin',
+    'role_webshop' => 'Webshop',
+    'role_employee' => 'Employee',
+    'role_customer' => 'Customer',
+    'role_deliverer' => 'Deliverer',
+    'role_packer' => 'Packer',
 ];

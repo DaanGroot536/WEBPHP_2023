@@ -34,8 +34,9 @@ return [
     'street' => 'Straat',
     'house_nr' => 'Huisnummer',
     'zip' => 'Postcode',
-    'city' => 'Plaats',
+    'city' => 'Stad',
     'register_customer' => 'Registreer als klant',
 
     'new_password' => 'Nieuw wachtwoord',
+    'login_error' => 'Uw combinatie van wachtwoord en email komt niet overeen met onze gegevens.',
 ];

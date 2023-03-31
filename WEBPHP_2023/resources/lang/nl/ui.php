@@ -7,7 +7,7 @@ return [
     'packages' => 'Pakketten',
     'reviews' => 'Beoordelingen',
     'labels' => 'Labels',
-    'plan_pickups' => 'Plan ophalingen',
+    'plan_pickups' => 'Plan ophaalmomenten',
     'customers' => 'Klanten',
     'pickup_calendar' => 'Ophaalkalender',
     'delivered_packages' => 'Geleverde pakketten',
@@ -77,6 +77,7 @@ return [
 
     'import' => 'Importeren',
     'bulk_import' => 'Bulk importeren',
+    'create_bulk' => 'Bulk aanmaken',
     'csv_template' => 'Download CSV voorbeeld',
 
     'bulk_package_instructions' => 'Selecteer pakketten om labels voor te maken. Klik daarna op de knop.',
@@ -84,10 +85,41 @@ return [
     'label_created_msg' => 'Etiket aangemaakt!',
 
     'package_id' => 'Pakketnummer',
+    'order_id' => 'Ordernummer',
     'pickup_calendar' => 'Ophaal kalendar',
     'create_pickup' => 'Ophaalmoment aanmaken',
     'date' => 'Datum',
     'time' => 'Tijd',
+    'plan' => 'Inplannen',
 
     'label_warning' => 'Maak eerst een etiket aan!',
+    'track_and_trace' => 'Track & Trace',
+    'track_and_trace_code' => 'Track & Trace code',
+    'track_and_trace_instructions' => 'Voer hier uw code in om uw pakket te volgen of schrijf een beoordeling.',
+    'track_and_trace_button' => 'Volg',
+
+    'delivery_service' => 'Bezorgdienst',
+    'no_delivery_service' => 'Geen bezorgdienst toegewezen',
+
+    'write_review' => 'Schrijf je recensie hier',
+    'write_review_for' => 'Schrijf een recensie voor ',
+    'star_amount' => 'Sterren',
+
+    'star_compare' => 'van de 5 sterren',
+    'delivered_by' => 'Bezorgd door',
+    'order_processed_by' => 'Order verwerkt door',
+
+    'status_submitted' => 'Ingezonden',
+    'status_label printed' => 'Etiket uitgeprint',
+    'status_delivered to warehouse' => 'Geleverd aan het magazijn',
+    'status_in sorting centre' => 'In sorteercentrum',
+    'status_on its way' => 'Onderweg',
+    'status_delivered to customer' => 'Afgeleverd bij de klant',
+
+    'role_superadmin' => 'Beheerder',
+    'role_webshop' => 'Webshop',
+    'role_employee' => 'Werknemers',
+    'role_customer' => 'Klant',
+    'role_deliverer' => 'Bezorger',
+    'role_packer' => 'Verpakker',
 ];

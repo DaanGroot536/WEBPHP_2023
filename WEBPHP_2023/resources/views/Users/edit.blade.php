@@ -37,7 +37,7 @@
                             <option value="{{ $user->role }}">{{ $user->role }}</option>
                             @foreach ($roles as $role)
                                 @if ($role != $user->role)
-                                    <option value="{{ $role->type }}">{{ $role->type }}</option>
+                                    <option value="{{ $role->type }}">{{ __('ui.role_' . $role->type) }}</option>
                                 @endif
                             @endforeach
                         </select>
