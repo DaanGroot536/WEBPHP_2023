@@ -25,7 +25,7 @@
                         <div class="p-3 list-box col-10 mb-3">
                             <div class="row mx-3 list-item">
                                 <p class="col-1 p-3">{{ __('ui.id') }}: {{ $package->id }}</p>
-                                <p class="col-2 p-3">{{ __('ui.status') }}: {{ $package->status }}</p>
+                                <p class="col-2 p-3">{{ __('ui.status') }}: {{ __('ui.status_' . strtolower($package->status)) }}</p>
                                 <p class="col-3 p-3">
                                     {{ __('ui.destination') }}: {{ $package->customerStreet }}
                                     {{ $package->customerHousenumber }} {{ $package->customerCity }}</p>

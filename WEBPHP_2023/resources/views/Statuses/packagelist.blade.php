@@ -31,7 +31,7 @@
                                 @if ($package->status == 'Delivered to customer')
                                     <div class="row mx-3 list-item">
                                         <p class="col-1 p-3">{{ $package->id }}</p>
-                                        <p class="col-2 p-3">{{ $package->status }}</p>
+                                        <p class="col-2 p-3">{{ __('ui.status_' . strtolower($package->status)) }}</p>
                                         <p class="col-3 p-3">{{ $package->customerStreet }}
                                             {{ $package->customerHousenumber }} {{ $package->customerCity }}</p>
                                         <p class="col-2 p-3">{{ $package->dimensions }}</p>
@@ -41,7 +41,7 @@
                                     <a class="link" href="{{ route('getUpdateStatusView', [$package->id]) }}">
                                         <div class="row mx-3 list-item">
                                             <p class="col-1 p-3">{{ $package->id }}</p>
-                                            <p class="col-2 p-3">{{ $package->status }}</p>
+                                            <p class="col-2 p-3">{{ __('ui.status_' . strtolower($package->status)) }}</p>
                                             <p class="col-3 p-3">{{ $package->customerStreet }}
                                                 {{ $package->customerHousenumber }} {{ $package->customerCity }}</p>
                                             <p class="col-2 p-3">{{ $package->dimensions }}</p>

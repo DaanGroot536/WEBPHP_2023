@@ -24,14 +24,14 @@
                 <div class="w-75 mx-auto my-5">
                     @if ($packages == null)
                         <p>{{ __('ui.id') }}: {{ $package->id }}</p>
-                        <p>{{ __('ui.status') }}: {{ $package->status }}</p>
+                        <p>{{ __('ui.status') }}: {{ __('ui.status_' . strtolower($package->status)) }}</p>
                         <p>{{ __('ui.dimensions') }}: {{ $package->dimensions }}</p>
                         <p>{{ __('ui.weight') }}: {{ $package->weight }}</p>
                     @else
                         @foreach ($packages as $package)
                             <div class="row mx-3 list-item">
                                 <p class="col-1 p-3">{{ __('ui.id') }}: {{ $package->id }}</p>
-                                <p class="col-2 p-3">{{ __('ui.status') }}: {{ $package->status }}</p>
+                                <p class="col-2 p-3">{{ __('ui.status') }}: {{ __('ui.status_' . strtolower($package->status)) }}</p>
                                 <p class="col-2 p-3">{{ __('ui.dimensions') }}: {{ $package->dimensions }}</p>
                                 <p class="col-2 p-3">{{ __('ui.weight') }}: {{ $package->weight }}</p>
                             </div>

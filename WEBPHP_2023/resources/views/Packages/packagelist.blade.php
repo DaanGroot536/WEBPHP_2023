@@ -77,12 +77,12 @@
                                             @foreach ($statuses as $id => $description)
                                                 <option value="{{ $description }}"
                                                     @if (strtolower($description) === strtolower(request('status'))) selected @endif>
-                                                    {{ strtolower($description) }}</option>
+                                                    {{ __('ui.status_' . strtolower($description)) }}</option>
                                             @endforeach
                                         </select>
                                     </div>
                                     <div class="col-5">
-                                        <label for="city">{{ __('ui.city') }}:</label>
+                                        <label for="city">{{ __('auth.city') }}:</label>
                                         <select name="city" id="city" class="form-control">
                                             <option value="">-- {{ __('ui.city_select') }} --</option>
                                             @foreach ($cities as $city)
@@ -106,7 +106,7 @@
 
                                 <div class="row">
                                     <div class="col-8">
-                                        <input class="form-control" type="text" placeholder="FullText Search">
+                                        <input class="form-control" type="text" placeholder="{{ __('ui.search') }}">
                                     </div>
                                     <div class="col-2">
                                         <input class="btn btn-primary" type="submit" value="{{ __('ui.search') }}">
@@ -135,7 +135,7 @@
                                         <option value="DPD">DPD</option>
                                         <option value="UPS">UPS</option>
                                     </select>
-                                    <input type="submit" class="btn btn-secondary mb-1 w-50" value="Create Bulk">
+                                    <input type="submit" class="btn btn-secondary mb-1 w-50" value="{{ __('ui.create_bulk') }}">
 
                                     <div class="checklist">
                                         @foreach ($packages as $package)
@@ -166,7 +166,7 @@
                             @foreach ($packages as $package)
                                 <div class="row mx-3 list-item">
                                     <p class="col-1 py-2">{{ $package->id }}</p>
-                                    <p class="col-2 py-2">{{ $package->status }}</p>
+                                    <p class="col-2 py-2">{{ __('ui.status_' . strtolower($package->status)) }}</p>
                                     <p class="col-2 py-2">{{ $package->dimensions }}</p>
                                     <p class="col-2 py-2">{{ $package->weight }}</p>
                                     <p class="col-5 py-2">

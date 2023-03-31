@@ -32,10 +32,10 @@
                             @foreach ($roles as $role)
                                 @if (Auth::user()->role == 'webshop')
                                     @if ($role->type == 'employee' || $role->type == 'packer')
-                                        <option value="{{ $role->type }}">{{ $role->type }}</option>
+                                        <option value="{{ $role->type }}">{{ __('ui.role_' . $role->type) }}</option> 
                                     @endif
                                 @else
-                                    <option value="{{ $role->type }}">{{ $role->type }}</option>
+                                    <option value="{{ $role->type }}">{{ __('ui.role_' . $role->type) }}</option>
                                 @endif
                             @endforeach
                         </select>

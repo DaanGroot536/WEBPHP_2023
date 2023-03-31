@@ -26,22 +26,22 @@
                         @guest
                             <li class="nav-item">
                                 <a class="nav-link {{ (request()->is('login')) ? 'active' : '' }}"
-                                   href="{{ route('login') }}">Login</a>
+                                   href="{{ route('login') }}">{{ __('auth.login') }}</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link {{ (request()->is('register')) ? 'active' : '' }}"
-                                   href="{{ route('register') }}">Register</a>
+                                   href="{{ route('register') }}">{{ __('auth.register') }}</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link"
-                                   href="{{ route('getTrackandtraceView') }}">Track and Trace</a>
+                                   href="{{ route('getTrackandtraceView') }}">{{ __('ui.track_and_trace') }}</a>
                             </li>
 
                         @else
                             @if (Auth::user()->role == 'customer')
                                 <li class="nav-item">
                                     <a class="nav-link"
-                                       href="{{ route('getTrackandtraceView') }}">Track and Trace</a>
+                                       href="{{ route('getTrackandtraceView') }}">{{ __('ui.track_and_trace') }}</a>
                                 </li>
                             @endif
                             <li class="nav-item dropdown">
@@ -53,7 +53,7 @@
                                     <li><a class="dropdown-item" href="{{ route('logout') }}"
                                            onclick="event.preventDefault();
                             document.getElementById('logout-form').submit();"
-                                        >Logout</a>
+                                        >{{ __('auth.logout') }}</a>
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST">
                                             @csrf
                                         </form>

@@ -67,12 +67,12 @@
                                             @foreach ($statuses as $id => $description)
                                                 <option value="{{ $description }}"
                                                     @if (strtolower($description) === strtolower(request('status'))) selected @endif>
-                                                    {{ strtolower($description) }}</option>
+                                                    {{ __('ui.status_' . strtolower($description)) }}</option>
                                             @endforeach
                                         </select>
                                     </div>
                                     <div class="col-5">
-                                        <label for="city">{{ __('ui.city') }}:</label>
+                                        <label for="city">{{ __('auth.city') }}:</label>
                                         <select name="city" id="city" class="form-control">
                                             <option value="">-- {{ __('ui.city_select') }} --</option>
                                             @foreach ($cities as $city)
@@ -96,10 +96,10 @@
 
                                 <div class="row">
                                     <div class="col-8">
-                                        <input class="form-control" type="text" placeholder="FullText Search">
+                                        <input class="form-control" type="text" placeholder="{{ __('ui.search') }}">
                                     </div>
                                     <div class="col-2">
-                                        <input class="btn btn-primary" type="submit" value="Search">
+                                        <input class="btn btn-primary" type="submit" value="{{ __('ui.search') }}">
                                     </div>
                                 </div>
                             </form>

@@ -24,10 +24,10 @@
                         @foreach($reviews as $review)
                             <div class="mx-3">
                                 <p class="">{{$review->username}}</p>
-                                <strong>{{$review->amount_of_stars}} out of 5 stars</strong>
+                                <strong>{{$review->amount_of_stars}} {{ __('ui.star_compare') }}</strong>
                                 <p class="w-75">{{$review->review_text}}</p>
-                                <p>Delivered by: {{$review->delivery_service}}</p>
-                                <p>Order processed by: {{$review->webshopName}}</p>
+                                <p>{{ __('ui.delivered_by') }}: {{$review->delivery_service}}</p>
+                                <p>{{ __('ui.order_processed_by') }}: {{$review->webshopName}}</p>
                                 <p>{{$review->date_of_review}}</p>
 
                             </div>
