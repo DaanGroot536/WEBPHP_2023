@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
             RoleSeeder::class,
             StatusSeeder::class,
             PackageSeeder::class,
+            ReviewSeeder::class,
         ]);
     }
 }

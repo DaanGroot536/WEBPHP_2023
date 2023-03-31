@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Str;
 
 class PackageApiController extends Controller
 {
@@ -34,6 +35,7 @@ class PackageApiController extends Controller
                 'webshopZipcode' => $user->zipcode,
                 'webshopCity' => $user->city,
                 'webshopName' => $user->name,
+                'trackandtracecode' => Str::random(20),
             ]);
         }
 

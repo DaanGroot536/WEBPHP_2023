@@ -16,10 +16,12 @@ class CreateReviewsTable extends Migration
         Schema::create('reviews', function (Blueprint $table) {
             $table->id();
             $table->string('username');
-            $table->string('review_text');
+            $table->string('review_text', 500);
             $table->integer('amount_of_stars');
             $table->integer('packageID');
             $table->string('delivery_service');
+            $table->date('date_of_review');
+            $table->string('webshopName');
             $table->timestamps();
         });
     }
