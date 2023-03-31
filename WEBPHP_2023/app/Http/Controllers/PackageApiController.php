@@ -15,11 +15,6 @@ class PackageApiController extends Controller
 {
     public function savePackage($customerCity, $customerStreet, $customerZipcode, $customerHousenumber, $dimensions, $weight, $api_token)
     {
-        //        $request->validate([
-        //            'name' => 'required|string|max:250',
-        //            'email' => 'required|email|max:250|unique:users',
-        //            'password' => 'required|min:8|confirmed',
-        //        ]);
         $user = User::where('api_token', $api_token)->get()[0];
         if ($user->role == 'webshop') {
             Package::create([
@@ -35,7 +30,7 @@ class PackageApiController extends Controller
                 'webshopZipcode' => $user->zipcode,
                 'webshopCity' => $user->city,
                 'webshopName' => $user->name,
-                'trackandtracecode' => Str::random(20),
+                'trackandtracecode' => Str::random(10),
             ]);
         }
 
