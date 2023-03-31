@@ -5,7 +5,7 @@
         <div class="">
 
             <div class="card">
-                @if (Auth::user()->role == 'employee')
+                @if (Auth::user()->role == 'employee' || Auth::user()->role == 'packer')
                     <div class="card-header"><a class="link" href="{{ route('dashboard') }}">{{ Auth::user()->company }}
                             {{ __('ui.dashboard') }}</a> -> {{ __('ui.label_list') }}
                     </div>

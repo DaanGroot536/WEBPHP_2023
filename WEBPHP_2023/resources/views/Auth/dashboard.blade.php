@@ -5,7 +5,7 @@
     <div class="row justify-content-center mt-5">
         <div class="">
             <div class="card">
-                @if (Auth::user()->role == 'employee')
+                @if (Auth::user()->role == 'employee' || Auth::user()->role == 'packer')
                     <div class="card-header">{{Auth::user()->company}} {{ __('ui.dashboard') }}</div>
                 @else
                     <div class="card-header">{{Auth::user()->name}} {{ __('ui.dashboard') }}</div>
@@ -18,7 +18,7 @@
                             <a href="{{ route('getUserView') }}" class="btn btn-secondary col-1"> ></a>
                         </div>
                     @endif
-                    @if(Auth::user()->role == 'employee' || Auth::user()->role == 'customer')
+                    @if(Auth::user()->role == 'employee' || Auth::user()->role == 'customer' || Auth::user()->role == 'packer')
                         <div class="row mx-3 mt-1">
                             <p class="col">{{ __('ui.packages') }}</p>
                             <a href="{{route('getPackages')}}" class="btn btn-secondary col-1"> ></a>
@@ -52,6 +52,12 @@
                             <p class="col">{{ __('ui.delivered_packages') }}</p>
                             <a href="{{route('getDeliveredPackagesView')}}" class="btn btn-secondary col-1"> ></a>
                         </div>
+                    @endif
+                    @if(Auth::user()->role == 'packer')
+                            <div class="row mx-3 mt-1">
+                                <p class="col">{{ __('ui.labels') }}</p>
+                                <a href="{{route('getLabels')}}" class="btn btn-secondary col-1"> ></a>
+                            </div>
                     @endif
 
                     @if (Auth::user()->role == 'webshop')
