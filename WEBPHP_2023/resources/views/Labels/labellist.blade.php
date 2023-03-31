@@ -16,7 +16,7 @@
                 @endif
                 <div class="card-body">
                     <div class="row mx-4">
-                        @if (Auth::user()->role == 'employee')
+                        @if (Auth::user()->role == 'employee' || Auth::user()->role == 'packer')
                             <div class="col-2 p-0">
                                 <form action="{{route('printLabelBulk')}}" method="post" class="mt-2">
                                     @csrf
