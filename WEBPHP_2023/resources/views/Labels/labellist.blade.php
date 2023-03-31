@@ -21,7 +21,7 @@
                                 <p class="col-1 p-3">{{ __('ui.id') }}: {{ $package->id }}</p>
                                 <p class="col-2 p-3">{{ __('ui.status') }}: {{ __('ui.status_' . strtolower($package->status)) }}</p>
                                 <p class="col-2 p-3">{{ __('ui.dimensions') }}: {{ $package->dimensions }}</p>
-                                <p class="col-2 p-3">{{ __('ui.gewicht') }}: {{ $package->weight }}</p>
+                                <p class="col-2 p-3">{{ __('ui.weight') }}: {{ $package->weight }}</p>
                                 <div class="col-2 p-2">
                                     <a class="btn btn-secondary">{{ __('ui.label_print') }}</a>
                                 </div>
