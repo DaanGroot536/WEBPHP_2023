@@ -9,7 +9,6 @@ class LanguageController extends Controller
 {
     public function switchLang(Request $request, $locale)
     {
-        // dd($locale);
         App::setLocale($locale);
         return redirect()->back();
     }

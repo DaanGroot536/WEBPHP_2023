@@ -9,7 +9,7 @@ use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\PickupController;
 use App\Http\Controllers\StatusController;
 use App\Http\Controllers\ReviewController;
-
+use Illuminate\Support\Facades\App;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,8 +28,17 @@ Route::get('/', function () {
 
 
 
-Route::controller(LanguageController::class)->group(function() {
-    Route::post('/lang/{locale}', 'switchLang')->name('switchLang');
+Route::controller(LanguageController::class)->group(function () {
+    //Route::post('/lang/{locale}', 'switchLang')->name('switchLang');
+    // Route::get('/lang/{locale}', function (string $locale) {
+    //     App::setLocale($locale);
+    //     dd(App::getLocale());
+    // });
+
+    Route::get('/lang/{locale}', function ($locale = null) {
+        app()->setLocale($locale);
+        return redirect()->route('login');
+    })->name('switchLang');
 });
 
 

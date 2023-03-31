@@ -18,7 +18,7 @@
             <a class="navbar-brand" href="{{ URL('/') }}">Trackr</a>
 
             <form action="{{ route('switchLang', ['locale' => App::getLocale() == 'en' ? 'nl' : 'en']) }}"
-                method="post">
+                method="get">
                 @csrf
                 <button type="submit" class="btn btn-primary">
                     {{ App::getLocale() == 'en' ? 'Dutch' : 'English' }}
