@@ -15,5 +15,6 @@ class Review extends Model
         'amount_of_stars',
         'packageID',
         'delivery_service',
+        'date_of_review',
     ];
 }

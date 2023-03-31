@@ -40,6 +40,12 @@ Route::controller(TrackandtraceController::class)->group(function () {
     Route::post('/order', 'getOrderView')->name('getOrderView');
 });
 
+Route::controller(ReviewController::class)->group(function () {
+    Route::get('/reviewlist', 'getReviewView')->name('getReviewView');
+    Route::get('/writeReview', 'getCreateReviewView')->name('getCreateReviewView');
+    Route::post('/saveReview', 'saveReview')->name('saveReview');
+});
+
 Route::group(['middleware' => ['auth']], function () {
     Route::controller(UserController::class)->group(function () {
         Route::get('/userlist', 'getUserView')->name('getUserView');
@@ -83,11 +89,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::controller(StatusController::class)->group(function () {
         Route::get('/statuslist', 'getStatusView')->name('getStatusView');
         Route::get('/updateStatus/{id}', 'getUpdateStatusView')->name('getUpdateStatusView');
-    });
-
-    Route::controller(ReviewController::class)->group(function () {
-        Route::get('/reviewlist', 'getReviewView')->name('getReviewView');
-        Route::get('/writeReview', 'getCreateReviewView')->name('getCreateReviewView');
     });
 });
 

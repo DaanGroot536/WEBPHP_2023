@@ -20,6 +20,7 @@ class CreateReviewsTable extends Migration
             $table->integer('amount_of_stars');
             $table->integer('packageID');
             $table->string('delivery_service');
+            $table->date('date_of_review');
             $table->timestamps();
         });
     }
