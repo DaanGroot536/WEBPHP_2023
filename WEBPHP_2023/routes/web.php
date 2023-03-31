@@ -5,11 +5,9 @@ use App\Http\Controllers\Auth\LoginRegisterController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PackageController;
 use App\Http\Controllers\LabelController;
-use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\PickupController;
 use App\Http\Controllers\StatusController;
 use App\Http\Controllers\ReviewController;
-use Illuminate\Support\Facades\App;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,21 +24,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('language/{locale}', function ($locale) {
+    app()->setLocale($locale);
+    session()->put('locale', $locale);
 
-
-Route::controller(LanguageController::class)->group(function () {
-    //Route::post('/lang/{locale}', 'switchLang')->name('switchLang');
-    // Route::get('/lang/{locale}', function (string $locale) {
-    //     App::setLocale($locale);
-    //     dd(App::getLocale());
-    // });
-
-    Route::get('/lang/{locale}', function ($locale = null) {
-        app()->setLocale($locale);
-        return redirect()->route('login');
-    })->name('switchLang');
+    return redirect()->back();
 });
-
 
 Route::controller(LoginRegisterController::class)->group(function () {
     Route::get('/register', 'register')->name('register');

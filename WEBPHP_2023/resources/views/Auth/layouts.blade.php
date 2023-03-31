@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Laravel 9 Custom User Registration & Login Tutorial - AllPHPTricks.com</title>
+    <title>{{ __('ui.shopName') }}</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <link href="css/style.css" rel="stylesheet" type="text/css">
@@ -15,15 +15,9 @@
 
     <nav class="navbar navbar-expand-lg">
         <div class="container">
-            <a class="navbar-brand" href="{{ URL('/') }}">Trackr</a>
+            <a class="navbar-brand" href="{{ URL('/') }}">{{ __('ui.shopName') }}</a>
 
-            <form action="{{ route('switchLang', ['locale' => App::getLocale() == 'en' ? 'nl' : 'en']) }}"
-                method="get">
-                @csrf
-                <button type="submit" class="btn btn-primary">
-                    {{ App::getLocale() == 'en' ? 'Dutch' : 'English' }}
-                </button>
-            </form>
+            @include('partials/language_switcher')
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
                 aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -34,11 +28,11 @@
                     @guest
                         <li class="nav-item">
                             <a class="nav-link {{ request()->is('login') ? 'active' : '' }}"
-                                href="{{ route('login') }}">Login</a>
+                                href="{{ route('login') }}">{{ __('auth.login') }}</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link {{ request()->is('register') ? 'active' : '' }}"
-                                href="{{ route('register') }}">Register</a>
+                                href="{{ route('register') }}">{{ __('auth.register') }}</a>
                         </li>
                     @else
                         <li class="nav-item dropdown">
@@ -49,7 +43,7 @@
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
-                            document.getElementById('logout-form').submit();">Logout</a>
+                            document.getElementById('logout-form').submit();">{{ __('auth.logout') }}</a>
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST">
                                         @csrf
                                     </form>

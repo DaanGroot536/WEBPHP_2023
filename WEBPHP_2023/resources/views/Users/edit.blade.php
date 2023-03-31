@@ -9,55 +9,55 @@
         <div class="w-50">
             <div class="card">
                 @if (Auth::user()->role == 'employee')
-                    <div class="card-header"><a class="link" href="{{route('dashboard')}}">{{Auth::user()->company}}
-                            Dashboard</a> -> <a class="link" href="{{route('getUserView')}}">UserList</a> -> Edit User
+                    <div class="card-header"><a class="link" href="{{ route('dashboard') }}">{{ Auth::user()->company }}
+                            {{ __('ui.dashboard') }}</a> -> <a class="link"
+                            href="{{ route('getUserView') }}">{{ __('ui.users') }}</a> -> {{ __('ui.edit_user') }}
                     </div>
                 @else
-                    <div class="card-header"><a class="link"
-                                                href="{{route('dashboard')}}">{{Auth::user()->name}}
-                            Dashboard</a> -> <a class="link" href="{{route('getUserView')}}">UserList</a> -> Edit User
+                    <div class="card-header"><a class="link" href="{{ route('dashboard') }}">{{ Auth::user()->name }}
+                            {{ __('ui.dashboard') }}</a> -> <a class="link"
+                            href="{{ route('getUserView') }}">{{ __('ui.users') }}</a> -> {{ __('ui.edit_user') }}
                     </div>
                 @endif
                 <div class="w-75 mx-auto my-5">
-                    <form action="{{route('updateUser')}}" method="post">
+                    <form action="{{ route('updateUser') }}" method="post">
                         @csrf
-                        <label>Name</label>
-                        <input class="form-control" type="text" name="name" value="{{$user->name}}">
+                        <label>{{ __('auth.name') }}</label>
+                        <input class="form-control" type="text" name="name" value="{{ $user->name }}">
                         <br>
-                        <label>E-mail address</label>
-                        <input class="form-control" type="email" name="email" value="{{$user->email}}">
+                        <label>{{ __('auth.email_address') }}</label>
+                        <input class="form-control" type="email" name="email" value="{{ $user->email }}">
                         <br>
-                        <label>New Password</label>
+                        <label>{{ __('auth.new_password') }}</label>
                         <input class="form-control" type="text" name="password" value="password">
                         <br>
-                        <label>User Role</label>
-                        <input type="number" name="id" value="{{$user->id}}" hidden>
+                        <label>{{ __('ui.user_role') }}</label>
+                        <input type="number" name="id" value="{{ $user->id }}" hidden>
                         <select class="form-control" name="role">
-                            <option value="{{$user->role}}">{{$user->role}}</option>
-                            @foreach($roles as $role)
-                                @if($role != $user->role)
-                                    <option value="{{$role->type}}">{{$role->type}}</option>
+                            <option value="{{ $user->role }}">{{ $user->role }}</option>
+                            @foreach ($roles as $role)
+                                @if ($role != $user->role)
+                                    <option value="{{ $role->type }}">{{ $role->type }}</option>
                                 @endif
                             @endforeach
                         </select>
                         <hr>
-                        <label>Street</label>
-                        <input class="form-control" type="text" name="street" value="{{$user->street}}">
+                        <label>{{ __('auth.street') }}</label>
+                        <input class="form-control" type="text" name="street" value="{{ $user->street }}">
                         <br>
-                        <label>House nr.</label>
-                        <input class="form-control" type="number" name="housenumber" value="{{$user->housenumber}}">
+                        <label>{{ __('auth.house_nr') }}</label>
+                        <input class="form-control" type="number" name="housenumber" value="{{ $user->housenumber }}">
                         <br>
-                        <label>Zipcode</label>
-                        <input class="form-control" type="text" name="zipcode" value="{{$user->zipcode}}">
+                        <label>{{ __('auth.zip') }}</label>
+                        <input class="form-control" type="text" name="zipcode" value="{{ $user->zipcode }}">
                         <br>
-                        <label>City</label>
-                        <input class="form-control" type="text" name="city" value="{{$user->city}}">
+                        <label>{{ __('auth.city') }}</label>
+                        <input class="form-control" type="text" name="city" value="{{ $user->city }}">
                         <br>
-                        <input type="submit" value="Save" class="btn btn-success">
+                        <input type="submit" value="{{ __('ui.save') }}" class="btn btn-success">
                     </form>
                 </div>
             </div>
         </div>
     </div>
-
 @endsection
