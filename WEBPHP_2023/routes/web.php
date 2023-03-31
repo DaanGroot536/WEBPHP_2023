@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\LoginRegisterController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PackageController;
 use App\Http\Controllers\LabelController;
+use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\PickupController;
 use App\Http\Controllers\StatusController;
 use App\Http\Controllers\ReviewController;
@@ -24,6 +25,13 @@ use App\Http\Controllers\ReviewController;
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+
+Route::controller(LanguageController::class)->group(function() {
+    Route::post('/lang/{locale}', 'switchLang')->name('switchLang');
+});
+
 
 Route::controller(LoginRegisterController::class)->group(function () {
     Route::get('/register', 'register')->name('register');
@@ -53,7 +61,6 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/download-csv-template', 'downloadCSVTemplate')->name('downloadCSVTemplate');
         Route::get('/deliveredPackages', 'getDeliveredPackagesView')->name('getDeliveredPackagesView');
         Route::get('/customerlist/resetDeliveredPackagesFilters', 'resetDeliveredPackagesFilters')->name('resetDeliveredPackagesFilters');
-
     });
 
     Route::controller(LabelController::class)->group(function () {
@@ -61,7 +68,6 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/labelCreate/{id}', 'getCreateLabelView')->name('getCreateLabelView');
         Route::post('/labelSave', 'saveLabel')->name('saveLabel');
         Route::post('/labelSaveBulk', 'saveLabelBulk')->name('saveLabelBulk');
-
     });
 
     Route::controller(PickupController::class)->group(function () {
@@ -84,5 +90,3 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/writeReview', 'getCreateReviewView')->name('getCreateReviewView');
     });
 });
-
-
