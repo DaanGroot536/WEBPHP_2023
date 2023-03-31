@@ -6,64 +6,62 @@
 
             <div class="card">
                 @if (Auth::user()->role == 'employee')
-                    <div class="card-header"><a class="link" href="{{route('dashboard')}}">{{Auth::user()->company}}
-                            Dashboard</a> -> Package list
+                    <div class="card-header"><a class="link" href="{{ route('dashboard') }}">{{ Auth::user()->company }}
+                            {{ __('ui.dashboard') }}</a> -> {{ __('ui.packages') }}
                     </div>
                 @else
-                    <div class="card-header"><a class="link"
-                                                href="{{route('dashboard')}}">{{Auth::user()->name}}
-                            Dashboard</a> -> Package list
+                    <div class="card-header"><a class="link" href="{{ route('dashboard') }}">{{ Auth::user()->name }}
+                            {{ __('ui.dashboard') }}</a> -> {{ __('ui.packages') }}
                     </div>
                 @endif
                 <div class="card-body">
                     @if (Auth::user()->role == 'webshop')
-                        <a href="{{ route('getCreatePackageView') }}" class="btn btn-success">Create Package +</a>
-                        <a href="{{ route('getBulkImportView') }}" class="btn btn-success">Bulk Import</a>
+                        <a href="{{ route('getCreatePackageView') }}" class="btn btn-success">{{ __('ui.create_package') }} +</a>
+                        <a href="{{ route('getBulkImportView') }}" class="btn btn-success">{{ __('ui.bulk_import') }}</a>
                     @endif
                     @if (Auth::user()->role == 'employee')
                         <div class="row">
-                            <p>Select packages for bulk labels. Next press the button to submit</p>
+                            <p>{{ __('ui.bulk_package_instructions') }}</p>
                         </div>
                     @endif
                     <div class="row mx-3">
                         <div class="col-3">
                             <form class="" action="{{ route('getPackages') }}" method="GET">
-                                <label for="sort_field">Sort by:</label>
+                                <label for="sort_field">{{ __('ui.sort_by') }}:</label>
                                 <div class="row">
                                     <div class="col-8">
                                         <select class="form-control" name="sort_field" id="sort_field">
-                                            <option value="id" {{ $sortField == 'id' ? 'selected' : '' }}>ID</option>
-                                            <option
-                                                value="idreversed" {{ $sortField == 'idreversed' ? 'selected' : '' }}>ID
-                                                - Reversed
+                                            <option value="id" {{ $sortField == 'id' ? 'selected' : '' }}>{{ __('ui.id_sort') }}</option>
+                                            <option value="idreversed" {{ $sortField == 'idreversed' ? 'selected' : '' }}>
+                                                {{ __('ui.id_sort_reversed') }}
                                             </option>
                                             <option value="status" {{ $sortField == 'status' ? 'selected' : '' }}>
-                                                Status
+                                                {{ __('ui.status_sort') }}
                                             </option>
-                                            <option
-                                                value="statusreversed" {{ $sortField == 'statusreversed' ? 'selected' : '' }}>
-                                                Status - Reversed
+                                            <option value="statusreversed"
+                                                {{ $sortField == 'statusreversed' ? 'selected' : '' }}>
+                                                {{ __('ui.status_sort_reversed') }}
                                             </option>
                                             <option value="weight" {{ $sortField == 'weight' ? 'selected' : '' }}>
-                                                Weight
+                                                {{ __('ui.weight_sort') }}
                                             </option>
-                                            <option
-                                                value="weightreversed" {{ $sortField == 'weightreversed' ? 'selected' : '' }}>
-                                                Weight - Reversed
+                                            <option value="weightreversed"
+                                                {{ $sortField == 'weightreversed' ? 'selected' : '' }}>
+                                                {{ __('ui.weight_sort_reversed') }}
                                             </option>
-                                            <option
-                                                value="customerCity" {{ $sortField == 'customerCity' ? 'selected' : '' }}>
-                                                City
+                                            <option value="customerCity"
+                                                {{ $sortField == 'customerCity' ? 'selected' : '' }}>
+                                                {{ __('ui.city_sort') }}
                                             </option>
-                                            <option
-                                                value="customerCityreversed" {{ $sortField == 'customerCityreversed' ? 'selected' : '' }}>
-                                                City - Reversed
+                                            <option value="customerCityreversed"
+                                                {{ $sortField == 'customerCityreversed' ? 'selected' : '' }}>
+                                                {{ __('ui.city_sort_reversed') }}
                                             </option>
                                         </select>
                                         <input type="text" name="formused" value="true" hidden>
                                     </div>
                                     <div class="col-3">
-                                        <button class="btn btn-primary" type="submit">Sort</button>
+                                        <button class="btn btn-primary" type="submit">{{ __('ui.sort') }}</button>
                                     </div>
                                 </div>
                             </form>
@@ -73,27 +71,29 @@
                             <form class="" method="GET" action="{{ route('getPackages') }}">
                                 <div class="row">
                                     <div class="col-5">
-                                        <label for="status">Status:</label>
+                                        <label for="status">{{ __('ui.status') }}:</label>
                                         <select name="status" id="status" class="form-control">
-                                            <option value="">-- Select status --</option>
+                                            <option value="">-- {{ __('ui.status_select') }} --</option>
                                             @foreach ($statuses as $id => $description)
                                                 <option value="{{ $description }}"
-                                                        @if (strtolower($description) === strtolower(request('status'))) selected @endif> {{ strtolower($description) }}</option>
+                                                    @if (strtolower($description) === strtolower(request('status'))) selected @endif>
+                                                    {{ strtolower($description) }}</option>
                                             @endforeach
                                         </select>
                                     </div>
                                     <div class="col-5">
-                                        <label for="city">City:</label>
+                                        <label for="city">{{ __('ui.city') }}:</label>
                                         <select name="city" id="city" class="form-control">
-                                            <option value="">-- Select city --</option>
+                                            <option value="">-- {{ __('ui.city_select') }} --</option>
                                             @foreach ($cities as $city)
                                                 <option value="{{ $city }}"
-                                                        @if ($city === request('city')) selected @endif>{{ $city }}</option>
+                                                    @if ($city === request('city')) selected @endif>{{ $city }}
+                                                </option>
                                             @endforeach
                                         </select>
                                     </div>
                                     <div class="col-2">
-                                        <button class="btn btn-primary mt-4" type="submit">Filter</button>
+                                        <button class="btn btn-primary mt-4" type="submit">{{ __('ui.filter') }}</button>
                                     </div>
                                 </div>
                                 <input type="text" name="formused" value="true" hidden>
@@ -102,14 +102,14 @@
 
                         <div class="col-3">
                             <form>
-                                <label>FullText Search:</label>
+                                <label>{{ __('ui.search') }}:</label>
 
                                 <div class="row">
                                     <div class="col-8">
                                         <input class="form-control" type="text" placeholder="FullText Search">
                                     </div>
                                     <div class="col-2">
-                                        <input class="btn btn-primary" type="submit" value="Search">
+                                        <input class="btn btn-primary" type="submit" value="{{ __('ui.search') }}">
                                     </div>
                                 </div>
                             </form>
@@ -118,7 +118,7 @@
                         <div class="col-1">
                             <form class="" action="{{ route('resetFilters') }}" method="GET">
                                 <input type="hidden" name="reset" value="1">
-                                <button class="btn btn-primary mt-4" type="submit">Reset</button>
+                                <button class="btn btn-primary mt-4" type="submit">{{ __('ui.reset') }}</button>
                             </form>
                         </div>
                     </div>
@@ -144,7 +144,7 @@
                                                 <div class="checkitem col">
                                                     @if ($package->labelID == null)
                                                         <input type="checkbox" class="packageCheck"
-                                                               name="{{ $package->id }}" value="true">
+                                                            name="{{ $package->id }}" value="true">
                                                     @endif
                                                 </div>
                                             </div>
@@ -156,11 +156,11 @@
                         <div class="p-3 list-box col-10 mb-3">
 
                             <div class="row mx-3">
-                                <strong class="col-1"><strong>ID:</strong></strong>
-                                <strong class="col-2"><strong>Status:</strong></strong>
-                                <strong class="col-2"><strong>dimensions:</strong></strong>
-                                <strong class="col-2"><strong>Weight:</strong></strong>
-                                <strong class="col-5">Delivery Address:</strong>
+                                <strong class="col-1"><strong>{{ __('ui.id') }}:</strong></strong>
+                                <strong class="col-2"><strong>{{ __('ui.status') }}:</strong></strong>
+                                <strong class="col-2"><strong>{{ __('ui.dimensions') }}:</strong></strong>
+                                <strong class="col-2"><strong>{{ __('ui.weight') }}:</strong></strong>
+                                <strong class="col-5">{{ __('ui.delivery_address') }}:</strong>
                             </div>
                             <hr>
                             @foreach ($packages as $package)
@@ -183,9 +183,9 @@
                                                         <option value="UPS">UPS</option>
                                                     </select>
                                                     <input type="number" value="{{ $package->id }}" name="packageID"
-                                                           hidden>
+                                                        hidden>
                                                     <input type="submit" class="btn btn-secondary mb-1"
-                                                           value="Create Label">
+                                                        value="Create Label">
                                                 </form>
 
                                             </div>
@@ -199,11 +199,11 @@
                                                         @php
                                                             $temp = true;
                                                         @endphp
-                                                        <p class="d-inline-block">Pickup planned!</p>
+                                                        <p class="d-inline-block">{{ __('ui.pickup_planned_msg') }}</p>
                                                     @endif
                                                 @endforeach
                                                 @if (!$temp)
-                                                    <p class="mt-2">Label Created!</p>
+                                                    <p class="mt-2">{{ __('ui.label_created_msg') }}</p>
                                                 @endif
                                             </div>
                                         @endif
