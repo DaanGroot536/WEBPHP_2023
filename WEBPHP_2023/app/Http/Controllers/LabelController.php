@@ -4,12 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\Package;
 use App\Models\Label;
+
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+
 use Dompdf\Dompdf;
+
 use Milon\Barcode\DNS1D;
-use Milon\Barcode\DNS2D;
 
 class LabelController extends Controller
 {
@@ -22,52 +24,44 @@ class LabelController extends Controller
 
     public function saveLabel(Request $request)
     {
-        $label = Label::create([
-            'packageID' => $request->packageID,
-            'deliverer' => $request->deliverer
-        ]);
+        $this->saveLabelToDB($request->packageID, $request->deliverer);
 
-        Package::where('id', $request->packageID)->update([
-            'labelID' => $label->id
-        ]);
-
-        $this->generatePDF($request, $label->id);
+        $package = Package::where('id', $request->packageID)->first();
+        $this->generatePDF($package);
 
         return redirect('/packageList');
     }
 
     public function saveLabelBulk(Request $request)
     {
-        $packages = DB::table('packages')->get();
+        //dd($request);
+        $packages = Package::all();
         foreach ($packages as $package) {
             if ($request->{$package->id} != null) {
-                $label = Label::create([
-                    'packageID' => $package->id,
-                    'deliverer' => $request->delivererBulk
-                ]);
-                Package::where('id', $package->id)->update([
-                    'labelID' => $label->id
-                ]);
+                $this->saveLabelToDB($package->id, $request->delivererBulk);
+                $this->generatePDF($package);
             }
         }
 
         return redirect('/packageList');
     }
 
-    public function generatePDF(Request $request, $labelID)
+    private function saveLabelToDB($packageID, $deliverer)
+    {
+        $label = Label::create([
+            'packageID' => $packageID,
+            'deliverer' => $deliverer
+        ]);
+
+        Package::where('id', $packageID)->update([
+            'labelID' => $label->id
+        ]);
+    }
+
+    public function generatePDF(Package $package)
     {
         // Create a new instance of the Dompdf class
         $pdf = new Dompdf();
-
-        // Retrieve the package
-        $package = Package::where('id', $request->packageID)->first();
-
-        //echo DNS1D::getBarcodeSVG('4445645656', 'PHARMA2T');
-        // echo '<img src="data:image/png,' . DNS1D::getBarcodePNG('4', 'C39+') . '" alt="barcode"   />';
-        // echo DNS1D::getBarcodePNGPath('4445645656', 'PHARMA2T');
-        // echo '<img src="data:image/png;base64,' . DNS1D::getBarcodePNG('4', 'C39+') . '" alt="barcode"   />';
-
-
 
         // Define the label HTML content
         $html = '<style>
@@ -138,14 +132,12 @@ class LabelController extends Controller
             <p><strong>Zip: </strong>' . $package->customerZipcode . '</p>
         </div>
         <div class="divider"></div>
-        <div class="barcode">' . DNS1D::getBarcodeHTML(strval($labelID), 'C39') . ' <div>
-        <div class="barcode-code">' . $labelID . '</div>
+        <div class="barcode">' . DNS1D::getBarcodeHTML(strval($package->id), 'C39') . ' <div>
+        <div class="barcode-code">' . $package->id . '</div>
         <div class="divider"></div>
         <div class="track-trace">Track &amp; Trace: ' . $package->trackandtracecode . '</div>
     </div>';
 
-        //' . $qr_code_file . '
-        //' . $barcode_file . '
         // Load the label HTML content into the Dompdf object
         $pdf->loadHtml($html);
 
@@ -155,7 +147,10 @@ class LabelController extends Controller
         // Render the HTML content into a PDF
         $pdf->render();
 
-        // Output the PDF to the browser for the user to download or view
-        $pdf->stream();
+        // Set the document name based on the label ID
+        $documentName = 'label_' . strval($package->labelID) . '.pdf';
+
+        // Output the PDF to the browser with the unique document name
+        $pdf->stream($documentName);
     }
 }
