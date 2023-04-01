@@ -4,9 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Laravel\Scout\Searchable;
 
 class Package extends Model
 {
+    use Searchable;
     use HasFactory;
 
     protected $fillable = [
@@ -38,5 +40,12 @@ class Package extends Model
     public function getFullWebshopAddressAttribute()
     {
         return "{$this->webshopStreet} {$this->webshopHousenumber}, {$this->webshopZipcode} {$this->webshopCity}";
+    }
+
+    public function toSearchableArray()
+    {
+        $array = $this->toArray();
+
+        return array('id' => $array['id'],'status' => $array['status'],'webshopName' => $array['webshopName'],'customerEmail' => $array['customerEmail'],'customerName' => $array['customerName']);
     }
 }
