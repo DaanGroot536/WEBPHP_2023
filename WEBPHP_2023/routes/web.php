@@ -90,6 +90,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::post('/pickupSave', 'savePickup')->name('savePickup');
         Route::get('/pickupCalendar', 'getCalendarView')->name('getCalendarView');
         Route::post('/pickupCalendarNewWeek', 'changeCalendarWeek')->name('changeCalendarWeek');
+        Route::get('/resetPickupFilters', 'resetPickupFilters')->name('resetPickupFilters');
     });
 
     Route::controller(StatusController::class)->group(function () {
