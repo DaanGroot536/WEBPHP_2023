@@ -120,7 +120,7 @@
 
                 <div class="card-body">
                                     @if (session('error'))
-                        <div class="alert alert-danger">{{ __('ui.no_pickup') }}</div>
+                        <div class="alert alert-danger">{{ __('ui.no_labels') }}</div>
                     @endif
                     <div class="row mx-4">
                         @if (Auth::user()->role == 'employee')

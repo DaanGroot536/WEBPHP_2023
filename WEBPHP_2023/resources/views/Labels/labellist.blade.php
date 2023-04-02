@@ -3,14 +3,18 @@
 @section('content')
     <div class="row justify-content-center mt-5">
         <div class="">
-
+            @if (session('error'))
+                <div class="alert alert-danger">{{ __('ui.no_labels') }}</div>
+            @endif
             <div class="card">
                 @if (Auth::user()->role == 'employee' || Auth::user()->role == 'packer')
-                    <div class="card-header"><a dusk="back" class="link" href="{{ route('dashboard') }}">{{ Auth::user()->company }}
+                    <div class="card-header"><a dusk="back" class="link"
+                            href="{{ route('dashboard') }}">{{ Auth::user()->company }}
                             {{ __('ui.dashboard') }}</a> -> {{ __('ui.label_list') }}
                     </div>
                 @else
-                    <div class="card-header"><a dusk="back" class="link" href="{{ route('dashboard') }}">{{ Auth::user()->name }}
+                    <div class="card-header"><a dusk="back" class="link"
+                            href="{{ route('dashboard') }}">{{ Auth::user()->name }}
                             {{ __('ui.dashboard') }}</a> -> {{ __('ui.label_list') }}
                     </div>
                 @endif
@@ -21,10 +25,9 @@
                             <div class="row">
                                 <div class="col-8">
                                     <select class="form-control" name="sort_field" id="sort_field">
-                                        <option
-                                            value="id" {{ $sortField == 'id' ? 'selected' : '' }}>{{ __('ui.id_sort') }}</option>
-                                        <option
-                                            value="idreversed" {{ $sortField == 'idreversed' ? 'selected' : '' }}>
+                                        <option value="id" {{ $sortField == 'id' ? 'selected' : '' }}>
+                                            {{ __('ui.id_sort') }}</option>
+                                        <option value="idreversed" {{ $sortField == 'idreversed' ? 'selected' : '' }}>
                                             {{ __('ui.id_sort_reversed') }}
                                         </option>
                                         <option value="status" {{ $sortField == 'status' ? 'selected' : '' }}>
@@ -41,8 +44,7 @@
                                             {{ $sortField == 'weightreversed' ? 'selected' : '' }}>
                                             {{ __('ui.weight_sort_reversed') }}
                                         </option>
-                                        <option value="customerCity"
-                                            {{ $sortField == 'customerCity' ? 'selected' : '' }}>
+                                        <option value="customerCity" {{ $sortField == 'customerCity' ? 'selected' : '' }}>
                                             {{ __('ui.city_sort') }}
                                         </option>
                                         <option value="customerCityreversed"
@@ -68,7 +70,7 @@
                                         <option value="">-- {{ __('ui.status_select') }} --</option>
                                         @foreach ($statuses as $id => $description)
                                             <option value="{{ $description }}"
-                                                    @if (strtolower($description) === strtolower(request('status'))) selected @endif>
+                                                @if (strtolower($description) === strtolower(request('status'))) selected @endif>
                                                 {{ __('ui.status_' . strtolower($description)) }}</option>
                                         @endforeach
                                     </select>
@@ -79,14 +81,13 @@
                                         <option value="">-- {{ __('ui.city_select') }} --</option>
                                         @foreach ($cities as $city)
                                             <option value="{{ $city }}"
-                                                    @if ($city === request('city')) selected @endif>{{ $city }}
+                                                @if ($city === request('city')) selected @endif>{{ $city }}
                                             </option>
                                         @endforeach
                                     </select>
                                 </div>
                                 <div class="col-2">
-                                    <button class="btn btn-primary mt-4"
-                                            type="submit">{{ __('ui.filter') }}</button>
+                                    <button class="btn btn-primary mt-4" type="submit">{{ __('ui.filter') }}</button>
                                 </div>
                             </div>
                             <input type="text" name="formused" value="true" hidden>
@@ -94,13 +95,13 @@
                     </div>
 
                     <div class="col-3">
-                        <form action="{{route('getLabels')}}" method="GET">
+                        <form action="{{ route('getLabels') }}" method="GET">
                             <label>{{ __('ui.search') }}:</label>
 
                             <div class="row">
                                 <div class="col-8">
                                     <input class="form-control" type="text" name="searchtext" required="required"
-                                           placeholder="{{ __('ui.search') }}">
+                                        placeholder="{{ __('ui.search') }}">
                                 </div>
                                 <div class="col-2">
                                     <input class="btn btn-primary" type="submit" value="{{ __('ui.search') }}">
@@ -123,21 +124,20 @@
                     <div class="row mx-4">
                         @if (Auth::user()->role == 'employee' || Auth::user()->role == 'packer')
                             <div class="col-2 p-0">
-                                <form action="{{route('printLabelBulk')}}" method="post" class="mt-2">
+                                <form action="{{ route('printLabelBulk') }}" method="post" class="mt-2">
                                     @csrf
                                     <div class=" d-inline-block w-40"></div>
                                     <input dusk="labelbulk" type="submit" class="btn btn-secondary mb-1 w-50"
-                                           value="Print">
+                                        value="Print">
                                     <div class="checklist">
-                                        @foreach($packages as $package)
-                                            @if($package->labelID != null)
-
+                                        @foreach ($packages as $package)
+                                            @if ($package->labelID != null)
                                                 <div class="row">
                                                     <div class="col"></div>
                                                     <div class="checkitem col">
-                                                        <input dusk="check{{$package->id}}" type="checkbox" class="packageCheck"
-                                                               name="{{$package->id}}"
-                                                               value="true">
+                                                        <input dusk="check{{ $package->id }}" type="checkbox"
+                                                            class="packageCheck" name="{{ $package->id }}"
+                                                            value="true">
                                                     </div>
                                                 </div>
                                             @endif
@@ -152,19 +152,19 @@
                                 <strong class="col-2 p-3">{{ __('ui.status') }}</strong>
                                 <strong class="col-2 p-3">{{ __('ui.dimensions') }}</strong>
                                 <strong class="col-2 p-3">{{ __('ui.weight_in_grams') }}</strong>
-                                <strong class="col-2 p-3">{{__('ui.customer_name')}}</strong>
-                                <strong class="col-2 p-3">{{__('ui.delivery_address')}}</strong>
+                                <strong class="col-2 p-3">{{ __('ui.customer_name') }}</strong>
+                                <strong class="col-2 p-3">{{ __('ui.delivery_address') }}</strong>
                             </div>
 
                             @foreach ($packages as $package)
                                 @if ($package->labelID != null)
                                     <div class="row mx-3 list-item">
                                         <p class="col-1 p-3">{{ $package->id }}</p>
-                                        <p class="col-2 p-3">{{strtolower($package->status)}}</p>
+                                        <p class="col-2 p-3">{{ strtolower($package->status) }}</p>
                                         <p class="col-2 p-3">{{ $package->dimensions }}</p>
                                         <p class="col-2 p-3">{{ $package->weight }}</p>
-                                        <p class="col-2 p-3">{{$package->customerName}}</p>
-                                        <p class="col-2 p-3">{{$package->full_customer_address}}</p>
+                                        <p class="col-2 p-3">{{ $package->customerName }}</p>
+                                        <p class="col-2 p-3">{{ $package->full_customer_address }}</p>
                                     </div>
                                 @endif
                             @endforeach
