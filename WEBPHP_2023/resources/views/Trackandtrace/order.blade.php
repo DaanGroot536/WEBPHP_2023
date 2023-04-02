@@ -15,7 +15,7 @@
                             <strong class="col-1"><strong>{{ __('ui.id') }}:</strong></strong>
                             <strong class="col-2"><strong>{{ __('ui.status') }}:</strong></strong>
                             <strong class="col-2"><strong>{{ __('ui.dimensions') }}:</strong></strong>
-                            <strong class="col-2"><strong>{{ __('ui.weight') }}:</strong></strong>
+                            <strong class="col-2"><strong>{{ __('ui.weight_in_grams') }}:</strong></strong>
                             <strong class="col-5">{{ __('ui.delivery_address') }}:</strong>
                         </div>
                         <div class="row mx-3 list-item">

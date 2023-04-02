@@ -26,7 +26,7 @@
                         <p>{{ __('ui.id') }}: {{ $package->id }}</p>
                         <p>{{ __('ui.status') }}: {{ __('ui.status_' . strtolower($package->status)) }}</p>
                         <p>{{ __('ui.dimensions') }}: {{ $package->dimensions }}</p>
-                        <p>{{ __('ui.weight') }}: {{ $package->weight }}</p>
+                        <p>{{ __('ui.weight_in_grams') }}: {{ $package->weight }}</p>
                     @else
                         @foreach ($packages as $package)
                             <div class="row mx-3 list-item">
