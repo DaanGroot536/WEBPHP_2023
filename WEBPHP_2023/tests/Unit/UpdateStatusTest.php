@@ -20,7 +20,7 @@ class UpdateStatusTest extends TestCase
 
         // Create a package
         $package = Package::factory()->create();
-        
+
         // Make a POST request to the updateStatus route with the user's API token and the package ID and status
         $response = $this->actingAs($user)
             ->post(route('updateStatus'), [
@@ -28,6 +28,9 @@ class UpdateStatusTest extends TestCase
                 'packageID' => $package->id,
                 'status' => 'delivered',
             ]);
+
+        // Assert that the response has a 302 status code
+        $response->assertStatus(302);
 
         // Assert that the response redirects to the getStatusView route
         $response->assertRedirect(route('getStatusView'));
@@ -53,31 +56,13 @@ class UpdateStatusTest extends TestCase
                 'status' => 'delivered',
             ]);
 
+        // Assert that the response has a 302 status code
+        $response->assertStatus(302);
+
         // Assert that the response redirects to the dashboard route
         $response->assertRedirect(route('dashboard'));
 
         // Assert that the package status was not updated
         $this->assertNotEquals('delivered', $package->fresh()->status);
-    }
-
-    /** @test */
-    public function testUpdateStatusReturns_302StatusCode()
-    {
-        // Create a user with a 'deliverer' role
-        $user = User::factory()->forRole('deliverer')->create();
-
-        // Create a package
-        $package = Package::factory()->create();
-
-        // Make a POST request to the updateStatus route with the user's API token and the package ID and status
-        $response = $this->actingAs($user)
-            ->post(route('updateStatus'), [
-                'api_token' => 'test_token',
-                'packageID' => $package->id,
-                'status' => 'delivered',
-            ]);
-
-        // Assert that the response has a 302 status code
-        $response->assertStatus(302);
     }
 }
