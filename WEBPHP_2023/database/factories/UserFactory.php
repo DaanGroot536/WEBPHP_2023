@@ -22,7 +22,7 @@ class UserFactory extends Factory
             'housenumber' => $this->faker->buildingNumber(),
             'zipcode' => $this->faker->postcode(),
             'city' => $this->faker->city(),
-            'api_token' => Str::random(60),
+            'api_token' => 'test_token',
         ];
     }
 
