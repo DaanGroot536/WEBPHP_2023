@@ -134,7 +134,7 @@
                                         <p class="col-2 p-3">{{ $package->customerName }}</p>
                                         <p class="col-2 p-3">{{ $package->dimensions }}</p>
                                         <p class="col-2 p-3">{{ $package->weight }}</p>
-                                        <p class="col-5 py-2">
+                                        <p class="col-5 p-3">
                                             {{ $package->full_customer_address }}</p>
                                     </div>
                                 @endif

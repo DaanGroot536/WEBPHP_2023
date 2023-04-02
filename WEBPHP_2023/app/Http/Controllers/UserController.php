@@ -38,6 +38,10 @@ class UserController extends Controller
     }
 
     public function saveUser(Request $request) {
+        if (User::where('email', $request->email)->get() != null) {
+            return redirect()->back()->with('error', 'ui.email_exists');
+        }
+
         if (Auth::user()->role == 'webshop') {
             User::create([
                 'name' => $request->name,
@@ -63,6 +67,7 @@ class UserController extends Controller
                 'zipcode' => $request->zipcode,
                 'city' => $request->city,
                 'api_token' => Str::random(60),
+                'company' => $request->deliveryservice,
             ]);
         }
 

@@ -119,7 +119,7 @@
                     <hr>
 
                 <div class="card-body">
-                                    @if (session('error'))
+                    @if (session('error'))
                         <div class="alert alert-danger">{{ __('ui.no_pickup') }}</div>
                     @endif
                     <div class="row mx-4">
@@ -149,16 +149,23 @@
                             </div>
                         @endif
                         <div class="p-3 list-box col-10 mb-3">
-                            <p class="ml-3">{{ __('ui.packages') }}:</p>
+                            <div class="row mx-3">
+                                <strong class="col-1"><strong>{{ __('ui.id') }}:</strong></strong>
+                                <strong class="col-2"><strong>{{ __('ui.status') }}:</strong></strong>
+                                <strong class="col-2"><strong>{{ __('ui.dimensions') }}:</strong></strong>
+                                <strong class="col-2"><strong>{{ __('ui.weight') }}:</strong></strong>
+                                <strong class="col-5">{{ __('ui.delivery_address') }}:</strong>
+                            </div>
                             <hr>
                             @foreach ($packages as $package)
                                 @if ($package->pickupID == null)
                                     <div class="row mx-3 list-item">
-                                        <p class="col-1 p-3">{{ __('ui.id') }}: {{ $package->id }}</p>
-                                        <p class="col-2 p-3">{{ __('ui.status') }}:
-                                            {{ __('ui.status_' . strtolower($package->status)) }}</p>
-                                        <p class="col-2 p-3">{{ __('ui.dimensions') }}: {{ $package->dimensions }}</p>
-                                        <p class="col-2 p-3">{{ __('ui.weight_in_grams') }}: {{ $package->weight }}</p>
+                                        <p class="col-1 p-3">{{ $package->id }}</p>
+                                        <p class="col-2 p-3">{{ strtolower($package->status) }}</p>
+                                        <p class="col-2 p-3">{{ $package->dimensions }}</p>
+                                        <p class="col-2 p-3">{{ $package->weight }}</p>
+                                        <p class="col-3 p-3">{{ $package->customerStreet }} {{ $package->customerHousenumber }}
+                                            {{ $package->customerCity }}</p>
                                         @if (Auth::user()->role == 'employee')
                                             @if ($package->labelID == null)
                                                 <p class="col-2 mt-3">{{ __('ui.label_warning') }}</p>
