@@ -38,7 +38,7 @@ class UserController extends Controller
     }
 
     public function saveUser(Request $request) {
-        if (User::where('email', $request->email)->get() != null) {
+        if (count(User::where('email', $request->email)->get()) != 0) {
             return redirect()->back()->with('error', 'ui.email_exists');
         }
 
