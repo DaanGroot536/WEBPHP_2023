@@ -113,6 +113,13 @@ class PackageController extends Controller
         return redirect()->route('getPackages');
     }
 
+    public function resetDeliveredPackagesFilters()
+    {
+        session()->forget(['status', 'city', 'sort_field', 'sort_order']);
+
+        return redirect()->route('getDeliveredPackagesView');
+    }
+
 
     public function getCreatePackageView()
     {
@@ -156,34 +163,55 @@ class PackageController extends Controller
         }
 
 
-        // get all packages
-        if (Auth::user()->role == 'webshop') {
-            $packages = Package::where('webshopName', Auth::user()->name)->orderBy($sortField, $sortOrder);
-        } else {
-            $packages = Package::where('webshopName', Auth::user()->company)->orderBy($sortField, $sortOrder);
+        if ($request->fulltext) {
+            // get all packages
+            if (Auth::user()->role == 'webshop') {
+                $packages = Package::search($request->searchtext)->get();
+                $packages = $packages->where('webshopName', Auth::user()->name);
+            } else {
+                if (Auth::user()->role == 'customer') {
+                    $packages = Package::search($request->searchtext)->get();
+                    $packages = $packages->where('customerEmail', Auth::user()->email);
+                } else {
+                    $packages = Package::search($request->searchtext)->get();
+                    $packages = $packages->where('webshopName', Auth::user()->company);
+                }
+            }
+        }
+        else {
+            // get all packages
+            if (Auth::user()->role == 'webshop') {
+                $packages = Package::where('webshopName', Auth::user()->name)->orderBy($sortField, $sortOrder);
+            } else {
+                if (Auth::user()->role == 'customer') {
+                    $packages = Package::where('customerEmail', Auth::user()->email)->orderBy($sortField, $sortOrder);
+                } else {
+                    $packages = Package::where('webshopName', Auth::user()->company)->orderBy($sortField, $sortOrder);
+                }
+            }
+
+            // apply filters
+            if ($request->has('status') && $request->status !== '' && $request->status !== null) {
+                $packages = $packages->where('status', strtolower($request->status));
+                session(['status' => $request->status]);
+            } elseif (session()->has('status')) {
+                $packages = $packages->where('status', strtolower(session('status')));
+            }
+
+            if ($request->has('city') && $request->city !== '' && $request->city !== null) {
+                $packages = $packages->where('customerCity', $request->city);
+                session(['city' => $request->city]);
+            } elseif (session()->has('city')) {
+                $packages = $packages->where('customerCity', session('city'));
+            }
+            $packages = $packages->simplePaginate(10); // 10 items per page
         }
 
         // get all status filter options
         $statuses = Status::pluck('description', 'id');
 
         // get all city filter options
-        $cities = $packages->distinct('customerCity')->pluck('customerCity');
-
-        // apply filters
-        if ($request->has('status') && $request->status !== '' && $request->status !== null) {
-            $packages = $packages->where('status', strtolower($request->status));
-            session(['status' => $request->status]);
-        } elseif (session()->has('status')) {
-            $packages = $packages->where('status', strtolower(session('status')));
-        }
-
-        if ($request->has('city') && $request->city !== '' && $request->city !== null) {
-            $packages = $packages->where('customerCity', $request->city);
-            session(['city' => $request->city]);
-        } elseif (session()->has('city')) {
-            $packages = $packages->where('customerCity', session('city'));
-        }
-        $packages = $packages->simplePaginate(3); // 10 items per page
+        $cities = Package::distinct('customerCity')->pluck('customerCity');
 
         // store old values in session variables
         session([
@@ -198,7 +226,8 @@ class PackageController extends Controller
             'sortField' => $originalSortField,
             'sortOrder' => $sortOrder,
             'statuses' => $statuses,
-            'cities' => $cities
+            'cities' => $cities,
+            'fulltext' => $request->fulltext,
         ]);
     }
 }

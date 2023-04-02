@@ -146,16 +146,16 @@
                                 </form>
                             </div>
                         @endif
-                        <div class="p-3 list-box col-10 mb-3">
-                            <p class="ml-3">Label List:</p>
-                            <hr>
+                        <div class="list-box col-10 mb-3">
                             <div class="row mx-3">
                                 <strong class="col-1 p-3">{{ __('ui.id') }}:</strong>
                                 <strong class="col-2 p-3">{{ __('ui.status') }}</strong>
                                 <strong class="col-2 p-3">{{ __('ui.dimensions') }}</strong>
                                 <strong class="col-2 p-3">{{ __('ui.weight_in_grams') }}</strong>
                                 <strong class="col-2 p-3">{{__('ui.customer_name')}}</strong>
+                                <strong class="col-2 p-3">{{__('ui.delivery_address')}}</strong>
                             </div>
+
                             @foreach ($packages as $package)
                                 @if ($package->labelID != null)
                                     <div class="row mx-3 list-item">
@@ -164,6 +164,7 @@
                                         <p class="col-2 p-3">{{ $package->dimensions }}</p>
                                         <p class="col-2 p-3">{{ $package->weight }}</p>
                                         <p class="col-2 p-3">{{$package->customerName}}</p>
+                                        <p class="col-2 p-3">{{$package->full_customer_address}}</p>
                                     </div>
                                 @endif
                             @endforeach

@@ -6,7 +6,7 @@
             <div class="card">
                 @if (Auth::user()->role == 'employee')
                     <div class="card-header"><a class="link" href="{{ route('dashboard') }}">{{ Auth::user()->company }}
-                            {{ __('customer.dashboard') }}</a> -> {{ __('ui.customers') }}
+                            {{ __('ui.dashboard') }}</a> -> {{ __('ui.customers') }}
                     </div>
                 @else
                     <div class="card-header"><a class="link" href="{{ route('dashboard') }}">{{ Auth::user()->name }}

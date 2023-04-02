@@ -164,7 +164,8 @@ class LabelController extends Controller
         ]);
 
         Package::where('id', $packageID)->update([
-            'labelID' => $label->id
+            'labelID' => $label->id,
+            'status' => 'Label printed',
         ]);
     }
 

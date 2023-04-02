@@ -91,15 +91,17 @@
                         </div>
 
                         <div class="col-3">
-                            <form>
+                            <form action="{{route('getDeliveredPackagesView')}}" method="GET">
                                 <label>{{ __('ui.search') }}:</label>
 
                                 <div class="row">
                                     <div class="col-8">
-                                        <input class="form-control" type="text" placeholder="{{ __('ui.search') }}">
+                                        <input class="form-control" type="text" name="searchtext" required="required"
+                                               placeholder="{{ __('ui.search') }}">
                                     </div>
                                     <div class="col-2">
                                         <input class="btn btn-primary" type="submit" value="{{ __('ui.search') }}">
+                                        <input type="text" name="fulltext" value="true" hidden>
                                     </div>
                                 </div>
                             </form>
