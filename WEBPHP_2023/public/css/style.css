@@ -1,0 +1,68 @@
+nav {
+    background-color: lightgray;
+}
+
+.trackrLogo {
+    font-size: 100px;
+}
+
+.link {
+    text-decoration: none;
+    color: black;
+}
+
+.list-item {
+    border-bottom: 1px solid lightgray;
+    height: 150px;
+}
+
+.list-box {
+    border: 1px solid lightgray;
+    border-radius: 5px;
+}
+
+.packageCheck {
+    width: 25px;
+    height: 25px;
+}
+
+.checklist {
+    margin-top: 20px;
+}
+
+.checkitem {
+    padding: 25px;
+    width: 100px;
+    height: 150px;
+}
+
+.w-40 {
+    width: 40%;
+}
+
+.calendar-item {
+    height: 100vh;
+}
+
+.calendar {
+    border-top: 1px solid gray;
+}
+
+.rightbtn {
+    float: right;
+}
+
+.strong {
+    font-weight: bold;
+}
+
+.calendar-pickup {
+    border: solid 1px gray;
+    margin-bottom: 3px;
+    border-radius: 5px;
+}
+
+.reviewtext {
+    height: 300px;
+    resize: none;
+}

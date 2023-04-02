@@ -1,0 +1,69 @@
+Modellen/Database objecten:
+User
+- ID
+- type/rol
+- apiToken?
+
+Label
+- bezorgbedrijf nullable
+- pakketID nullable
+
+Pakket
+- ID
+- labelID nullable
+- pickupAanvraagID nullable
+- track_and_tracecode nullable
+- status
+- gewicht
+- lengte
+- breedte
+- hoogte
+
+Pickup Aanvraag
+- Datum
+- PakketID
+
+Review
+- UserID
+- PakketID
+- Review content
+- Score 1-5
+
+Status
+- Aangemeld, Uitgeprint, Afgeleverd, Sorteercentrum, onderweg, afgeleverd
+
+
+Usertypes:
+- SuperAdmin
+- Webshop
+- Bezorgbedrijf
+- Trackr medewerker
+- Pakketinpakker
+- Pakketontvanger
+
+
+Pagina's:
+- Users CRUD - SuperAdmin v
+- Aanmaken verzendingen/pakketten - Webshop
+- Aanmaken labels/pakketlijst - Trackr medewerker/Pakketinpakker
+- Pickup overzicht - Trackr medewerker
+- Status pakket updaten - Bezorgbedrijf
+- Track and trace - Pakketontvanger
+- Review pagina- Pakketontvanger
+
+
+BELANGRIJK:
+- Pakketten worden eerst bij het Trackr warenhuis afgeleverd (hier krijgen ze een label) waarna ze naar het sorteercentrum gaan. 
+Hierna gaan ze pas naar de ontvanger.
+- Pakketten zijn de eerste objecten die aangemaakt worden. Op basis hiervan kun je een label, t&tcode etc. aanmaken.
+- Pakketten aanmelden via API kan als volgt:
+Je toont de aanmaak pagina via de normale route (je stopt de user info in hidden inputs)
+Daarna route je de action naar de apicontroller
+De apicontroller route je direct na het updaten of invoeren van data weer terug naar de normale controller
+
+
+Attributen voor filters per categorie:
+
+Klanten:
+-sorteren - Naam Adres ID
+-filteren - Naam Adres
