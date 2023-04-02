@@ -19,20 +19,20 @@
                     <form action="{{ route('saveUser') }}" method="post">
                         @csrf
                         <label>{{ __('auth.name') }}*</label>
-                        <input class="form-control" type="text" name="name" placeholder="{{ __('auth.name') }}">
+                        <input dusk="name" class="form-control" type="text" name="name" placeholder="{{ __('auth.name') }}">
                         <br>
                         <label>{{ __('auth.email_address') }}*</label>
-                        <input class="form-control" type="email" name="email" placeholder="{{ __('auth.email_address') }}">
+                        <input dusk="email" class="form-control" type="email" name="email" placeholder="{{ __('auth.email_address') }}">
                         <br>
                         <label>{{ __('auth.password_verb') }}*</label>
-                        <input class="form-control" type="text" name="password" placeholder="{{ __('auth.password_verb') }}">
+                        <input dusk="password" class="form-control" type="text" name="password" placeholder="{{ __('auth.password_verb') }}">
                         <br>
                         <label>{{ __('ui.user_role') }}*</label>
-                        <select class="form-control" name="role">
+                        <select dusk="role" class="form-control" name="role">
                             @foreach ($roles as $role)
                                 @if (Auth::user()->role == 'webshop')
                                     @if ($role->type == 'employee' || $role->type == 'packer')
-                                        <option value="{{ $role->type }}">{{ __('ui.role_' . $role->type) }}</option> 
+                                        <option value="{{ $role->type }}">{{ __('ui.role_' . $role->type) }}</option>
                                     @endif
                                 @else
                                     <option value="{{ $role->type }}">{{ __('ui.role_' . $role->type) }}</option>
@@ -41,18 +41,18 @@
                         </select>
                         <hr>
                         <label>{{ __('auth.street') }}</label>
-                        <input class="form-control" type="text" name="street" placeholder="{{ __('auth.street') }}">
+                        <input dusk="street" class="form-control" type="text" name="street" placeholder="{{ __('auth.street') }}">
                         <br>
                         <label>{{ __('auth.house_nr') }}</label>
-                        <input class="form-control" type="number" name="housenumber" placeholder="{{ __('auth.house_nr') }}">
+                        <input dusk="housenumber" class="form-control" type="number" name="housenumber" placeholder="{{ __('auth.house_nr') }}">
                         <br>
                         <label>{{ __('auth.zip') }}</label>
-                        <input class="form-control" type="text" name="zipcode" placeholder="{{ __('auth.zip') }}">
+                        <input dusk="zipcode" class="form-control" type="text" name="zipcode" placeholder="{{ __('auth.zip') }}">
                         <br>
                         <label>{{ __('auth.city') }}</label>
-                        <input class="form-control" type="text" name="city" placeholder="{{ __('auth.city') }}">
+                        <input dusk="city" class="form-control" type="text" name="city" placeholder="{{ __('auth.city') }}">
                         <br>
-                        <input type="submit" value="{{ __('ui.save') }}" class="btn btn-success">
+                        <input dusk="submit" type="submit" value="{{ __('ui.save') }}" class="btn btn-success">
                     </form>
                 </div>
             </div>

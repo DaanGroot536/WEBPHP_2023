@@ -40,10 +40,10 @@
                                     <label class="mb-1">{{ __('ui.write_review_for') }}{{$package->webshopName}}!</label>
                                     <br>
                                     <label for="amount_of_stars">{{ __('ui.star_amount') }}</label>
-                                    <input class="form-control mb-3 w-25" type="number" min="1" max="5" name="amount_of_stars">
-                                    <textarea class="form-control reviewtext"
+                                    <input dusk="stars" class="form-control mb-3 w-25" type="number" min="1" max="5" name="amount_of_stars">
+                                    <textarea dusk="reviewtext" class="form-control reviewtext"
                                               name="review_text">{{ __('ui.write_review') }}</textarea>
-                                    <input class="btn btn-secondary mt-3" type="submit" value="Place Review">
+                                    <input dusk="submit" class="btn btn-secondary mt-3" type="submit" value="Place Review">
                                     <input type="number" name="packageID" value="{{$package->id}}" hidden>
                                     <input type="number" name="labelID" value="{{$label->id}}" hidden>
                                 </form>

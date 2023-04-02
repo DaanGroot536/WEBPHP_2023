@@ -6,7 +6,7 @@
             <div class="card">
                 @if (Auth::user()->role == 'employee')
                     <div class="card-header"><a class="link" href="{{ route('dashboard') }}">{{ Auth::user()->company }}
-                            {{ __('customer.dashboard') }}</a> -> {{ __('ui.customers') }}
+                            {{ __('ui.dashboard') }}</a> -> {{ __('ui.customers') }}
                     </div>
                 @else
                     <div class="card-header"><a class="link" href="{{ route('dashboard') }}">{{ Auth::user()->name }}
@@ -51,7 +51,7 @@
                                 <div class="col-8">
                                     <label for="city">{{ __('auth.city') }}:</label>
                                     <select name="city" id="city" class="form-control">
-                                        <option value="">-- {{ __('auth.city_select') }} --</option>
+                                        <option value="">-- {{ __('ui.city_select') }} --</option>
                                         @foreach ($cities as $city)
                                             <option value="{{ $city }}"
                                                 @if ($city === request('city')) selected @endif>{{ $city }}
@@ -60,7 +60,7 @@
                                     </select>
                                 </div>
                                 <div class="col-2">
-                                    <button class="btn btn-primary mt-4" type="submit">{{ __('auth.filter') }}</button>
+                                    <button class="btn btn-primary mt-4" type="submit">{{ __('ui.filter') }}</button>
                                 </div>
                             </div>
                             <input type="text" name="formused" value="true" hidden>
@@ -70,7 +70,7 @@
                     <div class="col-1">
                         <form class="" action="{{ route('resetCustomerFilters') }}" method="GET">
                             <input type="hidden" name="reset" value="1">
-                            <button class="btn btn-primary mt-4" type="submit">{{ __('auth.reset') }}</button>
+                            <button class="btn btn-primary mt-4" type="submit">{{ __('ui.reset') }}</button>
                         </form>
                     </div>
                 </div>
@@ -83,19 +83,17 @@
                     @endif
                     <hr>
                     <div class="row mx-3">
-                        <p class="col-3 p-3">{{ __('ui.user_name') }}:</p>
-                        <p class="col-3 p-3">{{ __('ui.email') }}:</p>
-                        <p class="col-3 p-3">{{ __('ui.address') }}:</p>
+                        <strong class="col-3 p-3">{{ __('ui.user_name') }}:</strong>
+                        <strong class="col-3 p-3">{{ __('ui.email') }}:</strong>
+                        <strong class="col-3 p-3">{{ __('ui.address') }}:</strong>
                     </div>
                     @foreach ($packages as $package)
-                        <a class="link" href="">
                             <div class="my-1 row mx-3 list-item">
                                 <p class="col-3 p-3">{{ $package->customerName }}</p>
                                 <p class="col-3 p-3">{{ $package->customerEmail }}</p>
                                 <p class="col-3 p-3">{{ $package->customerStreet }} {{ $package->customerHousenumber }}
                                     {{ $package->customerCity }}</p>
                             </div>
-                        </a>
                     @endforeach
                 </div>
                 <div class="pagination">

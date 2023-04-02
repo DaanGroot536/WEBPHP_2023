@@ -17,7 +17,7 @@ class PackageSeeder extends Seeder
             'webshopZipcode' => '4551VK',
             'webshopCity' => 'Rotterdam',
             'customerName' => 'Arie Kassa',
-            'customerEmail' => 'arie@kassa.nl',
+            'customerEmail' => 'cust@cust.com',
             'customerStreet' => 'Kerkstraat',
             'customerHousenumber' => 10,
             'customerZipcode' => '4867GS',
