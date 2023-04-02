@@ -25,7 +25,7 @@ class CreateUsersTable extends Migration
             $table->string('housenumber')->nullable();
             $table->string('zipcode')->nullable();
             $table->string('city')->nullable();
-            $table->string('api_token', 80)->after('password')
+            $table->string('api_token', 80)
                 ->unique()
                 ->nullable()
                 ->default(null);
