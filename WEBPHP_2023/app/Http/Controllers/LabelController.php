@@ -115,17 +115,12 @@ class LabelController extends Controller
     public function resetLabelFilters()
     {
         session()->forget(['status', 'city', 'sort_field', 'sort_order']);
-
         return redirect()->route('getLabels');
     }
 
     public function saveLabel(Request $request)
     {
         $this->saveLabelToDB($request->packageID, $request->deliverer);
-
-        $package = Package::where('id', $request->packageID)->first();
-//        $this->generatePDF($package);
-
         return redirect('/packageList');
     }
 
@@ -162,7 +157,6 @@ class LabelController extends Controller
             'packageID' => $packageID,
             'deliverer' => $deliverer
         ]);
-
         Package::where('id', $packageID)->update([
             'labelID' => $label->id,
             'status' => 'Label printed',
