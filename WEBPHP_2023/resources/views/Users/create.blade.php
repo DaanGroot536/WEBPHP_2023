@@ -3,6 +3,9 @@
 @section('content')
     <div class="row justify-content-center mt-5">
         <div class="w-50">
+            @if (session('error'))
+                <div class="alert alert-danger">{{ __('ui.email_exists') }}</div>
+            @endif
             <div class="card">
                 @if (Auth::user()->role == 'employee')
                     <div class="card-header"><a class="link" href="{{ route('dashboard') }}">{{ Auth::user()->company }}
@@ -17,6 +20,7 @@
                         -> {{ __('ui.dashboard') }}
                     </div>
                 @endif
+
                 <div class="w-75 mx-auto my-5">
                     <form action="{{ route('saveUser') }}" method="post">
                         @csrf

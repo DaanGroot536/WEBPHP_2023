@@ -126,4 +126,5 @@ return [
     'role_packer' => 'Verpakker',
 
     'no_pickup' => 'Je moet minstens één label selecteren.',
+    'email_exists' => 'Er bestaat al een account met dit mailadres',
 ];

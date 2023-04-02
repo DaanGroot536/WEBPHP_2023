@@ -38,6 +38,9 @@ class UserController extends Controller
     }
 
     public function saveUser(Request $request) {
+        if (User::where('email', $request->email)->get() != null) {
+            return redirect()->back()->with('error', 'ui.email_exists');
+        }
 
         if (Auth::user()->role == 'webshop') {
             User::create([

@@ -125,4 +125,5 @@ return [
     'role_packer' => 'Packer',
 
     'no_pickup' => 'You have to select at least one label.',
+    'email_exists' => 'An account with this email already exists',
 ];

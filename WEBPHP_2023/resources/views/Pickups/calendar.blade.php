@@ -41,7 +41,7 @@
                             @if ($day->date == date_format(date_create($pickup->pickup_datetime), 'Y-m-d'))
                                 <div class="calendar-pickup">
                                     <p>{{ __('ui.package_id') }} {{ $pickup->packageID }}</p>
-                                    <p>{{ date_format(date_create($pickup->pickup_datetime), 'H-s') }}</p>
+                                    <p>{{ date_format(date_create($pickup->pickup_datetime), 'H:s') }}</p>
                                 </div>
                             @endif
                         @endforeach
