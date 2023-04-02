@@ -23,7 +23,7 @@
                             <p class="col-2 p-3">{{ __('ui.status') }}:</p>
                             <p class="col-3 p-3">{{ __('ui.destination') }}:</p>
                             <p class="col-2 p-3">{{ __('ui.dimensions') }}:</p>
-                            <p class="col-2 p-3">{{ __('ui.weight') }}:</p>
+                            <p class="col-2 p-3">{{ __('ui.weight_in_grams') }}:</p>
                         </div>
                         <hr>
                         @foreach ($packages as $package)

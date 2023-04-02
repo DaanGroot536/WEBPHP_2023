@@ -30,7 +30,7 @@
                                     {{ __('ui.destination') }}: {{ $package->customerStreet }}
                                     {{ $package->customerHousenumber }} {{ $package->customerCity }}</p>
                                 <p class="col-2 p-3">{{ __('ui.dimensions') }}: {{ $package->dimensions }}</p>
-                                <p class="col-2 p-3">{{ __('ui.weight') }}: {{ $package->weight }}</p>
+                                <p class="col-2 p-3">{{ __('ui.weight_in_grams') }}: {{ $package->weight }}</p>
                             </div>
                             @foreach ($statuses as $status)
                                 @if (

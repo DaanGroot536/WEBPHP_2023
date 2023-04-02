@@ -98,6 +98,7 @@ return [
     'track_and_trace_code' => 'Track & Trace code',
     'track_and_trace_instructions' => 'Voer hier uw code in om uw pakket te volgen of schrijf een beoordeling.',
     'track_and_trace_button' => 'Volg',
+    'no_package' => 'Geen pakket gevonden met deze code.',
 
     'delivery_service' => 'Bezorgdienst',
     'no_delivery_service' => 'Geen bezorgdienst toegewezen',
@@ -123,4 +124,6 @@ return [
     'role_customer' => 'Klant',
     'role_deliverer' => 'Bezorger',
     'role_packer' => 'Verpakker',
+
+    'no_pickup' => 'Je moet minstens één label selecteren.',
 ];

@@ -119,6 +119,9 @@
                     <hr>
 
                 <div class="card-body">
+                                    @if (session('error'))
+                        <div class="alert alert-danger">{{ __('ui.no_pickup') }}</div>
+                    @endif
                     <div class="row mx-4">
                         @if (Auth::user()->role == 'employee')
                             <div class="col-2 p-0">
@@ -152,9 +155,10 @@
                                 @if ($package->pickupID == null)
                                     <div class="row mx-3 list-item">
                                         <p class="col-1 p-3">{{ __('ui.id') }}: {{ $package->id }}</p>
-                                        <p class="col-2 p-3">{{ __('ui.status') }}: {{ __('ui.status_' . strtolower($package->status)) }}</p>
+                                        <p class="col-2 p-3">{{ __('ui.status') }}:
+                                            {{ __('ui.status_' . strtolower($package->status)) }}</p>
                                         <p class="col-2 p-3">{{ __('ui.dimensions') }}: {{ $package->dimensions }}</p>
-                                        <p class="col-2 p-3">{{ __('ui.weight') }}: {{ $package->weight }}</p>
+                                        <p class="col-2 p-3">{{ __('ui.weight_in_grams') }}: {{ $package->weight }}</p>
                                         @if (Auth::user()->role == 'employee')
                                             @if ($package->labelID == null)
                                                 <p class="col-2 mt-3">{{ __('ui.label_warning') }}</p>

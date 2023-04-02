@@ -147,17 +147,17 @@ class PickupController extends Controller
         return view('pickups.calendar', ['days' => $daysforcalendar, 'pickups' => $pickups, 'date' => $currentDay]);
     }
 
-    public function savePickup(Request $request)
-    {
-        $pickupDateTime = $request->date . '-' . $request->time;
+    // public function savePickup(Request $request)
+    // {
+    //     $pickupDateTime = $request->date . '-' . $request->time;
 
-        Pickup::create([
-            'packageID' => $request->packageID,
-            'pickup_datetime' => $pickupDateTime
-        ]);
+    //     Pickup::create([
+    //         'packageID' => $request->packageID,
+    //         'pickup_datetime' => $pickupDateTime
+    //     ]);
 
-        return redirect()->route('getPickupView');
-    }
+    //     return redirect()->route('getPickupView');
+    // }
 
     public function savePickupBulk(Request $request)
     {
@@ -169,6 +169,7 @@ class PickupController extends Controller
                 array_push($packagesForPickup, $package);
             }
         }
+
         foreach ($packagesForPickup as $package) {
             $pickup = Pickup::create([
                 'packageID' => $package->id,
@@ -188,17 +189,23 @@ class PickupController extends Controller
     public function getCreatePickupBulk(Request $request)
     {
         $packagesForPickup = [];
+
         if (Auth::user()->role == 'webshop') {
             $packages = Package::where('webshopName', Auth::user()->name)->get();
 
         } else {
             $packages = Package::where('webshopName', Auth::user()->company)->get();
         }
+
         $minDate = date('Y-m-d', strtotime('+3 days'));
         foreach ($packages as $package) {
             if ($request->{$package->id} != null) {
                 array_push($packagesForPickup, $package);
             }
+        }
+
+        if(count($packagesForPickup) <= 0) {
+            return redirect()->back()->with('error', 'ui.no_package');
         }
 
         return view('pickups.create', ['packages' => $packagesForPickup, 'mindate' => $minDate]);

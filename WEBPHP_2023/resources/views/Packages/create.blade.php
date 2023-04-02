@@ -28,7 +28,7 @@
                         <br>
                         <label>{{ __('ui.weight_in_grams') }}</label>
                         <input class="form-control" type="number" min="0" max="40000" name="weight"
-                            placeholder="{{ __('ui.weight') }}">
+                            placeholder="{{ __('ui.weight_in_grams') }}">
                         <hr>
                         <label>{{ __('ui.customer_email') }}</label>
                         <input class="form-control" type="email" name="customerEmail" placeholder="{{ __('ui.customer_email') }}">
