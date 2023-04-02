@@ -23,10 +23,12 @@
                     <form action="{{ route('updateUser') }}" method="post">
                         @csrf
                         <label>{{ __('auth.name') }}</label>
-                        <input dusk="name" class="form-control" type="text" name="name" value="{{ $user->name }}">
+                        <input dusk="name" class="form-control" type="text" name="name"
+                            value="{{ $user->name }}">
                         <br>
                         <label>{{ __('auth.email_address') }}</label>
-                        <input dusk="email" class="form-control" type="email" name="email" value="{{ $user->email }}">
+                        <input dusk="email" class="form-control" type="email" name="email"
+                            value="{{ $user->email }}">
                         <br>
                         <label>{{ __('auth.new_password') }}</label>
                         <input dusk="password" class="form-control" type="text" name="password" value="password">
@@ -36,10 +38,10 @@
                         <select dusk="role" class="form-control" name="role">
                             @foreach ($roles as $role)
                                 @if (Auth::user()->role == 'webshop')
-                                    
                                     @if ($role->type == 'employee' || $role->type == 'packer')
-                                        @if($role->type == $user->role)
-                                            <option {{ $role->type == $user->role ? 'selected' : '' }} value="{{ $role->type }}">{{ __('ui.role_' . $role->type) }}</option>
+                                        @if ($role->type == $user->role)
+                                            <option {{ $role->type == $user->role ? 'selected' : '' }}
+                                                value="{{ $role->type }}">{{ __('ui.role_' . $role->type) }}</option>
                                         @endif
                                     @endif
                                 @else
@@ -47,19 +49,23 @@
                                 @endif
                             @endforeach
                         </select>
-                        
+
                         <hr>
                         <label>{{ __('auth.street') }}</label>
-                        <input dusk="street" class="form-control" type="text" name="street" value="{{ $user->street }}">
+                        <input dusk="street" class="form-control" type="text" name="street"
+                            value="{{ $user->street }}">
                         <br>
                         <label>{{ __('auth.house_nr') }}</label>
-                        <input dusk="housenumber" class="form-control" type="number" name="housenumber" value="{{ $user->housenumber }}">
+                        <input dusk="housenumber" class="form-control" type="number" name="housenumber"
+                            value="{{ $user->housenumber }}">
                         <br>
                         <label>{{ __('auth.zip') }}</label>
-                        <input dusk="zipcode" class="form-control" type="text" name="zipcode" value="{{ $user->zipcode }}">
+                        <input dusk="zipcode" class="form-control" type="text" name="zipcode"
+                            value="{{ $user->zipcode }}">
                         <br>
                         <label>{{ __('auth.city') }}</label>
-                        <input dusk="city" class="form-control" type="text" name="city" value="{{ $user->city }}">
+                        <input dusk="city" class="form-control" type="text" name="city"
+                            value="{{ $user->city }}">
                         <br>
                         <input dusk="submit" type="submit" value="{{ __('ui.save') }}" class="btn btn-success">
                     </form>
