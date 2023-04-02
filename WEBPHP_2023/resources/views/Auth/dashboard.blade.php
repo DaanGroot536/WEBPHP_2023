@@ -15,13 +15,13 @@
                     @if (Auth::user()->role == 'superadmin' || Auth::user()->role == 'webshop')
                         <div class="row mx-3">
                             <p class="col">{{ __('ui.users') }}</p>
-                            <a href="{{ route('getUserView') }}" class="btn btn-secondary col-1"> ></a>
+                            <a dusk="userlist" href="{{ route('getUserView') }}" class="btn btn-secondary col-1"> ></a>
                         </div>
                     @endif
                     @if(Auth::user()->role == 'employee' || Auth::user()->role == 'customer' || Auth::user()->role == 'packer')
                         <div class="row mx-3 mt-1">
                             <p class="col">{{ __('ui.packages') }}</p>
-                            <a href="{{route('getPackages')}}" class="btn btn-secondary col-1"> ></a>
+                            <a dusk="packagelist" href="{{route('getPackages')}}" class="btn btn-secondary col-1"> ></a>
                         </div>
                     @endif
                     @if (Auth::user()->role == 'customer')
@@ -34,11 +34,11 @@
 
                         <div class="row mx-3 mt-1">
                             <p class="col">{{ __('ui.labels') }}</p>
-                            <a href="{{route('getLabels')}}" class="btn btn-secondary col-1"> ></a>
+                            <a dusk="labellist" href="{{route('getLabels')}}" class="btn btn-secondary col-1"> ></a>
                         </div>
                         <div class="row mx-3 mt-1">
                             <p class="col">{{ __('ui.plan_pickups') }}</p>
-                            <a href="{{route('getPickupView')}}" class="btn btn-secondary col-1"> ></a>
+                            <a dusk="pickuplist" href="{{route('getPickupView')}}" class="btn btn-secondary col-1"> ></a>
                         </div>
                         <div class="row mx-3 mt-1">
                             <p class="col">{{ __('ui.customers') }}</p>
@@ -63,7 +63,7 @@
                     @if (Auth::user()->role == 'webshop')
                         <div class="row mx-3 mt-1">
                             <p class="col">{{ __('ui.packages') }}</p>
-                            <a href="{{route('getPackages')}}" class="btn btn-secondary col-1"> ></a>
+                            <a dusk="packagelist" href="{{route('getPackages')}}" class="btn btn-secondary col-1"> ></a>
                         </div>
                         <div class="row mx-3 mt-1">
                             <p class="col">{{ __('ui.customers') }}</p>
@@ -77,7 +77,7 @@
                     @if (Auth::user()->role == 'deliverer')
                         <div class="row mx-3 mt-1">
                             <p class="col">{{ __('ui.status_list') }}</p>
-                            <a href="{{route('getStatusView')}}" class="btn btn-secondary col-1"> ></a>
+                            <a dusk="statuslist" href="{{route('getStatusView')}}" class="btn btn-secondary col-1"> ></a>
                         </div>
                     @endif
                 </div>

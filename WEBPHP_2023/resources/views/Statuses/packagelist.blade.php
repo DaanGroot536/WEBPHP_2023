@@ -38,7 +38,7 @@
                                         <p class="col-2 p-3">{{ $package->weight }}</p>
                                     </div>
                                 @else
-                                    <a class="link" href="{{ route('getUpdateStatusView', [$package->id]) }}">
+                                    <a dusk="item{{$package->id}}" class="link" href="{{ route('getUpdateStatusView', [$package->id]) }}">
                                         <div class="row mx-3 list-item">
                                             <p class="col-1 p-3">{{ $package->id }}</p>
                                             <p class="col-2 p-3">{{ __('ui.status_' . strtolower($package->status)) }}</p>

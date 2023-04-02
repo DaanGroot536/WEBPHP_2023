@@ -6,18 +6,22 @@
 
             <div class="card">
                 @if (Auth::user()->role == 'employee' || Auth::user()->role == 'packer')
-                    <div class="card-header"><a class="link" href="{{ route('dashboard') }}">{{ Auth::user()->company }}
+                    <div class="card-header"><a dusk="back" class="link"
+                                                href="{{ route('dashboard') }}">{{ Auth::user()->company }}
                             {{ __('ui.dashboard') }}</a> -> {{ __('ui.packages') }}
                     </div>
                 @else
-                    <div class="card-header"><a class="link" href="{{ route('dashboard') }}">{{ Auth::user()->name }}
+                    <div class="card-header"><a dusk="back" class="link"
+                                                href="{{ route('dashboard') }}">{{ Auth::user()->name }}
                             {{ __('ui.dashboard') }}</a> -> {{ __('ui.packages') }}
                     </div>
                 @endif
                 <div class="card-body">
                     @if (Auth::user()->role == 'webshop')
-                        <a href="{{ route('getCreatePackageView') }}" class="btn btn-success">{{ __('ui.create_package') }} +</a>
-                        <a href="{{ route('getBulkImportView') }}" class="btn btn-success">{{ __('ui.bulk_import') }}</a>
+                        <a dusk="createpackage" href="{{ route('getCreatePackageView') }}"
+                           class="btn btn-success">{{ __('ui.create_package') }} +</a>
+                        <a href="{{ route('getBulkImportView') }}"
+                           class="btn btn-success">{{ __('ui.bulk_import') }}</a>
                     @endif
                     @if (Auth::user()->role == 'employee')
                         <div class="row">
@@ -31,8 +35,10 @@
                                 <div class="row">
                                     <div class="col-8">
                                         <select class="form-control" name="sort_field" id="sort_field">
-                                            <option value="id" {{ $sortField == 'id' ? 'selected' : '' }}>{{ __('ui.id_sort') }}</option>
-                                            <option value="idreversed" {{ $sortField == 'idreversed' ? 'selected' : '' }}>
+                                            <option
+                                                value="id" {{ $sortField == 'id' ? 'selected' : '' }}>{{ __('ui.id_sort') }}</option>
+                                            <option
+                                                value="idreversed" {{ $sortField == 'idreversed' ? 'selected' : '' }}>
                                                 {{ __('ui.id_sort_reversed') }}
                                             </option>
                                             <option value="status" {{ $sortField == 'status' ? 'selected' : '' }}>
@@ -76,7 +82,7 @@
                                             <option value="">-- {{ __('ui.status_select') }} --</option>
                                             @foreach ($statuses as $id => $description)
                                                 <option value="{{ $description }}"
-                                                    @if (strtolower($description) === strtolower(request('status'))) selected @endif>
+                                                        @if (strtolower($description) === strtolower(request('status'))) selected @endif>
                                                     {{ __('ui.status_' . strtolower($description)) }}</option>
                                             @endforeach
                                         </select>
@@ -87,13 +93,14 @@
                                             <option value="">-- {{ __('ui.city_select') }} --</option>
                                             @foreach ($cities as $city)
                                                 <option value="{{ $city }}"
-                                                    @if ($city === request('city')) selected @endif>{{ $city }}
+                                                        @if ($city === request('city')) selected @endif>{{ $city }}
                                                 </option>
                                             @endforeach
                                         </select>
                                     </div>
                                     <div class="col-2">
-                                        <button class="btn btn-primary mt-4" type="submit">{{ __('ui.filter') }}</button>
+                                        <button class="btn btn-primary mt-4"
+                                                type="submit">{{ __('ui.filter') }}</button>
                                     </div>
                                 </div>
                                 <input type="text" name="formused" value="true" hidden>
@@ -101,15 +108,17 @@
                         </div>
 
                         <div class="col-3">
-                            <form>
+                            <form action="{{route('getPackages')}}" method="GET">
                                 <label>{{ __('ui.search') }}:</label>
 
                                 <div class="row">
                                     <div class="col-8">
-                                        <input class="form-control" type="text" placeholder="{{ __('ui.search') }}">
+                                        <input class="form-control" type="text" name="searchtext" required="required"
+                                               placeholder="{{ __('ui.search') }}">
                                     </div>
                                     <div class="col-2">
                                         <input class="btn btn-primary" type="submit" value="{{ __('ui.search') }}">
+                                        <input type="text" name="fulltext" value="true" hidden>
                                     </div>
                                 </div>
                             </form>
@@ -135,7 +144,8 @@
                                         <option value="DPD">DPD</option>
                                         <option value="UPS">UPS</option>
                                     </select>
-                                    <input type="submit" class="btn btn-secondary mb-1 w-50" value="{{ __('ui.create_bulk') }}">
+                                    <input dusk="labelbulk" type="submit" class="btn btn-secondary mb-1 w-50"
+                                           value="{{ __('ui.create_bulk') }}">
 
                                     <div class="checklist">
                                         @foreach ($packages as $package)
@@ -143,8 +153,9 @@
                                                 <div class="col"></div>
                                                 <div class="checkitem col">
                                                     @if ($package->labelID == null)
-                                                        <input type="checkbox" class="packageCheck"
-                                                            name="{{ $package->id }}" value="true">
+                                                        <input dusk="check{{$package->id}}" type="checkbox"
+                                                               class="packageCheck"
+                                                               name="{{ $package->id }}" value="true">
                                                     @endif
                                                 </div>
                                             </div>
@@ -164,56 +175,76 @@
                             </div>
                             <hr>
                             @foreach ($packages as $package)
-                                <div class="row mx-3 list-item">
-                                    <p class="col-1 py-2">{{ $package->id }}</p>
-                                    <p class="col-2 py-2">{{ __('ui.status_' . strtolower($package->status)) }}</p>
-                                    <p class="col-2 py-2">{{ $package->dimensions }}</p>
-                                    <p class="col-2 py-2">{{ $package->weight }}</p>
-                                    <p class="col-5 py-2">
-                                        {{ $package->full_customer_address }}</p>
-                                    @if (Auth::user()->role == 'employee')
-                                        @if ($package->labelID == null)
-                                            <div class="col-4 p-2">
-                                                <form action="{{ route('saveLabel') }}" method="post">
-                                                    @csrf
-                                                    <select class="form-control d-inline-block w-25" name="deliverer">
-                                                        <option value="DHL">DHL</option>
-                                                        <option value="PostNL">PostNL</option>
-                                                        <option value="DPD">DPD</option>
-                                                        <option value="UPS">UPS</option>
-                                                    </select>
-                                                    <input type="number" value="{{ $package->id }}" name="packageID"
-                                                        hidden>
-                                                    <input type="submit" class="btn btn-secondary mb-1"
-                                                        value="Create Label">
-                                                </form>
-
+                                @if (Auth::user()->role == 'customer')
+                                    <form method="post" action="{{route('getOrderView')}}">
+                                        @csrf
+                                        <div class="row mx-3 list-item">
+                                            <p class="col-1 py-2">{{ $package->id }}</p>
+                                            <p class="col-2 py-2">{{ __('ui.status_' . strtolower($package->status)) }}</p>
+                                            <p class="col-2 py-2">{{ $package->dimensions }}</p>
+                                            <p class="col-2 py-2">{{ $package->weight }}</p>
+                                            <p class="col-5 py-2">
+                                                {{ $package->full_customer_address }}</p>
+                                            <div class="col-1 py-2">
+                                                <input name="code" type="text" value="{{$package->trackandtracecode}}" hidden>
+                                                <input dusk="track{{$package->id}}" class="btn btn-secondary" type="submit" value="Track">
                                             </div>
-                                        @else
-                                            <div class="col-4 p-2">
-                                                @php
-                                                    $temp = false;
-                                                @endphp
-                                                @foreach ($pickups as $pickup)
-                                                    @if ($pickup->packageID == $package->id)
-                                                        @php
-                                                            $temp = true;
-                                                        @endphp
-                                                        <p class="d-inline-block">{{ __('ui.pickup_planned_msg') }}</p>
+                                        </div>
+                                    </form>
+                                @else
+                                    <div class="row mx-3 list-item">
+                                        <p class="col-1 py-2">{{ $package->id }}</p>
+                                        <p class="col-2 py-2">{{ __('ui.status_' . strtolower($package->status)) }}</p>
+                                        <p class="col-2 py-2">{{ $package->dimensions }}</p>
+                                        <p class="col-2 py-2">{{ $package->weight }}</p>
+                                        <p class="col-5 py-2">
+                                            {{ $package->full_customer_address }}</p>
+                                        @if (Auth::user()->role == 'employee')
+                                            @if ($package->labelID == null)
+                                                <div class="col-4 p-2">
+                                                    <form action="{{ route('saveLabel') }}" method="post">
+                                                        @csrf
+                                                        <select class="form-control d-inline-block w-25" name="deliverer">
+                                                            <option value="DHL">DHL</option>
+                                                            <option value="PostNL">PostNL</option>
+                                                            <option value="DPD">DPD</option>
+                                                            <option value="UPS">UPS</option>
+                                                        </select>
+                                                        <input type="number" value="{{ $package->id }}" name="packageID"
+                                                               hidden>
+                                                        <input type="submit" class="btn btn-secondary mb-1"
+                                                               value="Create Label">
+                                                    </form>
+
+                                                </div>
+                                            @else
+                                                <div class="col-4 p-2">
+                                                    @php
+                                                        $temp = false;
+                                                    @endphp
+                                                    @foreach ($pickups as $pickup)
+                                                        @if ($pickup->packageID == $package->id)
+                                                            @php
+                                                                $temp = true;
+                                                            @endphp
+                                                            <p class="d-inline-block">{{ __('ui.pickup_planned_msg') }}</p>
+                                                        @endif
+                                                    @endforeach
+                                                    @if (!$temp)
+                                                        <p class="mt-2">{{ __('ui.label_created_msg') }}</p>
                                                     @endif
-                                                @endforeach
-                                                @if (!$temp)
-                                                    <p class="mt-2">{{ __('ui.label_created_msg') }}</p>
-                                                @endif
-                                            </div>
+                                                </div>
+                                            @endif
                                         @endif
-                                    @endif
 
-                                </div>
+                                    </div>
+                                @endif
                             @endforeach
                             <hr>
                             <div class="pagination">
-                                {{ $packages->links() }}
+                                @if ($fulltext == null)
+                                    {{ $packages->links() }}
+                                @endif
                             </div>
                         </div>
                     </div>

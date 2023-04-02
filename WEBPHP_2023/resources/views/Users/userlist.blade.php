@@ -14,13 +14,13 @@
                     </div>
                 @endif
                 <div class="card-body">
-                    <a href="{{ route('getCreateUserView') }}" class="btn btn-success">{{ __('ui.create_user') }} +</a>
+                    <a dusk="createuser" href="{{ route('getCreateUserView') }}" class="btn btn-success">{{ __('ui.create_user') }} +</a>
                 </div>
                 <div class="p-3 m-3 list-box">
                     <p class="ml-3">{{ __('ui.users') }}:</p>
                     <hr>
                     @foreach ($users as $user)
-                        <a class="link" href="{{ route('getEditUserView', [$user->id]) }}">
+                        <a dusk="user{{$user->id}}" class="link" href="{{ route('getEditUserView', [$user->id]) }}">
                             <div class="my-1 row mx-3 list-item">
                                 <p class="col-3 p-3">{{ __('ui.user_name') }}: {{ $user->name }}</p>
                                 <p class="col-3 p-3">{{ __('ui.user_role') }}: {{ __('ui.role_' . $user->role) }}</p>

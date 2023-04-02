@@ -42,7 +42,7 @@
                                         <form action="{{ route('updateStatus') }}" method="post">
                                             @csrf
                                             <input type="text" value="{{ $status->description }}" name="status" hidden>
-                                            <input class="w-100 mt-3 btn btn-secondary" type="submit"
+                                            <input dusk="{{$status->description}}" class="w-100 mt-3 btn btn-secondary" type="submit"
                                                 value="{{ __('ui.status_' . strtolower($status->description)) }}">
                                             <input type="number" value="{{ $package->id }}" name="packageID" hidden>
                                             <input type="text" value="{{ Auth::user()->api_token }}" name="api_token"

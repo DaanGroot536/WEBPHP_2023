@@ -79,6 +79,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::post('/labelSave', 'saveLabel')->name('saveLabel');
         Route::post('/labelSaveBulk', 'saveLabelBulk')->name('saveLabelBulk');
         Route::post('/labelPrintBulk', 'printLabelBulk')->name('printLabelBulk');
+        Route::get('/resetLabelFilters', 'resetLabelFilters')->name('resetLabelFilters');
     });
 
     Route::controller(PickupController::class)->group(function () {
@@ -89,6 +90,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::post('/pickupSave', 'savePickup')->name('savePickup');
         Route::get('/pickupCalendar', 'getCalendarView')->name('getCalendarView');
         Route::post('/pickupCalendarNewWeek', 'changeCalendarWeek')->name('changeCalendarWeek');
+        Route::get('/resetPickupFilters', 'resetPickupFilters')->name('resetPickupFilters');
     });
 
     Route::controller(StatusController::class)->group(function () {

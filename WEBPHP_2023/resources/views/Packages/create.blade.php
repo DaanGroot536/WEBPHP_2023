@@ -33,6 +33,9 @@
                         <label>{{ __('ui.customer_email') }}</label>
                         <input class="form-control" type="email" name="customerEmail" placeholder="{{ __('ui.customer_email') }}">
                         <br>
+                        <label>{{ __('ui.customer_name') }}</label>
+                        <input class="form-control" type="text" name="customerName" placeholder="{{ __('ui.customer_name') }}">
+                        <br>
                         <label>{{ __('ui.customer_street') }}</label>
                         <input class="form-control" type="text" name="customerStreet" placeholder="{{ __('ui.customer_street') }}">
                         <br>
@@ -48,7 +51,7 @@
                         <br>
                         <br>
                         <input type="text" name="api_token" value="{{ Auth::user()->api_token }}" hidden>
-                        <input type="submit" value="{{ __('ui.save') }}" class="btn btn-success">
+                        <input name="Save" type="submit" value="{{ __('ui.save') }}" class="btn btn-success">
                     </form>
                 </div>
             </div>

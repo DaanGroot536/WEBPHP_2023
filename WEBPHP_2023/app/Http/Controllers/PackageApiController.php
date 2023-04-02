@@ -9,7 +9,7 @@ use Illuminate\Support\Str;
 
 class PackageApiController extends Controller
 {
-    public function savePackage($customerCity, $customerStreet, $customerZipcode, $customerHousenumber, $dimensions, $weight, $api_token)
+    public function savePackage($customerCity, $customerStreet, $customerZipcode, $customerHousenumber, $dimensions, $weight, $api_token, $customerName, $customerEmail)
     {
         $user = User::where('api_token', $api_token)->get()[0];
         if ($user->role == 'webshop') {
@@ -17,6 +17,8 @@ class PackageApiController extends Controller
                 'status' => 'submitted',
                 'dimensions' => $dimensions,
                 'weight' => $weight,
+                'customerName' => $customerName,
+                'customerEmail' => $customerEmail,
                 'customerStreet' => $customerStreet,
                 'customerHousenumber' => $customerHousenumber,
                 'customerZipcode' => $customerZipcode,
@@ -44,7 +46,9 @@ class PackageApiController extends Controller
             $request->customerZipcode,
             $dimensions,
             $request->weight,
-            $request->api_token
+            $request->api_token,
+            $request->customerName,
+            $request->customerEmail
         );
 
         return redirect()->route('getPackages');
@@ -72,6 +76,8 @@ class PackageApiController extends Controller
                 $data[4],
                 $data[5],
                 $request->api_token,
+                $data[6],
+                $data[7],
             );
         }
 
