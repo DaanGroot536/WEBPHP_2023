@@ -20,7 +20,7 @@ class BulkImportPackagesTest extends TestCase
         $user = User::factory()->forRole('webshop')->create();
 
         // Create a fake CSV file with two packages
-        $csvData = "Stad,Straatnaam,Postcode,Huisnummer,Dimensies, Gewicht\nAmsterdam, Keizersgracht, 1015 CJ, 24, 10x10x10,1400\nRotterdam,Witte de Withstraat,3012 BN,18,20x20x20,800";
+        $csvData = "Stad,Straatnaam,Postcode,Huisnummer,Dimensies, Gewicht\nAmsterdam, Keizersgracht, 1015 CJ, 24, 10x10x10,1400,Jan,Jan@gmail.com\nRotterdam,Witte de Withstraat,3012 BN,18,20x20x20,800,Kees,Kees@gmail.com";
         $csvFile = UploadedFile::fake()->createWithContent('packages.csv', $csvData);
 
         //Make a POST request with the fake csv file and api_token parameter
@@ -51,6 +51,8 @@ class BulkImportPackagesTest extends TestCase
                 'customerHousenumber' => $package->customerHousenumber,
                 'dimensions' => $package->dimensions,
                 'weight' => $package->weight,
+                'customerName' => $package->customerName,
+                'customerEmail' => $package->customerEmail,
             ]);
         }
     }

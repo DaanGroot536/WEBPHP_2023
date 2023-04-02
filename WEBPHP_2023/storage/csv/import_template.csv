@@ -1,2 +1,2 @@
-Stad,Straatnaam,Postcode,Huisnummer,Dimensies (Format: 10x10x10),Gewicht (in gram)
-VoorbeeldStad,Voorbeeldstraat,1234AB,56,20x10x40,400
+Stad,Straatnaam,Postcode,Huisnummer,Dimensies (Format: 10x10x10),Gewicht (in gram),klantnaam, klantemail
+VoorbeeldStad,Voorbeeldstraat,1234AB,56,20x10x40,400, Jan Janssen, janjanssen@gmail.com

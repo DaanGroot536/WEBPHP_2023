@@ -98,7 +98,6 @@ return [
     'track_and_trace_code' => 'Track & Trace code',
     'track_and_trace_instructions' => 'Voer hier uw code in om uw pakket te volgen of schrijf een beoordeling.',
     'track_and_trace_button' => 'Volg',
-    'no_package' => 'Geen pakket gevonden met deze code.',
 
     'delivery_service' => 'Bezorgdienst',
     'no_delivery_service' => 'Geen bezorgdienst toegewezen',
@@ -125,6 +124,11 @@ return [
     'role_deliverer' => 'Bezorger',
     'role_packer' => 'Verpakker',
 
+    'no_labels' => 'Je moet minstens één label selecteren.',
+    'no_package' => 'Geen pakket gevonden met deze code.',
+    'no_file_selected' => 'Selecteer een CSV bestand om te importeren.',
+    'wrong_file_selected' => 'Je kunt alleen CSV bestanden importeren.',
+    'invalid_csv_format' => 'Ongeldig CSV-bestandsformaat. Elke regel moet 8 waarden hebben, zoals weergegeven in het voorbeeld bestand.',
     'no_pickup' => 'Je moet minstens één label selecteren.',
     'email_exists' => 'Er bestaat al een account met dit mailadres',
 ];

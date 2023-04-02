@@ -146,6 +146,11 @@ class LabelController extends Controller
             }
         }
 
+
+        if(count($labels) <= 0) {
+            return redirect()->back()->with('error', 'ui.no_labels');
+        }
+        
         $this->generatePDF($labels);
 
         return redirect('/packageList');
