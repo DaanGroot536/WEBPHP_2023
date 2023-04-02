@@ -57,7 +57,6 @@ return [
     'label_list' => 'Labels',
     'label_print' => 'Show/Print Label',
 
-
     'packages' => 'Packages',
     'create_package' => 'Create package',
     'width' => 'Width',
@@ -100,8 +99,6 @@ return [
     'track_and_trace_button' => 'Track',
     'no_package' => 'No package found with this code.',
 
-
-
     'delivery_service' => 'Delivery service',
     'no_delivery_service' => 'No delivery service assigned',
 
@@ -119,7 +116,6 @@ return [
     'status_in sorting centre' => 'In sorting centre',
     'status_on its way' => 'On its way',
     'status_delivered to customer' => 'Delivered to customer',
-
 
     'role_superadmin' => 'Admin',
     'role_webshop' => 'Webshop',

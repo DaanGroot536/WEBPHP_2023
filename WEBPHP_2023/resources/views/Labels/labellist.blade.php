@@ -51,7 +51,7 @@
                                         <p class="col-2 p-3">{{ __('ui.status') }}
                                             : {{ __('ui.status_' . strtolower($package->status)) }}</p>
                                         <p class="col-2 p-3">{{ __('ui.dimensions') }}: {{ $package->dimensions }}</p>
-                                        <p class="col-2 p-3">{{ __('ui.gewicht') }}: {{ $package->weight }}</p>
+                                        <p class="col-2 p-3">{{ __('ui.weight') }}: {{ $package->weight }}</p>
                                     </div>
                                 @endif
                             @endforeach
