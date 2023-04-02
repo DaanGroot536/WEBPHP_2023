@@ -3,9 +3,7 @@
 @section('content')
     <div class="row justify-content-center mt-5">
         <div class="">
-
             <div class="card">
-
                 <div class="card-header">
                     <p class="ml-3">{{ __('ui.order_id') }} {{$package->id}}</p>
                 </div>

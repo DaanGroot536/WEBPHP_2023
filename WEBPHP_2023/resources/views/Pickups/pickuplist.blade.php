@@ -14,6 +14,9 @@
                     </div>
                 @endif
                 <div class="card-body">
+                    @if (session('error'))
+                        <div class="alert alert-danger">{{ __('ui.no_pickup') }}</div>
+                    @endif
                     @if (Auth::user()->role == 'employee')
                         <div class="row">
                             <p>{{ __('ui.bulk_package_instructions') }}</p>
@@ -53,7 +56,8 @@
                                 @if ($package->pickupID == null)
                                     <div class="row mx-3 list-item">
                                         <p class="col-1 p-3">{{ __('ui.id') }}: {{ $package->id }}</p>
-                                        <p class="col-2 p-3">{{ __('ui.status') }}: {{ __('ui.status_' . strtolower($package->status)) }}</p>
+                                        <p class="col-2 p-3">{{ __('ui.status') }}:
+                                            {{ __('ui.status_' . strtolower($package->status)) }}</p>
                                         <p class="col-2 p-3">{{ __('ui.dimensions') }}: {{ $package->dimensions }}</p>
                                         <p class="col-2 p-3">{{ __('ui.weight_in_grams') }}: {{ $package->weight }}</p>
                                         @if (Auth::user()->role == 'employee')

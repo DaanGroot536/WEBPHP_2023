@@ -123,4 +123,6 @@ return [
     'role_customer' => 'Customer',
     'role_deliverer' => 'Deliverer',
     'role_packer' => 'Packer',
+
+    'no_pickup' => 'You have to select at least one label.',
 ];

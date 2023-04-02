@@ -124,4 +124,6 @@ return [
     'role_customer' => 'Klant',
     'role_deliverer' => 'Bezorger',
     'role_packer' => 'Verpakker',
+
+    'no_pickup' => 'Je moet minstens één label selecteren.',
 ];

@@ -25,9 +25,6 @@ class LabelController extends Controller
     {
         $this->saveLabelToDB($request->packageID, $request->deliverer);
 
-        $package = Package::where('id', $request->packageID)->first();
-//        $this->generatePDF($package);
-
         return redirect('/packageList');
     }
 
