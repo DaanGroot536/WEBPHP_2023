@@ -126,4 +126,7 @@ return [
 
     'no_labels' => 'Je moet minstens één label selecteren.',
     'no_package' => 'Geen pakket gevonden met deze code.',
+    'no_file_selected' => 'Selecteer een CSV bestand om te importeren.',
+    'wrong_file_selected' => 'Je kunt alleen CSV bestanden importeren.',
+    'invalid_csv_format' => 'Ongeldig CSV-bestandsformaat. Elke regel moet 8 waarden hebben, zoals weergegeven in het voorbeeld bestand.',
 ];

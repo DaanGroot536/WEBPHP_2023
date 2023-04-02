@@ -205,7 +205,7 @@ class PickupController extends Controller
         }
 
         if(count($packagesForPickup) <= 0) {
-            return redirect()->back()->with('error', 'ui.no_package');
+            return redirect()->back()->with('error', 'ui.no_labels');
         }
 
         return view('pickups.create', ['packages' => $packagesForPickup, 'mindate' => $minDate]);

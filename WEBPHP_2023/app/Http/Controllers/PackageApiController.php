@@ -38,7 +38,7 @@ class PackageApiController extends Controller
 
     public function createPackage(Request $request)
     {
-        $dimensions = $request-> length . 'x' . $request->width . 'x' . $request->height;
+        $dimensions = $request->length . 'x' . $request->width . 'x' . $request->height;
         $this->savePackage(
             $request->customerCity,
             $request->customerStreet,
@@ -56,8 +56,18 @@ class PackageApiController extends Controller
 
     public function bulkImportCSV(Request $request)
     {
+        // Check if the file is uploaded
+        if (!$request->hasFile('csv_file')) {
+            return redirect()->route('getBulkImportView')->withErrors('ui.no_file_selected');
+        }
+
         // Get the uploaded CSV file
         $csvFile = request()->file('csv_file');
+
+        // Check if the file is a CSV file
+        if (!$csvFile->isValid() || $csvFile->getClientOriginalExtension() !== 'csv') {
+            return redirect()->route('getBulkImportView')->with('error', 'ui.wrong_file_selected');
+        }
 
         // Open the CSV file for reading
         $handle = fopen($csvFile->getRealPath(), "r");
@@ -66,6 +76,11 @@ class PackageApiController extends Controller
         fgetcsv($handle, 1000, ",");
 
         while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
+
+            // check if each line has correct amount of values
+            if (count($data) < 8) {
+                return redirect()->back()->with('error', 'ui.invalid_csv_format');
+            }
 
             // Create a new package object
             $this->savePackage(
@@ -77,7 +92,7 @@ class PackageApiController extends Controller
                 $data[5],
                 $request->api_token,
                 $data[6],
-                $data[7],
+                $data[7]
             );
         }
 

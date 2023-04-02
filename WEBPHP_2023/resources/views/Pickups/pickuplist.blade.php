@@ -4,7 +4,7 @@
     <div class="row justify-content-center mt-5">
         <div class="">
             @if (session('error'))
-                <div class="alert alert-danger">{{ __('ui.no_labels') }}</div>
+                <div class="alert alert-danger">{{ trans(session('error')) }}</div>
             @endif
             <div class="card">
 
