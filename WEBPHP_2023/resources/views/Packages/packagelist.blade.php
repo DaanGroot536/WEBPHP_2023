@@ -28,7 +28,7 @@
                             <p>{{ __('ui.bulk_package_instructions') }}</p>
                         </div>
                     @endif
-                    <div class="row mx-3">
+                    <div class="row mx-3 mt-3">
                         <div class="col-3">
                             <form class="" action="{{ route('getPackages') }}" method="GET">
                                 <label for="sort_field">{{ __('ui.sort_by') }}:</label>

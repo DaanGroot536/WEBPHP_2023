@@ -12,8 +12,8 @@ class UserSeeder extends Seeder
     public function run()
     {
         User::create([
-            'name' => 'Super Admin',
-            'email' => 'admin@admin.com',
+            'name' => 'Lars Mentem TR',
+            'email' => 'Lars@Trackr.com',
             'password' => bcrypt("password"),
             'role' => 'superadmin',
             'street' => 'yes',
@@ -56,8 +56,8 @@ class UserSeeder extends Seeder
             'api_token' => Str::random(60),
         ]);
         User::create([
-            'name' => 'customer',
-            'email' => 'cust@cust.com',
+            'name' => 'Arie Kassa',
+            'email' => 'Arie@Kassa.com',
             'password' => bcrypt("password"),
             'role' => 'customer',
             'street' => 'yes',
@@ -67,8 +67,8 @@ class UserSeeder extends Seeder
             'api_token' => Str::random(60),
         ]);
         User::create([
-            'name' => 'deliverer',
-            'email' => 'del@del.com',
+            'name' => 'DHL',
+            'email' => 'DHL@DHL.com',
             'password' => bcrypt("password"),
             'role' => 'deliverer',
             'street' => 'yes',
@@ -79,16 +79,16 @@ class UserSeeder extends Seeder
             'company' => 'DHL',
         ]);
         User::create([
-            'name' => 'employee',
-            'email' => 'emp@emp.com',
+            'name' => 'Markel Maarmals SW',
+            'email' => 'Markel@SportWorld.com',
             'password' => bcrypt("password"),
             'role' => 'employee',
             'api_token' => Str::random(60),
             'company' => 'Sport World',
         ]);
         User::create([
-            'name' => 'employee2',
-            'email' => 'emp2@emp2.com',
+            'name' => 'Bernard Mankelmoot SW',
+            'email' => 'Bernard@SportWorld.com',
             'password' => bcrypt("password"),
             'role' => 'packer',
             'api_token' => Str::random(60),

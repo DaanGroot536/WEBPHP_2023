@@ -129,4 +129,6 @@ return [
     'no_file_selected' => 'Selecteer een CSV bestand om te importeren.',
     'wrong_file_selected' => 'Je kunt alleen CSV bestanden importeren.',
     'invalid_csv_format' => 'Ongeldig CSV-bestandsformaat. Elke regel moet 8 waarden hebben, zoals weergegeven in het voorbeeld bestand.',
+    'no_pickup' => 'Je moet minstens één label selecteren.',
+    'email_exists' => 'Er bestaat al een account met dit mailadres',
 ];

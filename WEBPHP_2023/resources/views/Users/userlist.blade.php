@@ -17,7 +17,7 @@
                     <a dusk="createuser" href="{{ route('getCreateUserView') }}" class="btn btn-success">{{ __('ui.create_user') }} +</a>
                 </div>
                 <div class="p-3 m-3 list-box">
-                    <p class="ml-3">{{ __('ui.users') }}:</p>
+                    <strong class="ml-3">{{ __('ui.users') }}:</strong>
                     <hr>
                     @foreach ($users as $user)
                         <a dusk="user{{$user->id}}" class="link" href="{{ route('getEditUserView', [$user->id]) }}">

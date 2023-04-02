@@ -20,7 +20,7 @@
                 @endguest
                 <div class="card-body">
                     <div class="p-3 list-box col-10 mb-3">
-                        <p class="ml-3">{{ __('ui.reviews') }}</p>
+                        <strong class="ml-3">{{ __('ui.reviews') }}</strong>
                         @foreach($reviews as $review)
                             <div class="mx-3">
                                 <p class="">{{$review->username}}</p>

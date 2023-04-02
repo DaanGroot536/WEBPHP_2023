@@ -6,11 +6,17 @@ use App\Models\Label;
 use App\Models\Package;
 use App\Models\Review;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ReviewController extends Controller
 {
     public function getReviewView() {
-        $reviews = Review::all()->sortByDesc('date_of_review');
+        if (Auth::user()->role == 'webshop') {
+            $reviews = Review::where('webshopName', Auth::user()->name)->orderBy('date_of_review', 'desc')->get();
+        }
+        if (Auth::user()->role == 'deliverer') {
+            $reviews = Review::where('delivery_service', Auth::user()->company)->orderBy('date_of_review', 'desc')->get();
+        }
         return view('reviews.reviewlist', ['reviews' => $reviews]);
     }
 

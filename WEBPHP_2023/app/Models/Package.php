@@ -46,6 +46,6 @@ class Package extends Model
     {
         $array = $this->toArray();
 
-        return array('id' => $array['id'],'status' => $array['status'],'webshopName' => $array['webshopName'],'customerEmail' => $array['customerEmail'],'customerName' => $array['customerName']);
+        return array('status' => $array['status'],'webshopName' => $array['webshopName'],'customerEmail' => $array['customerEmail'],'customerName' => $array['customerName'], 'customerCity' => $array['customerCity'], 'customerZipcode' => $array['customerZipcode'],  'customerStreet' => $array['customerStreet']);
     }
 }

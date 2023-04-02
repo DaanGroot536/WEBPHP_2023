@@ -123,9 +123,12 @@ return [
     'role_deliverer' => 'Deliverer',
     'role_packer' => 'Packer',
 
+
     'no_labels' => 'You have to select at least one label.',
     'no_package' => 'No package found with this code.',
     'no_file_selected' => 'Please select a CSV file to import.',
     'wrong_file_selected' => 'You can only import CSV files.',
     'invalid_csv_format' => 'Invalid CSV file format. Each line must have 8 values, as shown in the template file.',
+    'no_pickup' => 'You have to select at least one label.',
+    'email_exists' => 'An account with this email already exists',
 ];
