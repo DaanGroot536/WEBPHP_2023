@@ -6,11 +6,13 @@
 
             <div class="card">
                 @if (Auth::user()->role == 'employee' || Auth::user()->role == 'packer')
-                    <div class="card-header"><a dusk="back" class="link" href="{{ route('dashboard') }}">{{ Auth::user()->company }}
+                    <div class="card-header"><a dusk="back" class="link"
+                                                href="{{ route('dashboard') }}">{{ Auth::user()->company }}
                             {{ __('ui.dashboard') }}</a> -> {{ __('ui.packages') }}
                     </div>
                 @else
-                    <div class="card-header"><a dusk="back" class="link" href="{{ route('dashboard') }}">{{ Auth::user()->name }}
+                    <div class="card-header"><a dusk="back" class="link"
+                                                href="{{ route('dashboard') }}">{{ Auth::user()->name }}
                             {{ __('ui.dashboard') }}</a> -> {{ __('ui.packages') }}
                     </div>
                 @endif
@@ -151,7 +153,8 @@
                                                 <div class="col"></div>
                                                 <div class="checkitem col">
                                                     @if ($package->labelID == null)
-                                                        <input dusk="check{{$package->id}}" type="checkbox" class="packageCheck"
+                                                        <input dusk="check{{$package->id}}" type="checkbox"
+                                                               class="packageCheck"
                                                                name="{{ $package->id }}" value="true">
                                                     @endif
                                                 </div>
@@ -172,52 +175,70 @@
                             </div>
                             <hr>
                             @foreach ($packages as $package)
-                                <div class="row mx-3 list-item">
-                                    <p class="col-1 py-2">{{ $package->id }}</p>
-                                    <p class="col-2 py-2">{{ __('ui.status_' . strtolower($package->status)) }}</p>
-                                    <p class="col-2 py-2">{{ $package->dimensions }}</p>
-                                    <p class="col-2 py-2">{{ $package->weight }}</p>
-                                    <p class="col-5 py-2">
-                                        {{ $package->full_customer_address }}</p>
-                                    @if (Auth::user()->role == 'employee')
-                                        @if ($package->labelID == null)
-                                            <div class="col-4 p-2">
-                                                <form action="{{ route('saveLabel') }}" method="post">
-                                                    @csrf
-                                                    <select class="form-control d-inline-block w-25" name="deliverer">
-                                                        <option value="DHL">DHL</option>
-                                                        <option value="PostNL">PostNL</option>
-                                                        <option value="DPD">DPD</option>
-                                                        <option value="UPS">UPS</option>
-                                                    </select>
-                                                    <input type="number" value="{{ $package->id }}" name="packageID"
-                                                           hidden>
-                                                    <input type="submit" class="btn btn-secondary mb-1"
-                                                           value="Create Label">
-                                                </form>
-
+                                @if (Auth::user()->role == 'customer')
+                                    <form method="post" action="{{route('getOrderView')}}">
+                                        @csrf
+                                        <div class="row mx-3 list-item">
+                                            <p class="col-1 py-2">{{ $package->id }}</p>
+                                            <p class="col-2 py-2">{{ __('ui.status_' . strtolower($package->status)) }}</p>
+                                            <p class="col-2 py-2">{{ $package->dimensions }}</p>
+                                            <p class="col-2 py-2">{{ $package->weight }}</p>
+                                            <p class="col-5 py-2">
+                                                {{ $package->full_customer_address }}</p>
+                                            <div class="col-1 py-2">
+                                                <input name="code" type="text" value="{{$package->trackandtracecode}}" hidden>
+                                                <input dusk="track{{$package->id}}" class="btn btn-secondary" type="submit" value="Track">
                                             </div>
-                                        @else
-                                            <div class="col-4 p-2">
-                                                @php
-                                                    $temp = false;
-                                                @endphp
-                                                @foreach ($pickups as $pickup)
-                                                    @if ($pickup->packageID == $package->id)
-                                                        @php
-                                                            $temp = true;
-                                                        @endphp
-                                                        <p class="d-inline-block">{{ __('ui.pickup_planned_msg') }}</p>
+                                        </div>
+                                    </form>
+                                @else
+                                    <div class="row mx-3 list-item">
+                                        <p class="col-1 py-2">{{ $package->id }}</p>
+                                        <p class="col-2 py-2">{{ __('ui.status_' . strtolower($package->status)) }}</p>
+                                        <p class="col-2 py-2">{{ $package->dimensions }}</p>
+                                        <p class="col-2 py-2">{{ $package->weight }}</p>
+                                        <p class="col-5 py-2">
+                                            {{ $package->full_customer_address }}</p>
+                                        @if (Auth::user()->role == 'employee')
+                                            @if ($package->labelID == null)
+                                                <div class="col-4 p-2">
+                                                    <form action="{{ route('saveLabel') }}" method="post">
+                                                        @csrf
+                                                        <select class="form-control d-inline-block w-25" name="deliverer">
+                                                            <option value="DHL">DHL</option>
+                                                            <option value="PostNL">PostNL</option>
+                                                            <option value="DPD">DPD</option>
+                                                            <option value="UPS">UPS</option>
+                                                        </select>
+                                                        <input type="number" value="{{ $package->id }}" name="packageID"
+                                                               hidden>
+                                                        <input type="submit" class="btn btn-secondary mb-1"
+                                                               value="Create Label">
+                                                    </form>
+
+                                                </div>
+                                            @else
+                                                <div class="col-4 p-2">
+                                                    @php
+                                                        $temp = false;
+                                                    @endphp
+                                                    @foreach ($pickups as $pickup)
+                                                        @if ($pickup->packageID == $package->id)
+                                                            @php
+                                                                $temp = true;
+                                                            @endphp
+                                                            <p class="d-inline-block">{{ __('ui.pickup_planned_msg') }}</p>
+                                                        @endif
+                                                    @endforeach
+                                                    @if (!$temp)
+                                                        <p class="mt-2">{{ __('ui.label_created_msg') }}</p>
                                                     @endif
-                                                @endforeach
-                                                @if (!$temp)
-                                                    <p class="mt-2">{{ __('ui.label_created_msg') }}</p>
-                                                @endif
-                                            </div>
+                                                </div>
+                                            @endif
                                         @endif
-                                    @endif
 
-                                </div>
+                                    </div>
+                                @endif
                             @endforeach
                             <hr>
                             <div class="pagination">

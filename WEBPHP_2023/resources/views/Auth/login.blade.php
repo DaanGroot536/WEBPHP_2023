@@ -45,7 +45,7 @@
         <div class="row">
             <form action="{{route('authenticate')}}" method="post" class="col">
                 @csrf
-                <input type="submit" value="{{ __('auth.login_admin') }}" class="btn btn-secondary">
+                <input dusk="loginadmin" type="submit" value="{{ __('auth.login_admin') }}" class="btn btn-secondary">
                 <input type="text" value="admin@admin.com" name="email" hidden>
                 <input type="text" value="password" name="password" hidden>
             </form>
@@ -63,13 +63,13 @@
             </form>
             <form action="{{route('authenticate')}}" method="post" class="col">
                 @csrf
-                <input type="submit" value="{{ __('auth.login_customer') }}" class="btn btn-secondary">
+                <input dusk="logincustomer" type="submit" value="{{ __('auth.login_customer') }}" class="btn btn-secondary">
                 <input type="text" value="cust@cust.com" name="email" hidden>
                 <input type="text" value="password" name="password" hidden>
             </form>
             <form action="{{route('authenticate')}}" method="post" class="col">
                 @csrf
-                <input type="submit" value="{{ __('auth.login_deliverer') }}" class="btn btn-secondary">
+                <input dusk="logindeliverer" type="submit" value="{{ __('auth.login_deliverer') }}" class="btn btn-secondary">
                 <input type="text" value="del@del.com" name="email" hidden>
                 <input type="text" value="password" name="password" hidden>
             </form>

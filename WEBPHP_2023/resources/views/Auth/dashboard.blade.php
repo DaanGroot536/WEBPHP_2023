@@ -15,7 +15,7 @@
                     @if (Auth::user()->role == 'superadmin' || Auth::user()->role == 'webshop')
                         <div class="row mx-3">
                             <p class="col">{{ __('ui.users') }}</p>
-                            <a href="{{ route('getUserView') }}" class="btn btn-secondary col-1"> ></a>
+                            <a dusk="userlist" href="{{ route('getUserView') }}" class="btn btn-secondary col-1"> ></a>
                         </div>
                     @endif
                     @if(Auth::user()->role == 'employee' || Auth::user()->role == 'customer' || Auth::user()->role == 'packer')
@@ -77,7 +77,7 @@
                     @if (Auth::user()->role == 'deliverer')
                         <div class="row mx-3 mt-1">
                             <p class="col">{{ __('ui.status_list') }}</p>
-                            <a href="{{route('getStatusView')}}" class="btn btn-secondary col-1"> ></a>
+                            <a dusk="statuslist" href="{{route('getStatusView')}}" class="btn btn-secondary col-1"> ></a>
                         </div>
                     @endif
                 </div>
