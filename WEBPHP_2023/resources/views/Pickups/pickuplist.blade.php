@@ -134,7 +134,7 @@
                                                     <div class="col"></div>
                                                     <div class="checkitem col">
                                                         @if ($package->labelID != null)
-                                                            <input type="checkbox" class="packageCheck"
+                                                            <input dusk="check{{$package->id}}" type="checkbox" class="packageCheck"
                                                                 name="{{ $package->id }}" value="true">
                                                         @endif
                                                     </div>

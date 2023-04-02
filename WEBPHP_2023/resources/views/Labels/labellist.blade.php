@@ -6,11 +6,11 @@
 
             <div class="card">
                 @if (Auth::user()->role == 'employee' || Auth::user()->role == 'packer')
-                    <div class="card-header"><a class="link" href="{{ route('dashboard') }}">{{ Auth::user()->company }}
+                    <div class="card-header"><a dusk="back" class="link" href="{{ route('dashboard') }}">{{ Auth::user()->company }}
                             {{ __('ui.dashboard') }}</a> -> {{ __('ui.label_list') }}
                     </div>
                 @else
-                    <div class="card-header"><a class="link" href="{{ route('dashboard') }}">{{ Auth::user()->name }}
+                    <div class="card-header"><a dusk="back" class="link" href="{{ route('dashboard') }}">{{ Auth::user()->name }}
                             {{ __('ui.dashboard') }}</a> -> {{ __('ui.label_list') }}
                     </div>
                 @endif
@@ -126,7 +126,7 @@
                                 <form action="{{route('printLabelBulk')}}" method="post" class="mt-2">
                                     @csrf
                                     <div class=" d-inline-block w-40"></div>
-                                    <input type="submit" class="btn btn-secondary mb-1 w-50"
+                                    <input dusk="labelbulk" type="submit" class="btn btn-secondary mb-1 w-50"
                                            value="Print">
                                     <div class="checklist">
                                         @foreach($packages as $package)
@@ -135,7 +135,7 @@
                                                 <div class="row">
                                                     <div class="col"></div>
                                                     <div class="checkitem col">
-                                                        <input type="checkbox" class="packageCheck"
+                                                        <input dusk="check{{$package->id}}" type="checkbox" class="packageCheck"
                                                                name="{{$package->id}}"
                                                                value="true">
                                                     </div>

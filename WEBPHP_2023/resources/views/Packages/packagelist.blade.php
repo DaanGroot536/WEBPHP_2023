@@ -6,11 +6,11 @@
 
             <div class="card">
                 @if (Auth::user()->role == 'employee' || Auth::user()->role == 'packer')
-                    <div class="card-header"><a class="link" href="{{ route('dashboard') }}">{{ Auth::user()->company }}
+                    <div class="card-header"><a dusk="back" class="link" href="{{ route('dashboard') }}">{{ Auth::user()->company }}
                             {{ __('ui.dashboard') }}</a> -> {{ __('ui.packages') }}
                     </div>
                 @else
-                    <div class="card-header"><a class="link" href="{{ route('dashboard') }}">{{ Auth::user()->name }}
+                    <div class="card-header"><a dusk="back" class="link" href="{{ route('dashboard') }}">{{ Auth::user()->name }}
                             {{ __('ui.dashboard') }}</a> -> {{ __('ui.packages') }}
                     </div>
                 @endif
@@ -142,7 +142,7 @@
                                         <option value="DPD">DPD</option>
                                         <option value="UPS">UPS</option>
                                     </select>
-                                    <input type="submit" class="btn btn-secondary mb-1 w-50"
+                                    <input dusk="labelbulk" type="submit" class="btn btn-secondary mb-1 w-50"
                                            value="{{ __('ui.create_bulk') }}">
 
                                     <div class="checklist">
@@ -151,7 +151,7 @@
                                                 <div class="col"></div>
                                                 <div class="checkitem col">
                                                     @if ($package->labelID == null)
-                                                        <input type="checkbox" class="packageCheck"
+                                                        <input dusk="check{{$package->id}}" type="checkbox" class="packageCheck"
                                                                name="{{ $package->id }}" value="true">
                                                     @endif
                                                 </div>
