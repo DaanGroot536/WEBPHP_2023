@@ -38,6 +38,7 @@ class UserController extends Controller
     }
 
     public function saveUser(Request $request) {
+
         if (Auth::user()->role == 'webshop') {
             User::create([
                 'name' => $request->name,
@@ -63,6 +64,7 @@ class UserController extends Controller
                 'zipcode' => $request->zipcode,
                 'city' => $request->city,
                 'api_token' => Str::random(60),
+                'company' => $request->deliveryservice,
             ]);
         }
 
