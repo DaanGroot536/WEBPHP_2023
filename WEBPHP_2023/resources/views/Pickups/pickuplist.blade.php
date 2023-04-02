@@ -125,7 +125,7 @@
                                 <form action="{{ route('getCreatePickupBulk') }}" method="post" class="mt-2">
                                     @csrf
                                     <div class=" d-inline-block w-40"></div>
-                                    <input type="submit" class="btn btn-secondary mb-1 w-50" value="{{ __('ui.plan') }}">
+                                    <input dusk="planpickup" type="submit" class="btn btn-secondary mb-1 w-50" value="{{ __('ui.plan') }}">
 
                                     <div class="checklist">
                                         @foreach ($packages as $package)

@@ -29,7 +29,10 @@ class labelPickupTest extends DuskTestCase
                 ->click('@back')
                 ->click('@pickuplist')
                 ->click('@check1')
-
+                ->click('@planpickup')
+                ->type('@address', 'duskadres 1')
+                ->type('@postcode', '5151ds')
+                ->click('@submit')
                 ->screenshot('test');
 
         });
