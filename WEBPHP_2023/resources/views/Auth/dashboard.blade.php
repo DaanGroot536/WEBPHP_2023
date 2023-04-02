@@ -17,10 +17,6 @@
                             <p class="col">{{ __('ui.users') }}</p>
                             <a dusk="userlist" href="{{ route('getUserView') }}" class="btn btn-secondary col-1"> ></a>
                         </div>
-                        <div class="row mx-3 mt-1">
-                            <p class="col">{{ __('ui.reviews') }}</p>
-                            <a href="{{route('getReviewView')}}" class="btn btn-secondary col-1"> ></a>
-                        </div>
                     @endif
                     @if(Auth::user()->role == 'employee' || Auth::user()->role == 'customer' || Auth::user()->role == 'packer')
                         <div class="row mx-3 mt-1">
@@ -71,6 +67,10 @@
                         <div class="row mx-3 mt-1">
                             <p class="col">{{ __('ui.delivered_packages') }}</p>
                             <a href="{{route('getDeliveredPackagesView')}}" class="btn btn-secondary col-1"> ></a>
+                        </div>
+                        <div class="row mx-3 mt-1">
+                            <p class="col">{{ __('ui.reviews') }}</p>
+                            <a href="{{route('getReviewView')}}" class="btn btn-secondary col-1"> ></a>
                         </div>
                     @endif
                     @if (Auth::user()->role == 'deliverer')
