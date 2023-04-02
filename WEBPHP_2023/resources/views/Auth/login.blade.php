@@ -46,7 +46,7 @@
             <form action="{{route('authenticate')}}" method="post" class="col">
                 @csrf
                 <input dusk="loginadmin" type="submit" value="{{ __('auth.login_admin') }}" class="btn btn-secondary">
-                <input type="text" value="admin@admin.com" name="email" hidden>
+                <input type="text" value="Lars@Trackr.com" name="email" hidden>
                 <input type="text" value="password" name="password" hidden>
             </form>
             <form action="{{route('authenticate')}}" method="post" class="col">
@@ -58,25 +58,25 @@
             <form action="{{route('authenticate')}}" method="post" class="col">
                 @csrf
                 <input dusk="loginemployee" type="submit" value="{{ __('auth.login_employee') }}" class="btn btn-secondary">
-                <input type="text" value="emp@emp.com" name="email" hidden>
+                <input type="text" value="Markel@SportWorld.com" name="email" hidden>
                 <input type="text" value="password" name="password" hidden>
             </form>
             <form action="{{route('authenticate')}}" method="post" class="col">
                 @csrf
                 <input dusk="logincustomer" type="submit" value="{{ __('auth.login_customer') }}" class="btn btn-secondary">
-                <input type="text" value="cust@cust.com" name="email" hidden>
+                <input type="text" value="Arie@Kassa.com" name="email" hidden>
                 <input type="text" value="password" name="password" hidden>
             </form>
             <form action="{{route('authenticate')}}" method="post" class="col">
                 @csrf
                 <input dusk="logindeliverer" type="submit" value="{{ __('auth.login_deliverer') }}" class="btn btn-secondary">
-                <input type="text" value="del@del.com" name="email" hidden>
+                <input type="text" value="DHL@DHL.com" name="email" hidden>
                 <input type="text" value="password" name="password" hidden>
             </form>
             <form action="{{route('authenticate')}}" method="post" class="col">
                 @csrf
                 <input type="submit" value="{{ __('auth.login_packer') }}" class="btn btn-secondary">
-                <input type="text" value="emp2@emp2.com" name="email" hidden>
+                <input type="text" value="Bernard@SportWorld.com" name="email" hidden>
                 <input type="text" value="password" name="password" hidden>
             </form>
         </div>
