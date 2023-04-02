@@ -79,6 +79,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::post('/labelSave', 'saveLabel')->name('saveLabel');
         Route::post('/labelSaveBulk', 'saveLabelBulk')->name('saveLabelBulk');
         Route::post('/labelPrintBulk', 'printLabelBulk')->name('printLabelBulk');
+        Route::get('/resetLabelFilters', 'resetLabelFilters')->name('resetLabelFilters');
     });
 
     Route::controller(PickupController::class)->group(function () {
