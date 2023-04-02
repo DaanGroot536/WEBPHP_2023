@@ -34,13 +34,20 @@
                         <label>{{ __('ui.user_role') }}</label>
                         <input type="number" name="id" value="{{ $user->id }}" hidden>
                         <select dusk="role" class="form-control" name="role">
-                            <option value="{{ $user->role }}">{{ $user->role }}</option>
                             @foreach ($roles as $role)
-                                @if ($role != $user->role)
-                                    <option dusk="{{$role->type}}" value="{{ $role->type }}">{{ __('ui.role_' . $role->type) }}</option>
+                                @if (Auth::user()->role == 'webshop')
+                                    
+                                    @if ($role->type == 'employee' || $role->type == 'packer')
+                                        @if($role->type == $user->role)
+                                            <option {{ $role->type == $user->role ? 'selected' : '' }} value="{{ $role->type }}">{{ __('ui.role_' . $role->type) }}</option>
+                                        @endif
+                                    @endif
+                                @else
+                                    <option value="{{ $role->type }}">{{ __('ui.role_' . $role->type) }}</option>
                                 @endif
                             @endforeach
                         </select>
+                        
                         <hr>
                         <label>{{ __('auth.street') }}</label>
                         <input dusk="street" class="form-control" type="text" name="street" value="{{ $user->street }}">
