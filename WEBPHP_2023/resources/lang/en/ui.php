@@ -98,6 +98,8 @@ return [
     'track_and_trace_code' => 'Track & Trace code',
     'track_and_trace_instructions' => 'Enter your code here to track your package or write a review',
     'track_and_trace_button' => 'Track',
+    'no_package' => 'No package found with this code.',
+
 
 
     'delivery_service' => 'Delivery service',
