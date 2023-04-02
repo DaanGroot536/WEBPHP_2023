@@ -22,7 +22,18 @@ class UserFactory extends Factory
             'housenumber' => $this->faker->buildingNumber(),
             'zipcode' => $this->faker->postcode(),
             'city' => $this->faker->city(),
+            'api_token' => Str::random(60),
         ];
+    }
+
+    public function forRole($role)
+    {
+        return $this->state(function (array $attributes) use ($role) {
+            return [
+                'role' => $role,
+                'api_token' => 'test_token',
+            ];
+        });
     }
 
     /**

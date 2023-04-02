@@ -4,11 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Package;
 use App\Models\User;
-use DB;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Str;
 
 class PackageApiController extends Controller
@@ -83,9 +79,5 @@ class PackageApiController extends Controller
         fclose($handle);
 
         return redirect()->route('getPackages');
-    }
-
-    public function updateStatus(Request $request) {
-
     }
 }

@@ -12,7 +12,6 @@ class TrackAndTraceTest extends TestCase
     use RefreshDatabase;
 
     /* test */
-    
     public function testTrackAndTraceCodeGetsOrderView()
     {
         $package = Package::factory()->create();
