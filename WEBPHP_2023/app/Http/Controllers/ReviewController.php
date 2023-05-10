@@ -39,6 +39,6 @@ class ReviewController extends Controller
             'webshopName' => $package->webshopName,
         ]);
 
-        return redirect()->route('getReviewView');
+        return redirect()->route('login');
     }
 }
